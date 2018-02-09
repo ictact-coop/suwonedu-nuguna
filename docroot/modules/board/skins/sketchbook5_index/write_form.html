@@ -1,0 +1,182 @@
+<include target="_header.html" />
+
+<load target="js/editor.js" type="body" />
+
+<include cond="Mobile::isMobileCheckByAgent() && $mi->m_editor!=3" target="_write_form_mobile.html" />
+
+<form cond="!Mobile::isMobileCheckByAgent() || $mi->m_editor==3" action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="bd_wrt bd_wrt_main clear">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<!--@if($oDocument->getContentText())-->
+	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
+	<!--@else-->
+	<input type="hidden" name="content" value="{htmlspecialchars($mi->content_default)}" />
+	<!--@end-->
+	<input type="hidden" name="document_srl" value="{$document_srl}" />
+
+	<!--// 상단 : 카테고리, 제목 -->
+	<table class="bd_wrt_hd bd_tb">
+		<tr>
+			<td>
+				<select cond="$mi->use_category=='Y' && $category_list" name="category_srl" class="category">
+					<option value="">{$lang->category}</option>
+					<option loop="$category_list => $val" disabled="disabled"|cond="!$val->grant" value="{$val->category_srl}" selected="selected"|cond="$val->grant&&$val->selected||$val->category_srl==$oDocument->get('category_srl')">
+						{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+					</option>
+				</select>
+			</td>
+			<td width="100%">
+            
+				<span class="itx_wrp">
+					<label for="postTitle">{$lang->title}</label>
+					<input type="text" name="title" class="itx" id="postTitle" title="{$lang->title}" value="{htmlspecialchars($oDocument->getTitleText())}"|cond="$oDocument->getTitleText()" />
+				</span>
+			</td>
+			<td cond="$is_logged && !$oDocument->isExists() || $oDocument->get('status')=='TEMP'" class="m_no"><button type="button" class="bd_btn" onclick="doDocumentLoad(this);">{$lang->cmd_load}</button></td>
+		</tr>
+	</table>
+
+ <table border="1" cellspacing="0" summary="Extra Form" class="extraVarsList" style="width:100%;">
+	<tr><th colspan="2" style="text-align:right; padding:10px 0"><em>*</em> : {$lang->is_required}</th></tr>
+    
+     <tr cond="$grant->manager">
+        <th style="width:100px;">강의번호<em>*</em></th>
+        <td>{$extra_keys[14]->getFormHTML()}</span></td>
+
+    </tr>
+    <tr>
+        <th style="width:100px;">강사명<em>*</em></th>
+        <td>{$extra_keys[13]->getFormHTML()}</span></td>
+
+    </tr>
+    <tr>
+        <th>강의한줄소개<em>*</em></th>
+        <td class="text90p">{$extra_keys[1]->getFormHTML()}</td>
+    </tr>
+    <tr>
+        <th>강의대상<em>*</em></th>
+        <td>{$extra_keys[4]->getFormHTML()}<label>기타선택시 입력</label>{$extra_keys[10]->getFormHTML()}</td>
+    </tr>
+    <tr>
+        <th>수강인원</th>
+        <td>{$extra_keys[5]->getFormHTML()}<label>명</label></td>
+    </tr>
+    </table>
+    <div class="extraVarsList">
+    	<div class="lec_title">강의 일시</div>
+        <div class="lec_subtitle">입력해주신 강의 일시는 협의 하에 조정될 수 있습니다.<br>
+예) 2017-01-01 2017-01-01 (월) 10:00~12:30 (1회)
+</div>
+        <div>강의희망기간 : <span>{$extra_keys[2]->getFormHTML()}</span>~ <span>{$extra_keys[3]->getFormHTML()}</span> 강의시간 : <span class="input200">{$extra_keys[12]->getFormHTML()}</span></div>
+    
+    	<div class="lec_title">강의장소</div>
+        <div class="lec_subtitle">강의를 할 장소를 선택해주세요.<br>그 외 지역을 선택하시는 경우, 자세한 위치를 기재해주세요</div>
+        <div><span class="lec_input">{$extra_keys[6]->getFormHTML()}</span> <span class="input693">{$extra_keys[11]->getFormHTML()}</span></div>
+     </div>
+     <div class="extraVarsList">   
+        <div class="lec_title">준비물과 재료비</div>
+        <div class="lec_subtitle">수강생 지참 준비물과 강사 준비 재료비를 기재해주세요. <br>준비물은 구체적으로 작성해주세요.</div>
+        <div>준비물 : <span class="input200">{$extra_keys[8]->getFormHTML()}</span> 예상재료비 : {$extra_keys[7]->getFormHTML()}원</div>
+        
+        <div class="lec_title">담당자에게</div>
+        <div class="lec_subtitle">수원시평생학습관 누구나학교 담당자에게 남기고 싶은 말씀을 써주세요<br>입력된 내용은 담당자에게만 보여집니다.</div>
+        <div class="lec_textarea">{$extra_keys[9]->getFormHTML()}</div>
+     </div>   
+        
+	
+	<div class="extraVarsList">
+		<div class="lec_title">강의상세설명</div>
+        <div class="lec_subtitle">열고자 하는 강의에 대해 자세히 기재해주세요.<br>하단에 강의를 대표할 수 있는 이미지 파일을 첨부해주세요.
+        <br><span style="font-weight:bold; font-size:14px; color: #F90206">강의하시는 분의 연락처를 꼭 입력해주세요.</span>
+        </div>
+        <div class="editor">{$oDocument->getEditor()}</div>
+        
+        <div class="lec_title">희망태그입력</div>
+        <div class="lec_subtitle">강의 관련 태그를 입력하시면, 강의를 검색할 때 도움이 됩니다.</div>
+	<div class="tag itx_wrp">
+		<span class="itx_wrp">
+			<label for="tags">{$lang->tag} : {$lang->about_tag}</label>
+            <input type="text" name="tags" id="tags" value="{htmlspecialchars($oDocument->get('tags'))}" class="itx" />
+		</span>
+	</div>
+
+	</div>
+
+	<!--// 태그 -->
+
+	<!--// 비로그인 입력 -->
+	<div class="edit_opt">
+		<block cond="!$is_logged">
+		<span class="itx_wrp">
+			<label for="nick_name">{$lang->writer}</label>
+            <input type="text" name="nick_name" id="nick_name" value="{$oDocument->getNickName()}" class="itx n_p" />
+		</span>
+		<span class="itx_wrp">
+			<label for="password">{$lang->password}</label>
+            <input type="password" name="password" id="password" class="itx n_p" />
+		</span>
+		<span class="itx_wrp">
+			<label for="email_address">{$lang->email_address}</label>
+            <input type="text" name="email_address" id="email_address" value="{htmlspecialchars($oDocument->get('email_address'))}" class="itx m_h" />
+		</span>
+		<span class="itx_wrp">
+			<label for="homepage">{$lang->homepage}</label>
+            <input type="text" name="homepage" id="homepage" value="{htmlspecialchars($oDocument->get('homepage'))}" class="itx m_h" />
+		</span>
+		</block>
+	</div>
+
+	<!--// 글쓰기 옵션 체크 -->
+	<div class="opt_chk clear">
+    <block cond="$grant->manager">
+			<input type="checkbox" name="is_notice" value="Y" checked="checked"|cond="$oDocument->isNotice()" id="is_notice" />
+			<label for="is_notice">사례등록</label>
+			</block>
+		<div cond="$grant->manager || $mi->tl_color=='2'" class="section">
+        
+			
+        
+        
+<!--%load_js_plugin("ui.colorpicker")-->
+			<span class="itx_wrp color_wrp" title="{$lang->title_color}">
+				<label for="title_color">{$lang->title_color}</label>
+				<input type="text" name="title_color" id="title_color" class="itx color-indicator" value="{$oDocument->get('title_color')}"|cond="$oDocument->get('title_color')!='N'" />
+			</span>
+			<input type="checkbox" name="title_bold" id="title_bold" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" />
+			<label for="title_bold">{$lang->title_bold}</label>
+
+		</div>
+		<div class="section">
+			<input type="checkbox" name="comment_status" value="ALLOW" checked="checked"|cond="$oDocument->allowComment()" id="comment_status" />
+			<label for="comment_status">{$lang->allow_comment}</label>
+			<input type="checkbox" name="allow_trackback" value="Y" checked="checked"|cond="$oDocument->allowTrackback()" id="allow_trackback" />
+			<label for="allow_trackback">{$lang->allow_trackback}</label>
+		</div>
+		<div cond="$grant->manager" class="section">
+			<input type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oDocument->useNotify() || (!$oDocument->useNotify() && @in_array('notify',$mi->wrt_opt))" id="notify_message" />
+			<label for="notify_message">{$lang->notify}</label>
+		</div>
+		<div cond="is_array($status_list)" class="section">
+			<!--@foreach($status_list AS $key=>$value)-->
+			<input cond="@!in_array('secret',$mi->wrt_opt)" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='PUBLIC' && !$document_srl)" />
+			<input cond="@in_array('secret',$mi->wrt_opt)" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='SECRET' && !$document_srl)" />
+			<label for="{$key}">{$value}</label>
+			<!--@end-->
+		</div>
+	</div>
+
+	<!--// SocialXE -->
+	<div cond="$mi->cmt_wrt=='sns'" class="sns_wrt">
+		<p>※ {$lang->sns_wrt}.</p>
+		<img class="zbxe_widget_output" widget="socialxe_info" colorset="{$mi->colorset}" skin="default"  />
+	</div>
+
+	<!--// Buttons -->
+	<div class="regist">
+		<button cond="$is_logged && !$oDocument->isExists() || $oDocument->get('status')=='TEMP'" type="button" onclick="doDocumentSave(this);" class="bd_btn temp">{$lang->cmd_temp_save}</button>
+		<input type="button" value="{$lang->cmd_preview}" onclick="doDocumentPreview(this);return false" class="bd_btn m_no" />
+		<input type="submit" value="{$lang->cmd_submit}" class="bd_btn blue" />
+		<button type="button" onclick="history.back()" class="bd_btn cancle">{$lang->cmd_back}</button>
+	</div>
+</form>
+
+</div>
