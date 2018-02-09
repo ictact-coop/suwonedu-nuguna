@@ -1,0 +1,155 @@
+
+
+
+
+ 
+
+<load target="js/fam.js" />
+
+
+<!-- 풋탑 메뉴 -->	
+<div cond="$F_MENU1->list || $F_MENU2->list" id="head_box4" class="body_width" style="font:11px/19px Arial, sans-serif; color:#6B6B6B; ">		<!--  멀티메뉴 , 메인메뉴 아래 / GNB메뉴는 top.html -->
+			<div class="row3" style=""> 
+		    <div class="header-container" style="">	
+			
+				   <ul class="" style="float: left;" style="margin: 0; padding: 0; list-style: none">                       	<!-- 멀티좌상단 메뉴 -->          
+                           <nav cond="$F_MENU1->list" id="bottom_nav">
+			                  	<ul>
+			                  		<li loop="$F_MENU1->list=>$key,$val">
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>
+                   </ul>
+				   
+				   <ul class="" style="float:right;padding-right:0;margin: 0; padding: 0; list-style: none">	<!-- 멀티우상단 메뉴 -->	
+                           <nav cond="$F_MENU2->list" id="bottom_nav" style="margin-right:0;">
+			                  	<ul>
+			                  		<li loop="$F_MENU2->list=>$key,$val">
+			                  			<a href="{$val['href']}" target="_blank"|cond="$val['open_window']=='Y'">{$val['link']}</a>
+			                  		</li>
+			                  	</ul>
+	                      </nav>	  
+				   </ul><!-- .header-nav -->	  			
+
+		   </div><!-- .header-container -->
+	       </div><!-- .row2 -->		 
+
+</div><!-- .head_box4 -->	 
+
+
+
+
+
+
+<!-- 사이트 정보 표시 -->
+
+<!--@if($layout_info->foot_info_w == "Y")-->
+<div class="footer">
+<!--@if($layout_info->foot_info)-->
+{$layout_info->foot_info}
+<!--@else-->			 
+
+
+<div class="four_columns clearfix" >		
+
+
+<div class="column1">
+<div class="column_inner">
+
+	<div class="xeinfo">
+	<div class="xecenter" >
+		<dl class="center"  style="margin: 0; padding: 0; list-style: none">
+		<dt><h3>Guide</h3></dt>
+		<dd style="margin: 0; padding: 0;" >
+			<li>상담운영시간</li>	
+			<li>월~금 am 9:00 - pm 7:00</li>
+			<li>토요일 am 9:00 - pm 6:00 </li>
+		</dd>
+	</dl>			    							
+	</div> 	
+    </div>		
+
+</div>
+</div>
+
+
+<!-- Contact Us -->	
+<div class="column2">
+<div class="column_inner">
+<div>
+
+	<div class="xecenter">
+	
+	    <dl class="xelink" style="margin: 0; padding: 0; list-style: none">  	
+
+			<dt><h3>About</h3></dt>
+			<dd style="margin: 0; padding: 0;">
+			<li>수원시평생학습관 <br> 사업자번호 : 135-82-80780 </li>
+			<li>대표 : 정성원</li>	 
+			 </dd>
+		</dl>								
+	</div>		  
+
+</div>
+</div>
+</div>
+
+<div class="column2">
+<div class="column_inner">
+<div>
+
+	<div class="xecenter">
+	
+	    <dl class="xelink" style="margin: 0; padding: 0; list-style: none">  	
+
+			<dt><h3>Contact Us</h3></dt>
+			<dd style="margin: 0; padding: 0;">
+			<li><span>T. </span>031-248-9700</li>
+			<li><span>F. </span>031-248-9901</li>
+			<li><span>E. </span><a href="mailto:hopeful1365@suwonedu.org" title="">hopeful1365@suwonedu.org</a></li>
+			<li><a href="/without_notice" title="">이메일무단수집거부</a></li>	 
+			 </dd>
+		</dl>								
+	</div>		  
+
+</div>
+</div>
+</div>
+
+
+
+<div class="column2">
+<div class="column_inner">
+<div>
+
+	<div class="xecenter" style="border:none">
+	
+	    <dl class="xelink" style="margin: 0; padding: 0; list-style: none">  	
+
+			<dt><h3>Direction</h3></dt>
+			<dd style="margin: 0; padding: 0;">
+			<li>경기도 수원시 팔달구 월드컵로381번길 2 수원시평생학습관</li>
+			<li><a href="http://naver.me/FtXriXv7" target="_blank">네이버지도로 보기(새창)</a></li>	 
+			 </dd>
+		</dl>								
+	</div>		  
+
+</div>
+</div>
+</div>
+
+<!--@end-->
+
+<!-- 소셜 , 패밀리사이트 -->	
+
+
+										
+
+
+
+
+
+</div> 	<!-- / four_columns  -->		
+</div>	<!-- / footer  -->	 	  
+<!--@else--><!--@end-->
