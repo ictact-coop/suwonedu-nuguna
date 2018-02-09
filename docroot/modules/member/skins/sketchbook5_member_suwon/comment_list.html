@@ -1,0 +1,51 @@
+<include target="./common_header.html" />
+
+	<div class="table even">
+		<table width="100%" border="1" cellspacing="0">
+			<caption>
+			  Page {number_format($page)}/{number_format($total_page)}  Total : ({number_format($total_count)})
+		    </caption>
+			<thead>
+				<tr>
+                    <th>{$lang->no}</th>
+					<th>수강신청</th>
+					<!--<th scope="col" class="nowr">{$lang->cmd_vote}(+/-)</th>-->
+					<th>수강신청일</th>
+					<!--<th>{$lang->status}</th>-->
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>{$lang->no}</th>
+					<th>수강신청</th>
+					<!--<th scope="col" class="nowr">{$lang->cmd_vote}(+/-)</th>-->
+					<th>수강신청일</th>
+					<!--<th>{$lang->status}</th>-->
+				</tr>
+			</tfoot>
+			<tbody>
+				<!--@foreach($comment_list as $no => $val)-->
+				{@ $comment = cut_str(trim(strip_tags($val->content)), 200, '...')}
+				<tr>
+                    <td>{$no}</td>
+					<td class="text">{$val->get('Title')}<a href="{getUrl('','document_srl',$val->document_srl)}#comment_{$val->comment_srl}" target="_blank"><!--@if(strlen($comment))-->{$comment}<!--@else--><em>{$lang->no_text_comment}</em><!--@end--></a></td>
+					<!--<td class="nowr">{$val->get('voted_count')?$val->get('voted_count'):0}/{$val->get('blamed_count')?$val->get('blamed_count'):0}</td>-->
+					<td class="nowr">{(zdate($val->regdate,"Y-m-d\nH:i:s"))}</td>
+					<!--<td class="nowr"><!--@if($val->isSecret())-->{$secret_name_list['Y']}<!--@else-->{$secret_name_list['N']}<!--@end--></td>-->
+				</tr>
+				<!--@end-->
+			</tbody>
+		</table>
+	</div>  
+<div class="pagination">
+    <a href="{getUrl('page','','module_srl','')}" class="direction">&lsaquo; {$lang->first_page}</a> 
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+        <!--@if($page == $page_no)-->
+            <strong>{$page_no}</strong> 
+        <!--@else-->
+            <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+        <!--@end-->
+    <!--@end-->
+    <a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="direction">{$lang->last_page} &rsaquo;</a>
+</div>
+<include target="./common_footer.html" />

@@ -1,0 +1,29 @@
+@charset "utf-8";
+body{background:#191919;color:#DDD}
+a{color:#EEE}
+/* Element Reset */
+.xm,
+.xm table,
+.xm input,
+.xm textarea,
+.xm select,
+.xm button{color:#DDD}
+/* Lined Tab Navigation */
+.xm .nav li a{position:relative;float:left;text-decoration:none;border:1px solid #eee;border-bottom-color:#ccc;background:#131313;color:#DDD}
+/* Form */
+.xm .form em{font-style:normal;color:#FAA}
+.xm .form label.overlap{position:absolute;color:#777}
+.xm .form textarea{position:relative;width:272px;color:#DDD;padding:8px;margin-bottom:12px;border-width:1px;border-style:solid;border-color:#aaa #ccc #ccc #aaa;background:#0B0B0B;filter:alpha(opacity:60);opacity:.6;transition:all .2s;-moz-transition:all .2s;-webkit-transition:all .2s;box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);border-radius:3px}
+.xm .form select{position:relative;width:300px;color:#DDD;height:40px;padding:8px;margin-bottom:12px;border-width:1px;border-style:solid;border-color:#aaa #ccc #ccc #aaa;background:#0B0B0B;filter:alpha(opacity:60);opacity:.6;transition:all .2s;-moz-transition:all .2s;-webkit-transition:all .2s;box-shadow:inset 1px 1px 2px rgba(0,0,0,.1);border-radius:3px}
+/* Table */
+.xm .table caption strong{color:#FAA}
+.xm .table th{background:#0B0B0B}
+.xm .table tfoot td{font-weight:bold;background:#0B0B0B}
+.xm .table.even tbody tr:nth-of-type(even) td{background-color:#131313}
+.xm .table em{font-style:normal;font-weight:normal;color:#FAA}
+/* Pagination */
+.xm .pagination strong{position:relative;display:inline-block;padding:2px 4px;font-weight:bold;text-decoration:none;line-height:normal;color:#DDD !important;vertical-align:middle}
+.xm .pagination strong{color:#FAA !important;font-size:20px}
+/* Border */
+#border{width:290px;margin:20px auto;border:1px solid #ccc;box-shadow:0 0 6px rgba(0,0,0,.1);border-radius:8px;padding:25px 30px;background:#191919;}
+

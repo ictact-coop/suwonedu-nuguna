@@ -1,0 +1,20 @@
+<include target="./common_header.html" />
+<div id="border">
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form ruleset="resendAuthMail" class="form" action="./" method="post">
+	<input type="hidden" name="module" value="member" />
+	<input type="hidden" name="act" value="procMemberResendAuthMail" />
+    <h1 class="h1">{$lang->cmd_resend_auth_mail}</h1>
+    <p>{$lang->about_resend_auth_mail}</p>
+	<span class="itx_wrp">
+		<label for="email_address">{$lang->email_address}</label>
+		<input type="text" id="email_address" name="email_address" value="" />
+	<span class="itx_wrp">
+	<div class="btnArea">
+		<span id="btn"><input type="submit" value="{$lang->cmd_resend_auth_mail}" /></span>
+	</div>
+</form>
+</div>
+<include target="./common_footer.html" />

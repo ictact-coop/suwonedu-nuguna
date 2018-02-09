@@ -1,0 +1,18 @@
+{$lang->msg_find_account_info}<br />
+<div id="border">
+<hr noshade="noshade" />
+<ul>
+    <li>Site : <a href="{getUrl()}" target="_blank">{getUrl()}</a></li>
+    <li loop="$memberInfo=>$name,$value">{$name} : {$value}</li>
+	<li>위의 ID(이메일 주소) 입력 후, 기존에 사용하신 비밀번호를 입력하면 로그인 됩니다.</li>
+</ul>
+<hr noshade="noshade" />
+
+	<div style=" padding: 20px; border: 1px solid #B8B8B8; margin-bottom: 30px;">ID와 비밀번호를 모두 분실하신 경우, <br>
+아래의 링크를 클릭 후 임시 비밀번호로 로그인 할 수 있습니다.<br>
+(아래의 링크는 비밀번호를 임시 비밀번호로 변경하는 링크입니다) <br>
+		<span style="color: red">임시 비밀번호로 로그인하면, 반드시 비밀번호를 변경해주세요.</span></div>
+- 링크 <br>	
+<a href="{$find_url}">{$find_url}</a>
+<div>임시 {$lang->password} : <span style="color:red">{$auth_args->new_password}</span></div>
+</div>

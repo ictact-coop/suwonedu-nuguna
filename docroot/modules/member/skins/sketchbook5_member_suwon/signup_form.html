@@ -1,0 +1,171 @@
+<load target="../../tpl/js/signup_check.js" />
+<!--// datepicker javascript plugin load -->
+<!--%load_js_plugin("ui")-->
+<!--%load_js_plugin("ui.datepicker")-->
+<include target="./common_header.html" />
+<div id="border">
+	<h1>회원가입 <span style="font-size: 12px; padding-left: 30px;"><em style="color:red">*</em> : 필수기입</span></h1>
+
+	<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+    
+    <form ruleset="@insertMember" id="fo_insert_member" class="form" action="./" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="act" value="procMemberInsert" />
+		<div class="agreement" cond="$member_config->agreement">
+			<div class="text">111
+				{$member_config->agreement}
+			</div>
+			<div class="confirm">
+				<input type="checkbox" name="accept_agreement" value="Y" id="accept_agree" />
+				<label for="accept_agree">{$lang->about_accept_agreement}</label>
+			</div>
+		</div>
+		
+		<table style="border-spacing:0;">
+			<tr>
+				<th scope="row" id="signup_th">이메일(아이디) <em style="color:red">*</em></th>
+				<td id="signup">
+					<input type="text" name="{$identifierForm->name}" value="{$identifierForm->value}"/>
+                    &nbsp; 비밀번호 분실 시 확인메일 전송用 (※ 다음(daum)·한메일(hanmail) 사용 불가)
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" id="signup_th">{$lang->password} <em style="color:red">*</em></th>
+				<td id="signup"><input type="password" name="password" value=""/> &nbsp; 6~20자
+			</tr>
+			<tr>
+				<th scope="row" id="signup_th">{$lang->password3} <em style="color:red">*</em></th>
+				<td id="signup">
+					<input type="password" name="password2" value=""/>
+				</td>
+			</tr>
+			            <tr>
+            	<th scope="row" id="signup_th">비밀번호 찾기 질문 <em style="color:red">*</em></th>
+                <td id="signup">
+                	<select name="find_account_question" id="find_account_question" style="margin-right:20px;">
+                    <option value="1"  >다른 이메일 주소는?</option>
+                    <option value="2"  >나의 보물 1호는?</option>
+                    <option value="3"  >나의 출신 초등학교는?</option>
+                    <option value="4"  >나의 출신 고향은?</option>
+                    <option value="5"  >나의 이상형은?</option>
+                    <option value="6"  >어머니 성함은?</option>
+                    <option value="7"  >아버지 성함은?</option>
+                    <option value="8"  >가장 좋아하는 색깔은?</option>
+                    <option value="9"  >가장 좋아하는 음식은?</option>
+                    </select>
+                     <span style="font-weight:bold; padding:5px;">답변</span> <input type="text" name="find_account_answer" id="find_account_answer" title="비밀번호 찾기 답변" value="" class="inputText long tall" /></td>
+			</tr>
+            <tr>
+            	<th scope="row" id="signup_th">{$lang->user_name} <em style="color:red">*</em></td>
+                <td id="signup"><input type="text" name="user_name" id="user_name" value="" class="inputText long tall" />
+                 &nbsp; 실명 입력
+                
+                </td>
+			</tr>
+            <tr>
+            	<th scope="row" id="signup_th">{$lang->nick_name} <em style="color:red">*</em></td>
+                <td id="signup"><input type="text" name="nick_name" id="nick_name" value="" class="inputText long tall" />
+                &nbsp; 게시판에서 사용할 별칭 입력
+                </td>
+			</tr>            
+
+            <tr>
+            	<th scope="row" id="signup_th" style="padding-bottom:10px;">연락처  <em style="color:red">*</em></td>
+                <td id="signup" style="padding-bottom:10px;">
+                <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" 
+                /> - <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" 
+                /> - <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" />
+                 &nbsp; 연락 가능한 연락처(스마트폰·집전화) 입력
+                 
+                </td>
+			</tr>
+           <tr>
+            	<th scope="row" id="signup_th">문자수신 허용<em style="color:red">*</em></td>
+                <td id="signup" style="padding:10px 0;border-top:1px dashed #DDD;">
+					<input type="radio" name="mms" id="mailingYes" value="Y" checked="checked"|cond="$member_info->mms != 'N'"> <label for="mailingYes">{$lang->cmd_yes}</label>
+					<input type="radio" name="mms" id="mailingNo" value="N" checked="checked"|cond="$member_info->mms == 'N'" > <label for="mailingNo">{$lang->cmd_no}</label>
+                    <span style="margin-top:10px; color:#999;">문자로 유용한 소식을 전달 받을 수 있습니다.</span>
+				</td>
+			</tr>
+            <tr>
+				<th scope="row" id="signup_th" style="padding:10px 0;border-top:1px dashed #DDD;">{$lang->allow_mailing}<em style="color:red">*</em></th>
+				<td id="signup" style="padding:10px 0;border-top:1px dashed #DDD;">
+					<input type="radio" name="allow_mailing" id="mailingYes" value="Y" checked="checked"|cond="$member_info->allow_mailing != 'N'"> <label for="mailingYes">{$lang->cmd_yes}</label>
+					<input type="radio" name="allow_mailing" id="mailingNo" value="N" checked="checked"|cond="$member_info->allow_mailing == 'N'" > <label for="mailingNo">{$lang->cmd_no}</label>
+                    <span style="margin-top:10px; color:#999;">가입 시, 격주 발간되는 ‘평생학습웹진 와’ 구독 가능</span>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" id="signup_th" style="padding-bottom:20px; border-bottom:1px solid #CCC;padding-top:10px;border-top:1px dashed #DDD;">{$lang->allow_message}<em style="color:red">*</em></th>
+				<td id="signup" style="padding-bottom:20px; border-bottom:1px solid #CCC; padding-top:10px;border-top:1px dashed #DDD;">
+					<block loop="$lang->allow_message_type=>$key,$val">
+						<input type="radio" name="allow_message" value="{$key}" checked="checked"|cond="$member_info->allow_message == $key || (!$member_info && $key == 'Y')" id="allow_{$key}" /> <label for="allow_{$key}">{$val}</label>
+					</block>
+                    <span style="margin-top:10px; color:#999;">쪽지로 실시간 답변,대화 가능 (강사 신청시 '모두허용' 필수)</span>
+				</td>
+			</tr>
+
+            <tr>
+            	<td colspan="2" style="padding:20px 0; border-bottom:1px solid #DDD;">
+                아래의 항목은 강사를 신청하실 분만 입력해주세요.
+                </td>
+			</tr>
+            <tr>
+            	<th scope="row" id="signup_th" style="padding-top:20px;">강사사진</td>
+                <td style="padding-top:20px;">
+                <input type="hidden" name="__profile_image_exist" value="false" 
+                /><input type="file" name="profile_image" id="profile_image" value="" 
+                /><span class="desc">가로길이:{$member_config->profile_image_max_width}px, 세로길이:{$member_config->profile_image_max_height}px 미만</span></p>
+                </td>
+			</tr> 
+            <tr>
+            	<th scope="row" id="signup_th">강사소개</th>
+                <td>
+                200자내외로 누구나강사님을 소개해주세요<br><textarea name="profile" rows="8" cols="42"></textarea><p style="color:#999;"></p>
+                </td>
+			</tr>
+            <tr>
+            	<th scope="row" id="signup_th">강의가능분야</th>
+                <td>
+                누구나강사님이 강의가 가능하신 부분을 모두 입력해주세요<br><textarea name="lecture" rows="8" cols="42"></textarea><p style="color:#999;"></p>
+                </td>
+			</tr>
+            <tr>
+            	<th scope="row" id="signup_th"></th>
+                <td>
+                <p style="color:#999;"><input name="join_teacher" id="join_teacher" type="checkbox" value="누구나강사 신청"/> 위와 같이 누구나강사를 신청합니다 (강사신청 시 필수) </p>
+                </td>
+			</tr>
+            
+            
+            
+			<!--<tr loop="$formTags=>$formTag" cond="$formTag->name != 'signature'">
+				<th scope="row" id="signup_th">{$formTag->title}{$formTag->name}</th>
+				<td id="signup">{$formTag->inputTag}</td>
+			</tr>-->
+           
+			
+		</table>
+		<div class="btnArea">
+			<span class="btn"><input type="submit" value="{$lang->cmd_registration}" /></span>
+			<span class="btn"><a href="{getUrl('act','','member_srl','')}">{$lang->cmd_cancel}</a></span>
+		</div>
+	</form>
+</div>
+	<script type="text/javascript">
+	(function($){
+		$(function(){
+			var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', dateFormat:'yy-mm-dd', onSelect:function(){
+	
+				$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
+			};
+			$.extend(option,$.datepicker.regional['{$lang_type}']);
+			$(".inputDate").datepicker(option);
+			$(".dateRemover").click(function() {
+				$(this).prevAll('input').val('');
+				return false;});
+		});
+	})(jQuery);
+	</script>
+<include target="./common_footer.html" />

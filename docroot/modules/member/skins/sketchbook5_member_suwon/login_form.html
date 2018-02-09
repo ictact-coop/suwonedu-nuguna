@@ -1,0 +1,49 @@
+<include target="./common_header.html" />
+<load target="filter/openid_login.xml" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<div id="border">
+<h1 class="h2">{$lang->cmd_login}</h2>
+<form ruleset="@login" action="./" method="post" id="fo_member_login" class="form">
+	<input type="hidden" name="success_return_url" value="{$referer_url}" />
+	<input type="hidden" name="act" value="procMemberLogin" />
+	<span class="itx_wrp">
+		<span for="uid"><!--@if($identifierForm->name=='email_address')-->{$lang->email}<!--@else-->{$lang->user_id}<!--@end--></span> &nbsp;
+		<input type="text" name="user_id" id="uid" value="" class="itx" />
+	</span>
+	<span class="itx_wrp">
+		<span for="upw">{$lang->password}</span> &nbsp;
+		<input type="password" name="password" id="upw" value="" class="itx" />
+	</span>
+	<div class="btn_area">
+		<input type="checkbox" name="keep_signed" id="keepid_opt" value="Y"   style="display: none;"/>
+		<label for="keepid_opt" style="display: none;">{$lang->keep_signed}</label>
+		<span id="btn"><input type="submit" value="{$lang->cmd_login}" /></span>
+	</div>
+	<div class="message info" id="keep_msg">
+		<p>{$lang->about_keep_warning}</p>
+	</div>
+	<div class="btnArea">
+		<span class="etc">
+			<a href="{getUrl('act','dispMemberFindAccount')}"><span>{$lang->cmd_find_member_account}</span></a> |
+			<a href="{getUrl('act','dispMemberSignUpForm')}"><span>{$lang->cmd_signup}</span></a>
+		</span>
+	</div>
+</form>
+</div>
+<script type="text/javascript">
+jQuery(function($){
+	var keep_msg = $('#keep_msg');
+	keep_msg.hide();
+	$('#keepid_opt').change(function(){
+		if($(this).is(':checked')){
+			keep_msg.slideDown(200);
+		} else {
+			keep_msg.slideUp(200);
+		}
+	});
+});
+</script>
+<include target="./common_footer.html" />
