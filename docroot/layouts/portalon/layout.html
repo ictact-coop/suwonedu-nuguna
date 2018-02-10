@@ -27,7 +27,7 @@ if(!$_COOKIE['fakeM']) Context::addHtmlHeader('<meta name="viewport" content="wi
 <!-- load target="css/ie9.css" media="screen" cond="$browser=='IE9'" / -->
 <load target="../../common/js/respond.min.js" targetie="lt IE 9" />	                                            <!-- 익스8 적용 , 우측 맨하단 슬라이더 썸네일안보임 추후 검토  -->   
 <load target="../../common/js/plugins/ui/jquery-ui.min.js" />	                                                <!-- xe_tabview, 프로모션 로딩 속도Up  -->  
-<!--[if lt IE 8]><load target="js/respond.min.js" /><load target="js/html5shiv.js" /><![endif]-->	    <!-- 익스8 적용 , 현재 동일 검토 후 삭제 무방  -->		  							   
+<!--[if lt IE 8]><load target="../../common/js/respond.min.js" /><load target="../../common/js/html5.js" /><![endif]-->	    <!-- 익스8 적용 , 현재 동일 검토 후 삭제 무방  -->		  							   
 
 
 <load target="css/mmenu.css" /><!-- 마몽 스타일 모바일 메뉴 -->		
@@ -329,44 +329,32 @@ jQuery(function($) {
 <div id="cont_body" class="cont_body2" style="margin-bottom:20px; padding-top:25px;<!--@if($layout_info->toggleOn =='Y')-->top:0;<!--@elseif($layout_info->toggleOn=='N')-->top:<!--@if($layout_info->draw_2d=='1')-->-73px;<!--@elseif($layout_info->draw_2d=='2')-->-92px;<!--@elseif($layout_info->draw_2d=='3')-->-111px;<!--@elseif($layout_info->draw_2d=='4')-->-130px;<!--@elseif($layout_info->draw_2d=='5')--> -149px;<!--@end--><!--@end--> position:relative;<!--@if($layout_info->frame2=='m')-->height:500px; <!--@else-->height:auto;<!--@end-->height:500px;z-index:9; <!--@if($layout_info->toggleOn =='N')-->background: <!--@if($layout_info->body_bg)-->{$layout_info->body_bg}<!--@else-->#fff<!--@end--> url({$layout_info->body_bg_img}) {$layout_info->bg_repeat} 0px <!--@if($layout_info->body_bg_rp)-->{$layout_info->body_bg_rp}<!--@else-->-162<!--@end-->px; <!--@elseif($layout_info->toggleOn =='Y')-->background: <!--@if($layout_info->body_bg)-->{$layout_info->body_bg}<!--@else-->#fff<!--@end--> url({$layout_info->body_bg_img}) {$layout_info->bg_repeat} 0px -329px; <!--@end-->">	<!-- 전체배경컬럼★ 바탕1px 비침 제거 -->
 
 		<div class="body_width" class="{$layout_info->frame} {$layout_info->reverse}">	   	 		
-			
-			
-			 <!-- 좌측 사이드바 영역 -->
-            <div class="<!--@if($layout_info->frame2=='s')-->cont_wgt1_2<!--@else-->cont_wgt1<!--@end-->" cond="$layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6' " id="snb" style="z-index:4400;"> <!-- 전체배경컬럼★ -->
-				<!--@if($layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6')-->
-				<h2 class="side_top"  style="height:33px;">
-				<!--@elseif($layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6')-->
-				<h2 class="side_top"  style="height:33px; ">   <!-- 서브 좌측 사이드바 세로 위치 조절 -->
-				<!--@end-->
-				
+			<!-- 좌측 사이드바 영역 -->
+            <div class="<!--@if($layout_info->frame2=='s')-->cont_wgt1_2<!--@else-->cont_wgt1<!--@end-->" cond="$layout_info->lay_type=='type1' || $layout_info->lay_type=='type2' || $layout_info->lay_type=='type3' || $layout_info->lay_type=='type4' || $layout_info->lay_type=='type5' || $layout_info->lay_type=='type6' " id="snb" style="z-index:4400; margin-top: -4px;"> <!-- 전체배경컬럼★ -->
 					<a class="side_top_a" href="{$layout_info->c_url1_3}"></a>
 				</h2>
-				   <div class="use_wgt">
+				<div class="use_wgt">
 		
-        <nav class="lnb">
-			<h1 loop="$TOP_MENU->list=>$key1,$val1" cond="$val1['selected']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a></h1>
-		</nav>
-        
-        
+			        <nav class="lnb">
+						<h1 loop="$TOP_MENU->list=>$key1,$val1" cond="$val1['selected']"><a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a></h1>
+					</nav>
+					<!-- 카테고리 -->	
+					{$layout_info->snb_wgt_01}
 
-					   					
-				   {$layout_info->snb_wgt_01}		   <!-- 카테고리 -->	
-
-
-		<!-- 검색 사이드바 -->
-		<!--@if($layout_info->side_sch=='Y')--> 
-		<div class="sch" style="margin-top:-6px;"/>
-		<form action="{getUrl()}" method="post" id="sideSearch" class="newclearfix" style="">
-			<input type="hidden" name="mid" value="search" />
-			<input type="hidden" name="act" value="IS" />
-			<input type="hidden" name="search_target" value="title_content" />
-			<input name="is_keyword" type="text" class="inputText" placeholder="Enter keywords.." />
-			<input type="submit" class="submit search_submit" value="" />
-		</form>
-		</div>	  
-		<br>
-		<!--@else-->
-		<!--@end-->
+					<!-- 검색 사이드바 -->
+					<!--@if($layout_info->side_sch=='Y')--> 
+					<div class="sch" style="margin-top:-6px;"/>
+						<form action="{getUrl()}" method="post" id="sideSearch" class="newclearfix" style="">
+							<input type="hidden" name="mid" value="search" />
+							<input type="hidden" name="act" value="IS" />
+							<input type="hidden" name="search_target" value="title_content" />
+							<input name="is_keyword" type="text" class="inputText" placeholder="Enter keywords.." />
+							<input type="submit" class="submit search_submit" value="" />
+						</form>
+					</div>	  
+					<br>
+					<!--@else-->
+					<!--@end-->
 													 				
 			 	   {$layout_info->snb_wgt_02}	 	  <!-- 새로운디자인 -->				
 				   {$layout_info->snb_wgt_03}	 	  <!-- 패치/업데이트 -->			 			   
@@ -418,15 +406,11 @@ jQuery(function($) {
 </div>        <!-- .header -->	
 </div>        <!-- .header-wrapper -->	
 </div>	      <!-- wrapper -->
-																			
 
-							<!-- include target="cont_shop.html" / -->	 
-					        <!--[if lt IE 8]><load target="js/respond.min.js" /><load target="layouts/portalon/css/cont_price.css" /><![endif]-->	    <!-- 커스터마이징, 레이아웃 설정에서 익스8 일부 누락 해결  -->	
-				
-						  	{$layout_info->cont_body_01}	 	  
+						{$layout_info->cont_body_01}
 					 
-			   	       </div>
-			       </div><!-- /CONTENT -->
+			   	    	</div>
+					</div><!-- /CONTENT -->
 																																											
 	         </div>
 
