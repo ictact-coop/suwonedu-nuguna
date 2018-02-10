@@ -136,7 +136,7 @@
             if ($res)   return;
 
             // include문 추가
-            $content .= '<? @include _XE_PATH_."modules/zzz_menu_new/menu_include.php"; ?>';
+            $content .= '<?php @include _XE_PATH_."modules/zzz_menu_new/menu_include.php"; ?>';
             FileHandler::writeFile($cache, $content);
         }
 
