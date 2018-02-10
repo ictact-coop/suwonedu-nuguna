@@ -19,9 +19,9 @@
 			<div cond="$list_config['thumbnail']" class="tmb_wrp ribbon_v{$mi->ribbon_style}">
 				<!--// 썸네일 -->
                 
-				<span cond="!$document->thumbnailExists()" class="no_img tmb">No Image</span>
+				<span cond="!$document->thumbnailExists($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)" class="no_img tmb">No Image</span>
                 
-				<block cond="$document->thumbnailExists()">
+				<block cond="$document->thumbnailExists($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)">
                 <div style="position:absolute; margin-left:154px;"><!--@if($document->get('category_srl')==642)--><img src="/img/nuguna/end_sticker.png" alt="마감"><!--@else--><!--@end--></div>
                 <span cond="$mi->tmb_effect=='2'" class="no_img loading"></span><img class="tmb" src="{$document->getThumbnail($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)}" alt="" /></block>
 				<!--// 리본 -->
