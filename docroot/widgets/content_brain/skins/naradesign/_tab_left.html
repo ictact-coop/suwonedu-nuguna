@@ -1,0 +1,12 @@
+<ul class="ncwTabContainer ncwTabVr">
+{@$i=0}
+<!--@foreach($widget_info->tab as $module_srl => $tab)-->
+    <li class="ncwTab <!--@if($i==0)-->active<!--@end-->"><button type="button" class="ncwTabButton" onclick="content_widget_tab_show(jQuery(this),jQuery(this).parents('ul.ncwTabContainer').next('div.ncwListContainer'),{$i})"><span>{$tab->title}</span></button>
+		<div class="ncwListContainer">
+			{@$widget_info->content_items = $tab->content_items}
+			<!--#include("_tab_none.html")-->
+		</div>
+	</li>
+{@$i++}
+<!--@end-->
+</ul>

@@ -1,0 +1,52 @@
+<ul class="widgetGalleryA" style="width:{$widget_info->cols_list_count*($widget_info->thumbnail_width+28)}px;">
+{@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+    <li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{$widget_info->thumbnail_width+2}px;">
+        <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+            <!--@if($v=='thumbnail')-->
+                <a href="{$item->getLink()}" class="thumb" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px">
+                    <!--@if($item->getThumbnail())-->
+                        <img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px"/>
+                    <!--@else-->
+                        <span class="imgNone">{$lang->none_image}</span>
+                    <!--@end-->
+                <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                    <strong class="board">{$item->getBrowserTitle()}</strong>
+                <!--@end-->
+				<!--@if($widget_info->show_content_title=='Y' && $item->getDocumentTitle())-->
+					<a href="{$item->getDocumentURL()}"><strong class="board">{$item->getDocumentTitle()}</strong></a>
+				<!--@end-->
+                <!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+                    <strong class="category">{$item->getCategory()}</strong>
+                <!--@end-->
+                </a>
+
+            <!--@else if($v=='title')-->
+            <div style="line-height:18px; margin-bottom:5px;"><span style="font-size:11px;">누구나강의<span style="color:#F60">{$item->getExtraVar5()}</span></span><br><a href="{$item->getLink()}" class="title">{$item->getTitle($widget_info->subject_cut_size)}</a></div>
+        <!--@else if($v=='nickname')-->
+            <a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}">{$item->getNickName()}</a>
+		<!--@else if($v=='readed_count')-->
+			<div>
+            <!--@if($item->getReadedCount())-->+{$item->getReadedCount()}<!--@else-->0<!--@end-->
+            </div>
+        <!--@else if($v=='regdate')-->
+        	<div style="margin-bottom:5px; border-bottom:1px solid #EEE; border-top:1px solid #EEE;">
+			<img src="/img/nuguna/icon_calendar.jpg" alt="강의일자" title="강의일자" style="margin-bottom:-2px;"> <span>{$item->getExtraVar()}<span cond="$item->getExtraVar2()">~{$item->getExtraVar2()}</span></span><br>
+			<span cond="$item->getExtraVar3()"><img src="/img/nuguna/icon_time.png" alt="강의시간" title="강의시간" style="margin-bottom:-2px;"> <span>{$item->getExtraVar3()}</span><br></span>
+            {@$head = mb_strimwidth($item->getExtraVar4(), 0, 25, "..", "UTF-8");}
+			<img src="/img/nuguna/icon_teacher.png" alt="강사명" title="강사명" style="margin-bottom:-2px;"> <span>{$head} <span style="color:#999;">누구나강사님</span></span><br>
+			</div>
+            <div class="date">등록일:{$item->getRegdate("Y-m-d")}<block cond="$grant->manager"> ㅣ <a href="{$item->getLink()}#comment">현재댓글:<!--@if($item->getCommentCount())-->{$item->getCommentCount()}<!--@else-->0<!--@end-->개</a></block></div>
+        <!--@end-->
+    <!--@end-->
+    </li>
+    {@$_idx++}
+    <!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<ul class="widgetNavigator">
+    <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+    <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.widgetNavigator').prev('ul.widgetGalleryA'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+</ul>
+<!--@end-->

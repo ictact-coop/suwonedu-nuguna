@@ -1,0 +1,64 @@
+<ul class="widgetGalleryA" style="width:{$widget_info->cols_list_count*($widget_info->thumbnail_width+28)}px;">
+{@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+    <!--@if($_idx < $widget_info->list_count)-->
+    <li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clearLeft"<!--@end--> style="width:{$widget_info->thumbnail_width}px;">
+        <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+            <!--@if($v=='thumbnail')-->
+                <a href="{$item->getLink()}" class="thumb" style="width:{$widget_info->thumbnail_width-2}px;height:{$widget_info->thumbnail_height}px; border:1px solid #999">
+                    <!--@if($item->getThumbnail())-->
+                        <img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px"/>
+                    <!--@else-->
+                        <img src="/img/wa/noimg_wa.jpg">
+                    <!--@end-->
+                <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                    <strong class="board">{$item->getBrowserTitle()}</strong>
+                <!--@end-->
+				<!--@if($widget_info->show_content_title=='Y' && $item->getDocumentTitle())-->
+					<a href="{$item->getDocumentURL()}"><strong class="board">{$item->getDocumentTitle()}</strong></a>
+				<!--@end-->
+                <!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+                    <strong class="category">{$item->getCategory()}</strong>
+                <!--@end-->
+                </a>
+
+            <!--@else if($v=='title')-->
+                <a href="{$item->getLink()}" class="title">{$item->getTitle($widget_info->subject_cut_size)}</a>
+                <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                    <sup class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">{$item->getCommentCount()}</a></sup>
+                <!--@end-->
+
+                <!--@if($widget_info->show_trackback_count=='Y' && $item->getTrackbackCount())-->
+                    <sup class="trackbackNum" title="Trackbacks"><a href="{$item->getLink()}#trackback">{$item->getTrackbackCount()}</a></sup>
+                <!--@end-->
+
+                <!--@if($widget_info->show_icon=='Y')-->
+                    <span class="icon">{$item->printExtraImages()}</span>
+                <!--@end-->
+
+        <!--@else if($v=='nickname')-->
+            <a href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}">{$item->getNickName()}</a>
+		<!--@else if($v=='voted_count')-->
+			<!--@if($item->getVotedCount())-->+{$item->getVotedCount()}<!--@end-->
+		<!--@else if($v=='readed_count')-->
+			<!--@if($item->getReadedCount())-->+{$item->getReadedCount()}<!--@else-->0<!--@end-->
+        <!--@else if($v=='regdate')-->
+            <span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span>
+		<!--@else if($v=='extravar')-->
+			{$item->getExtraVar()}
+		<!--@else if($v=='extravar2')-->
+			{$item->getExtraVar2()}
+		<!--@else if($v=='extravar3')-->
+			{$item->getExtraVar3()}
+		<!--@else if($v=='extravar4')-->
+			{$item->getExtraVar4()}
+		<!--@else if($v=='extravar5')-->
+			{$item->getExtraVar5()}
+        <!--@end-->
+    <!--@end-->
+    </li>
+    {@$_idx++}
+    <!--@end-->
+    <!--@end-->
+</ul>
+

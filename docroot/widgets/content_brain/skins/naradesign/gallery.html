@@ -1,0 +1,51 @@
+<ul class="ncwGallery" style="width:{$widget_info->cols_list_count*($widget_info->thumbnail_width+30)}px;">
+{@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+    <li<!--@if($_idx>0 && $_idx % $widget_info->cols_list_count==0)--> class="clear"<!--@end--> style="<!--@if($_idx >= $widget_info->list_count)-->display:none;<!--@end-->width:{$widget_info->thumbnail_width+20}px; height:{$widget_info->thumbnail_height+100}px;">
+        <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+            <!--@if($v=='thumbnail')-->
+                <a href="{$item->getLink()}" class="thumb">
+                    <!--@if($item->getThumbnail())-->
+                        <img src="{$item->getThumbnail()}" style="width:{$widget_info->thumbnail_width}px;height:{$widget_info->thumbnail_height}px" alt="" />
+                    <!--@else-->
+                        <span class="imgNone" style="width:{$widget_info->thumbnail_width}px; height:{$widget_info->thumbnail_height}px; line-height:{$widget_info->thumbnail_height}px">{$lang->none_image}</span>
+                    <!--@end-->
+                <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                    <strong class="moduleTitle" style="width:{$widget_info->thumbnail_width}px">{$item->getBrowserTitle()}</strong>
+                <!--@end-->
+                <!--@if($widget_info->show_category=='Y' && $item->getCategory())-->
+                    <strong class="categoryTitle" style="width:{$widget_info->thumbnail_width}px">{$item->getCategory()}</strong>
+                <!--@end-->
+                </a>
+
+            <!--@else if($v=='title')-->
+                <a href="{$item->getLink()}" class="documentTitle">{$item->getTitle(8)}</a>
+                <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                    <sup class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">{$item->getCommentCount()}</a></sup>
+                <!--@end-->
+
+                <!--@if($widget_info->show_trackback_count=='Y' && $item->getTrackbackCount())-->
+                    <sup class="trackbackNum" title="Trackbacks"><a href="{$item->getLink()}#trackback">{$item->getTrackbackCount()}</a></sup>
+                <!--@end-->
+
+                <!--@if($widget_info->show_icon=='Y')-->
+                    <span class="icon">{$item->printExtraImages()}</span>
+                <!--@end-->
+
+        <!--@else if($v=='nickname')-->
+            <span class="author">{$item->getNickName()}</span>
+        <!--@else if($v=='regdate')-->
+            <span class="time"><span class="date">{$item->getRegdate("Y-m-d")}</span> <span class="hour">{$item->getRegdate("H:i")}</span></span>
+        <!--@end-->
+    <!--@end-->
+    </li>
+    {@$_idx++}
+    <!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<ul class="ncwListPagination">
+    <li><button type="button" class="prev" title="{$lang->cmd_prev}" onclick="content_widget_prev(jQuery(this).parents('ul.ncwListPagination').prev('ul.ncwGallery'),{$widget_info->list_count})"><span>{$lang->cmd_prev}</span></button></li>
+    <li><button type="button" class="next" title="{$lang->cmd_next}" onclick="content_widget_next(jQuery(this).parents('ul.ncwListPagination').prev('ul.ncwGallery'),{$widget_info->list_count})"><span>{$lang->cmd_next}</span></button></li>
+</ul>
+<!--@end-->

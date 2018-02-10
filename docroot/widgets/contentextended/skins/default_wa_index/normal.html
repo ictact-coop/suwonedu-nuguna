@@ -1,0 +1,31 @@
+    <table class="widgetTableA" border="1" cellspacing="0">
+        <tbody>
+    {@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+        <tr<!--@if($_idx >= $widget_info->list_count && $widget_info->show_always_new == 'N')--> style="display:none"<!--@end-->>
+    <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+    <!--@if($v=='title')-->
+        <td class="title">
+            <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                <a href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->"><strong class="board">{$item->getBrowserTitle()}DB</strong></a>
+            <!--@end-->
+            <!--@if($widget_info->show_content_title=='Y' && $item->getDocumentTitle())-->
+                <a href="{$item->getDocumentURL()}"><strong class="board">{$item->getDocumentTitle()}</strong></a>
+            <!--@end-->
+            <!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+                <a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}"><strong class="category">{$item->getCategory()}</strong></a>
+            <!--@end-->
+            <a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+            <!--@if($widget_info->show_icon=='Y')-->
+                <span class="icon">{$item->printExtraImages()}</span>
+            <!--@end-->
+        </td>
+    <!--@else if($v=='regdate')-->
+        <td class="time"><span class="date">{$item->getRegdate("Y-m-d")}</span></td>
+    <!--@end-->
+    <!--@end-->
+        </tr>
+    {@$_idx++}
+    <!--@end-->
+        </tbody>
+    </table>

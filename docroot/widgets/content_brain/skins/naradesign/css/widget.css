@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* NHN > UIT Center > Open UI Technology Team > Jeong Chan Myeong(dece24@nhncorp.com) */
+
+/* NCW : Naradesign Content Widget */
+.ncw { font-size:12px; line-height:normal; font-family:Tahoma; margin:1em 0; *zoom:1; color:#333;}
+.ncw:after{ content:""; display:block; clear:both;}
+.ncw img{ border:0;}
+.ncw ul{ margin:0; padding:0; list-style:none;}
+.ncw button{ font-size:12px; font-family:Tahoma; background:none; border:0; padding:0; overflow:visible; cursor:pointer;}
+.ncw a{ text-decoration:none; color:#333;}
+.ncw a:hover,
+.ncw a:active,
+.ncw a:focus{ text-decoration:underline;}
+
+/* Common Class */
+.ncw .ncwListContainer{ position:relative;}
+.ncw .ncwThumbArea{ float:left; margin-top:0; margin-bottom:0;}
+.ncw .ncwListArea{}
+.ncw .thumb{ float:left; position:relative; display:block; border:1px solid #ddd; padding:8px; text-decoration:none !important; *zoom:1;}
+.ncw .thumb .moduleTitle,
+.ncw .thumb .categoryTitle{ display:block; position:absolute; padding:2px 0 !important; cursor:pointer; text-align:center; font-weight:normal; background:#000; color:#fff; opacity:0.6;  filter:alpha(opacity=60);}
+.ncw .thumb .moduleTitle{ top:8px; left:8px;}
+.ncw .thumb .categoryTitle{ bottom:8px; left:8px;}
+.ncw .imgNone{ display:inline-block; text-align:center; background:#f8f8f8;}
+.ncw .textArea{ color:#767676;}
+.ncw .replyNum,
+.ncw .trackbackNum{ font:9px Tahoma; text-decoration:none;}
+.ncw .replyNum a{ color:#ff1a1a;}
+.ncw .trackbackNum a{ color:#19a0ff;}
+.ncw .time{ font-size:11px;}
+.ncw .date{ font-size:11px; color:#666;}
+.ncw .hour{ font-size:11px; color:#767676;}
+.ncw .icon{}
+
+/* Tab Container */
+.ncwTabContainer .ncwListContainer{ display:none;}
+.ncwTabContainer .active .ncwListContainer{ display:block;}
+
+/* Pagination */
+.ncwListPagination{ text-align:right; padding:5px !important; white-space:nowrap;}
+.ncwListPagination li{ display:inline;}
+.ncwListPagination button{ width:16px; height:16px; background-image:url(../img/buttonWidgetNavigation.gif); border:1px solid #999; overflow:hidden;}
+.ncwListPagination button.prev{ background-position:left center; *background-position:-1px center;}
+.ncwListPagination button.next{ background-position:right center; *background-position:13px center;}
+.ncwListPagination button span{ position:absolute; display:block; width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibility:hidden; white-space:nowrap;}
+
+/* Hr Tab */
+.ncwTabHr { position:relative;}
+.ncwTabHr li.ncwTab { display:inline;}
+.ncwTabHr li.ncwTab .ncwTabButton{ float:left; position:relative; z-index:2; border:1px solid #ddd; background:#fff; height:26px; line-height:26px; padding:0 10px; margin:0 -1px 0 0; border-bottom:0; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px;}
+.ncwTabHr li.ncwTab.active .ncwTabButton{ font-weight:bold; letter-spacing:-1px; height:27px; margin-bottom:-1px;}
+.ncwTabHr li.ncwTab .ncwListContainer{ position:absolute; z-index:1; top:26px; left:0; width:100%; border-top:1px solid #ddd; padding:10px 0;}
+
+/* Vr Tab */
+.ncwTabVr{ position:relative;}
+.ncwTabVr li.ncwTab .ncwTabButton{ width:25%; border:1px solid #ddd; padding:0 10px; height:27px; line-height:27px; text-align:left; margin:0 0 -1px 0; white-space:nowrap;}
+.ncwTabVr li.ncwTab.active .ncwTabButton{ font-weight:bold; letter-spacing:-1px;}
+.ncwTabVr li.ncwTab .ncwListContainer{ position:absolute; top:0; right:0; width:75%; border-top:1px solid #ddd; padding:10px 0;}
+.ncwTabVr li.ncwTab .ncwLastTitle,
+.ncwTabVr li.ncwTab .ncwLastThumb,
+.ncwTabVr li.ncwTab .ncwGallery,
+.ncwTabVr li.ncwTab .ncwWebzine{ margin:0 0 0 20px;}
+
+/* Widget List */
+.ncwList{ line-height:1.5;}
+.ncwList .moduleTitle,
+.ncwList .categoryTitle{ color:#767676; font-weight:bold; margin:0 5px 0 0;}
+.ncwList .documentTitle{}
+
+/* Widget List - Unordered */
+ul.ncwList{}
+
+/* Widget List - Table */
+table.ncwList{ border:0; width:100%; border-spacing:0;}
+table.ncwList td{ border:0; white-space:nowrap; padding:0 5px;}
+table.ncwList td.titleArea{ width:100%; white-space:normal;}
+
+/* ncwLastTitle */
+.ncwLastTitle{ *zoom:1;}
+.ncwLastTitle:after{ content:""; display:block; clear:both;}
+
+/* ncwLastThumb */
+.ncwLastThumb{ *zoom:1;}
+.ncwLastThumb:after{ content:""; display:block; clear:both;}
+
+/* Gallery */
+.ncwGallery{ *zoom:1;}
+.ncwGallery:after{ content:""; display:block; clear:both;}
+.ncwGallery li{ float:left; margin:0 10px 10px 0;}
+.ncwGallery .thumb{ margin:10px 0; font-size:11px; font-family:Dotum, 돋움;}
+.ncwGallery .documentTitle{}
+.ncwGallery .author{ display:block; float:left; clear:both;}
+.ncwGallery .time{ display:block; clear:both; line-height:1.5;}
+
+/* Webzine */
+.ncwWebzine li{ *zoom:1; margin:0 0 10px 0;}
+.ncwWebzine li:after{ content:""; display:block; clear:both;}
+.ncwWebzine .thumb{ font-size:11px; font-family:Dotum, 돋움;}
+.ncwWebzine .titleArea{ margin:0 0 5px 0;}
+.ncwWebzine .moduleTitle{ padding:0 5px 0 0; background:url(../img/lineTextDiv.gif) no-repeat right center;}
+.ncwWebzine .documentTitle{ font-weight:bold;}
+.ncwWebzine .textArea{ margin:5px 0;}
+.ncwWebzine .authorArea{ margin:5px 0;}
+
+/* popup_menu_area */
+#popup_menu_area{ position:absolute; z-index:1000; font-size:12px; padding:10px; border:1px solid #ddd; background:#fff; -moz-border-radius:5px; -webkit-border-radius:3px;}
+#popup_menu_area ul{ list-style:none; margin:0; padding:0;}
+#popup_menu_area li{ background-repeat:no-repeat; background-position:left center; height:16px; padding:0 0 0 20px;}
+#popup_menu_area a{ text-decoration:none; color:#333;}

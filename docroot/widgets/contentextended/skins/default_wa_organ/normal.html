@@ -1,0 +1,32 @@
+    <table class="widgetTableB" border="0" cellspacing="0">
+        <tbody>
+    {@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+        <tr<!--@if($_idx >= $widget_info->list_count && $widget_info->show_always_new == 'N')--> style="display:none"<!--@end-->>
+    <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+    <!--@if($v=='title')-->
+        <td class="title" style="display: -webkit-box; -webkit-line-clamp:1; -webkit-box-orient: vertical; word-wrap:break-word; overflow:hidden">
+            <a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+        </td>
+    <!--@else if($v=='regdate')-->
+        <td class="time"><span class="date">{$item->getRegdate("Y-m-d")}</span></td>
+    <!--@else if($v=='readed_count')-->
+		<td><!--@if($item->getReadedCount())-->{$item->getReadedCount()}<!--@else-->0<!--@end--></td>
+	<!--@else if($v=='extravar')-->
+    {@$head = mb_strimwidth($item->getExtraVar(), 0, 50, "..", "UTF-8");}
+		<td style="background:none; padding-left:0;">{$head}</td>
+	<!--@else if($v=='extravar2')-->
+		<td style="background:none; padding-left:0;text-align:right; width:80px;">{$item->getExtraVar2()}</td>
+	<!--@else if($v=='extravar3')-->
+		<td>{$item->getExtraVar3()}</td>
+	<!--@else if($v=='extravar4')-->
+		<td>{$item->getExtraVar4()}</td>
+	<!--@else if($v=='extravar5')-->
+		<td>{$item->getExtraVar5()}</td>
+    <!--@end-->
+    <!--@end-->
+        </tr>
+    {@$_idx++}
+    <!--@end-->
+        </tbody>
+    </table>

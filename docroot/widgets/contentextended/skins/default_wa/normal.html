@@ -1,0 +1,48 @@
+    <table class="widgetTableA" border="1" cellspacing="0">
+        <tbody>
+    {@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+        <tr<!--@if($_idx >= $widget_info->list_count && $widget_info->show_always_new == 'N')--> style="display:none"<!--@end-->>
+    <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+    <!--@if($v=='title')-->
+        <td class="title">
+            <!--@if($widget_info->show_browser_title=='Y' && $item->getBrowserTitle())-->
+                <a href="<!--@if($item->contents_link)-->{$item->contents_link}<!--@else-->{getSiteUrl($item->domain, '', 'mid', $item->get('mid'))}<!--@end-->"><strong class="board">{$item->getBrowserTitle()}DB</strong></a>
+            <!--@end-->
+            <!--@if($widget_info->show_content_title=='Y' && $item->getDocumentTitle())-->
+                <a href="{$item->getDocumentURL()}"><strong class="board">{$item->getDocumentTitle()}</strong></a>
+            <!--@end-->
+            <!--@if($widget_info->show_category=='Y' && $item->get('category_srl') )-->
+                <a href="{getSiteUrl($item->domain,'','mid',$item->get('mid'),'category',$item->get('category_srl'))}"><strong class="category">{$item->getCategory()}</strong></a>
+            <!--@end-->
+            <a href="{$item->getLink()}">{$item->getTitle($widget_info->subject_cut_size)}</a>
+            <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->
+                <sup class="replyNum" title="Replies"><a href="{$item->getLink()}#comment">{$item->getCommentCount()}</a></sup>
+            <!--@end-->
+            <!--@if($widget_info->show_icon=='Y')-->
+                <span class="icon">{$item->printExtraImages()}</span>
+            <!--@end-->
+        </td>
+    <!--@else if($v=='nickname')-->
+        <td><a <!--@if($item->getMemberSrl())-->href="#" onclick="return false;" class="author member_{$item->getMemberSrl()}"<!--@elseif($item->getAuthorSite())-->href="{$item->getAuthorSite()}" onclick="window.open(this.href); return false;" class="author member"<!--@else-->href="#" onclick="return false;" class="author member"<!--@end--> >{$item->getNickName()}</a></td>
+    <!--@else if($v=='regdate')-->
+        <td class="time"><span class="date">{$item->getRegdate("Y-m-d")}</span></td>
+    <!--@else if($v=='readed_count')-->
+		<td><!--@if($item->getReadedCount())-->{$item->getReadedCount()}<!--@else-->0<!--@end--></td>
+	<!--@else if($v=='extravar')-->
+		<td style="background:none; padding-left:0;">{$item->getExtraVar()}</td>
+	<!--@else if($v=='extravar2')-->
+		<td style="background:none; padding-left:0;text-align:right;">{$item->getExtraVar2()}</td>
+	<!--@else if($v=='extravar3')-->
+		<td>{$item->getExtraVar3()}</td>
+	<!--@else if($v=='extravar4')-->
+		<td>{$item->getExtraVar4()}</td>
+	<!--@else if($v=='extravar5')-->
+		<td>{$item->getExtraVar5()}</td>
+    <!--@end-->
+    <!--@end-->
+        </tr>
+    {@$_idx++}
+    <!--@end-->
+        </tbody>
+    </table>
