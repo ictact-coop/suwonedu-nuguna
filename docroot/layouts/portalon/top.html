@@ -161,16 +161,24 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
 				<div class="head_wrap" >	 					
 					
 					<div class="left-links">
-							<ul id="site-navigation" class="head_tip" style="margin: 0; padding: 0; list-style: none">	
-                       <li id="menu-item-504" class="">	
+						<ul id="site-navigation" class="head_tip" style="margin: 0; padding: 0; list-style: none">	
+                    		<li id="menu-item-504" class="">	
                                {$layout_info->xe_hori_left} 								
-                        </li>				                        								
-                           </ul>  <!-- site-navigation -->		
-                     </div> <!-- .left-links -->
-																									
-					 												  
+                    		</li>				                        								
+                        </ul>  <!-- site-navigation -->		
+                    </div> <!-- .left-links -->
+
+					{@ $logo_img = '' }
+                    <!--@if($layout_info->logo_top)-->
+                    	{@ $logo_img = $layout_info->logo_top}
+                    <!--@else-->
+                    	{@ $logo_img = 'img/logo.png'}
+                    <!--@end-->
+
 					<div id="logo" >
-						<a href="<!--@if($layout_info->logo_url)-->{$layout_info->logo_url}<!--@else-->portalon<!--@end-->" title="PortalOn" rel="home" ><img src="<!--@if($layout_info->logo_top)-->{$layout_info->logo_top}<!--@else-->img/logo.png<!--@end-->" class="header_logo" alt="PortalOn"/></a>
+						<a href="<!--@if($layout_info->logo_url)-->{$layout_info->logo_url}<!--@else-->portalon<!--@end-->" title="PortalOn" rel="home" >
+							<img src="{$logo_img}" class="header_logo" alt="PortalOn"/>
+						</a>
 					</div><!-- .logo -->
 					
 			<!-- 통합 검색 -->
