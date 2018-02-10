@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+  <grants />
+  <permissions />
+  
+  <actions>
+    <action name="dispMailing_freeAdminInsert" type="view" admin_index="true" menu_name="mailing_free" menu_index="true" />
+    <action name="procMailing_freeAdminSendMail" type="controller" standalone="true" />
+  </actions>
+  <menus>
+        <menu name="mailing_free">
+            <title xml:lang="en">Mailing_free</title>
+            <title xml:lang="ko">메일링 무료</title>
+        </menu>
+  </menus>
+</module>

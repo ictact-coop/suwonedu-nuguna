@@ -1,0 +1,229 @@
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+<!--%import("filter/select_group_member_na.xml")-->
+<!--%import("filter/insert_sms_address_na.xml")-->
+<!--%import("filter/insert_all_address_na.xml")-->
+<!--%import("filter/update_group_member_na.xml")-->
+<!--%import("filter/delete_group_member_na.xml")-->
+<!--%import("filter/delete_all_address_na.xml")-->
+<!--%import("js/sms_widget_popup.js")-->
+
+
+
+<table cellspacing="3" cellpadding=0 border=0 style='width:470px;'>
+<tr valign='top'>
+	<td>
+	<table cellspacing="0" cellpadding=0 border=0>
+	<tr>
+		<Td style='padding-left:10px;'>
+		<span class="button strong green"><input type='button' name='fer' value='{$lang->cmd_sms_user_view}' onclick="addrview.goUrl('dispSmsMemberAddrSetting','{$module_srl}','{$bcate}')"></span>
+		<!--@if($alluserCheck != 'allIn')-->
+		<span class="button strong blue"><input type='button' name='fer' value='{$lang->cmd_sms_group_view}' onclick="addrview.goUrl('dispSmsGroupAddrSetting','{$module_srl}','{$bcate}')"></span>
+		<!--@end-->
+		</td>
+
+	</tr>
+	</table>
+	</tD>
+</tr>
+<tr valign='top'>
+	<form name='smsMemberForm' method='post'>
+	<input type="hidden" name="mode" id="mode" value="" />
+	<input type="hidden" name="page" id="page" value="" />
+	<input type="hidden" name="bsort" id="bsort" value="" />
+	<input type="hidden" name="bcode" id="bcode" value="{$module_srl}"/>
+	<input type="hidden" name="bcate" id="bcate" value="{$bcate}"/>
+	<input type="hidden" name="uid" id="uid" value=""/>
+	</form>
+
+	<td>
+	<table cellpadding=0 cellspacing=0 border=0>
+	<form name='searchForm' method='get' action="./">
+	<input type="hidden" name="module" value="sms"/>
+	<input type="hidden" name="act" value="dispSmsGroupAddrSetting"/>
+	<input type="hidden" name="bcode" id="bcode" value="{$module_srl}"/>
+	<input type="hidden" name="bcate" id="bcate" value="{$bcate}"/>
+	<tr>
+		<td height="40" valign="bottom">
+		<!-- 검색 -->
+		<div style="width:390px;padding-left:10px;" align="left">
+		<select name='search'>
+		<option value='group'>{$lang->cmd_sms_group_name}</option>
+		</select>
+
+		<input type="text" name="string" value="{$string}" class="inputTypeText w180">
+
+		<span class="button strong black"><input type="submit" value="{$lang->cmd_search}"></span>
+		</div>
+		</td>
+		<td  valign="bottom">
+		<!-- 정보 -->
+		<div style="width:190px;" align='right' >
+			<strong>Total</strong> <em>{number_format($total_count)}</em>, Page <strong>{number_format($page)}</strong>/{number_format($total_page)}
+		</div>
+		</td>
+	</tr>
+	</form>
+	</table>
+	<table  style="width:590px" cellpadding=0 cellspacing=0 border=0  class="rowTable">
+	<tr>
+		<Th scope="col">{$lang->cmd_sms_number}</th>
+		<Th>{$lang->cmd_sms_sort}</th>
+		<Th>{$lang->cmd_sms_group_name}</th>
+		<Th>{$lang->cmd_sms_userInfo}</th>
+		<Th></th>
+	</tr>
+	<!--@foreach($list as $val)-->
+	<tr>
+		<Td  width="40" align=center>{$val[no]}</td>
+		<Td  width="60" align=center>{$lang->cmd_sms_group}</td>
+		<td width="210" align=center>{$val[title]}&nbsp;</td>
+		<Td width="100" align=center>
+		<span id='{$val[gseq]}_more_span'>
+		<!--@if($val[groupIn] == 'groupIn')-->
+		<span onclick="addrview.groupUser('{$val[gseq]}');" style='cursor:pointer;'>{$lang->cmd_sms_more_text}</span>
+		<!--@else-->
+		<span onclick="addrview.groupUser('{$val[gseq]}','useNot');" style='cursor:pointer;'>{$lang->cmd_sms_more_text}</span>
+		<!--@end-->
+		</span>
+		&nbsp;
+		<td >
+		<span id='{$val[gseq]}_span'>
+		<!--@if($val[groupIn] == 'groupIn')-->
+		<a href="javascript:addrview.groupDel('{$val[gseq]}')" class='buttonSet buttonActive'><span></span></a>
+		<!--@else-->
+		<a href="javascript:addrview.groupInsert('{$val[gseq]}')" class='buttonSet buttonDisable'><span></span></a>
+		<!--@end-->
+		</span>
+	 </td>
+	</tr>
+	<!--@end-->
+	</table>
+
+	<!-- 페이지 네비게이션 -->
+	<div class="pagination a1" align=center>
+    <a href="{getUrl('page','','module_srl',$module_srl)}" class="prevEnd">{$lang->first_page}</a>
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+        <!--@if($page == $page_no)-->
+            <strong>{$page_no}</strong>
+        <!--@else-->
+            <a href="{getUrl('page',$page_no,'module_srl',$module_srl)}">{$page_no}</a>
+        <!--@end-->
+    <!--@end-->
+    <a href="{getUrl('page',$page_navigation->last_page,'module_srl',$module_srl)}" class="nextEnd">{$lang->last_page}</a>
+	</div>
+
+
+	</td>
+</tr>
+<tr>
+	<td>
+		<div id='groupMemberLayer' style='display:none;'>
+		<table cellpadding=0 cellspacing=0 border=0>
+
+		<form name='smsSendForm' method='post'>
+		<input type="hidden" name="mode" id="mode" value="" />
+		<input type="hidden" name="bcode" id="bcode" value="{$module_srl}"/>
+		<input type="hidden" name="gcode" id="gcode" value=""/>
+		<input type="hidden" name="bcate" id="bcate" value="{$bcate}"/>
+		<input type="hidden" name="userid" id="userid" value=""/>
+		</form>
+
+		<tr>
+			<Td>
+			<table cellpadding=0 cellspacing=0 border=0>
+			<tr>
+				<td height="20">
+				<!-- 정보 -->
+				<div id='navi_page_info' style="width:590px;display:none;" align='right'  >
+					<strong>{$lang->cmd_sms_group_total} <span id='total_count_view' color=#006699></span></strong>
+				</div>
+				</td>
+			</tr>
+			</table>
+			</td>
+		</tr>
+		<Tr>
+			<Td>
+
+				<div id='groupMemberRequest' style='display:none;width:590px;'>
+				</div>
+				<div id='groupMemberRequestNavi' style='display:none;width:590px;'>
+				</div>
+			</td>
+		</tr>
+		</table>
+		</div>
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+	var lang_set_addrset_msg= '{$lang->js_set_addrset_msg}';
+	var lang_set_ok_msg		= '{$lang->js_set_ok_msg}';
+	var lang_set_direct_msg = '{$lang->js_set_direct_msg}';
+	var lang_set_pcs_msg	= '{$lang->js_set_pcs_msg}';
+	var lang_set_date_msg	= '{$lang->js_set_date_msg}';
+	var lang_set_hour_msg	= '{$lang->js_set_hour_msg}';
+	var lang_set_min_msg	= '{$lang->js_set_min_msg}';
+	var lang_set_hours_msg	= '{$lang->js_set_hours_msg}';
+	var lang_set_tail_input_msg	  = ' {$lang->js_set_tail_input_msg}';
+	var lang_set_tail_number_msg  = ' {$lang->js_set_tail_number_msg}';
+
+	var lang_set_wrong_hour_msg   = '{$lang->js_set_wrong_hour_msg}';
+	var lang_set_wrong_min_msg    = '{$lang->js_set_wrong_min_msg}';
+	var lang_set_wrong_appoint_msg= '{$lang->js_set_wrong_appoint_msg}';
+
+	var lang_sms_more_text		    = '{$lang->cmd_sms_more_text}';
+	var lang_set_wrong_hour_msg		= '{$lang->js_set_wrong_hour_msg}';
+	var lang_set_wrong_min_msg		= '{$lang->js_set_wrong_min_msg}';
+	var lang_set_wrong_appoint_msg  = '{$lang->js_set_wrong_appoint_msg}';
+	var lang_sms_del_msg			= '{$lang->cmd_sms_del_msg}';
+
+	var lang_sms_all_set            = '{$lang->js_sms_all_set}';
+	var lang_sms_set				= '{$lang->js_sms_set}';
+	var lang_sms_group_set			= '{$lang->js_sms_group_set}';
+
+	var lang_sms_all_searchId       = '{$lang->js_sms_all_searchId}';
+	var lang_sms_searchId			= '{$lang->js_sms_searchId}';
+	var lang_sms_group_searchId		= '{$lang->js_sms_group_searchId}';
+
+
+	var lang_sms_add_pcs			= '{$lang->js_sms_add_pcs}';
+	var lang_sms_differ_pass		= '{$lang->js_sms_differ_pass}';
+	var lang_sms_choice_object		= '{$lang->js_sms_choice_object}';
+	var lang_sms_fail_del			= '{$lang->js_sms_fail_del}';
+	var lang_sms_do_send			= '{$lang->js_sms_do_send}';
+	var lang_sms_donot_send			= '{$lang->js_sms_donot_send}';
+
+	var lang_sms_msg				= '{$lang->js_sms_msg}';
+	var lang_sms_domain_require		= '{$lang->js_sms_domain_require}';
+	var lang_sms_domain_wrong		= '{$lang->js_sms_domain_wrong}';
+	var lang_set_fail_msg			= '{$lang->js_set_fail_msg}';
+
+	var lang_f206_msg     = '{$lang->js_f206_msg}';
+	var lang_f207_msg     = '{$lang->js_f207_msg}';
+
+	var lang_f213_msg     = '{$lang->js_f213_msg}';
+
+	var lang_f227_msg     = '{$lang->js_f227_msg}';
+	var lang_f237_msg     = '{$lang->js_f237_msg}';
+	var lang_f273_msg     = '{$lang->js_f273_msg}';
+	var lang_f274_msg     = '{$lang->js_f274_msg}';
+	var lang_f247_msg     = '{$lang->js_f247_msg}';
+	var lang_f246_msg     = '{$lang->js_f246_msg}';
+
+	var lang_c5_msg     = '{$lang->js_c5_msg}';
+	var lang_c7_msg     = '{$lang->js_c7_msg}';
+	var lang_c3_msg     = '{$lang->js_c3_msg}';
+	var lang_wrong_sms_text = '{$lang->js_wrong_sms_text}';
+
+	var lang_wrong_id_form  = '{$lang->lang_wrong_id_form}';
+
+	var lang_wrong_pw_form  = '{$lang->lang_wrong_pw_form}';
+	var cmd_sms_number		= '{$lang->cmd_sms_number}';
+	var cmd_sms_userId		= '{$lang->cmd_sms_user_id}';
+	var cmd_sms_userName    = '{$lang->cmd_sms_name_id}';
+	var cmd_sms_pcs			= '{$lang->cmd_sms_pcs}';
+	var NotResult			= '{$lang->cmd_notResult}';
+</script>

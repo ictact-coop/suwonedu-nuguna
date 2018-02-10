@@ -1,0 +1,10 @@
+<query id="deleteSmsAdminAddrUserCheck" action="delete">
+    <tables>
+        <table name="sms_userlist" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="bcode" var="bcode" pipe="and" />
+        <condition operation="equal" column="useq" var="uid" pipe="and" />
+       <condition operation="equal" column="bsort" var="bsort" pipe="and" />
+	</conditions>
+</query>

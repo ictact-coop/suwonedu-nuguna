@@ -1,0 +1,12 @@
+<load target="css/contact.css" />
+<div id="Page_top">
+	<div class="module_img"><img src="/img/wa/{$module_info->module_srl}{$category}.jpg" alt="{$module_info->browser_title}"></div>
+	<div class="module_img_right"><img src="/img/wa/menu_bar_right.jpg" alt=""></div>
+    <div class="page_breadcrumb"><span style="font-weight:bold">Home</span> <span style="color:#999">></span> <span style="color:#F60; font-weight:bold">Contact Us</span></div>
+</div>
+<div class="contact_us">
+    <div class="contactHeader">
+		<div cond="$module_info->mid" class="contactTitle">
+			<a cond="$is_logged && $logged_info->is_admin == 'Y'" class="setup" href="{getUrl('act','dispContactAdminContactInfo')}">{$lang->cmd_setup}</a>
+		</div>
+    </div>

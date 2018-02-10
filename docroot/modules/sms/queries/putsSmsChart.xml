@@ -1,0 +1,18 @@
+<query id="putsSmsChart" action="insert">
+<tables>
+	<table name="sms_static" />
+</tables>
+<columns>
+	<column name="sms_srl" var="sms_srl" />
+	<column name="sms_domain" var="sms_domain" />
+	<column name="bcode" var="bcode" />
+	<column name="succNum" var="succNum" />
+	<column name="failNum" var="failNum" />
+	<column name="ryear" var="ryear" />
+	<column name="rmonth" var="rmonth" />
+	<column name="rday" var="rday" />
+	<column name="regdate" var="regdate" />
+
+
+</columns>
+</query>

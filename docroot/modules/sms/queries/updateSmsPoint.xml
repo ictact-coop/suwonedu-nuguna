@@ -1,0 +1,13 @@
+<query id="updateSmsPoint" action="update">
+     <tables>
+        <table name="sms_site" />
+	</tables>
+    <columns>
+        <column name="point" var="point" default="0" notnull="notnull" />
+    </columns>
+    <conditions>
+       <condition operation="equal" column="site_id" var="site_id"  pipe="and" />
+	   <condition operation="equal" column="site_domain" var="site_domain" pipe="and" />
+       <condition operation="equal" column="authKey" var="authKey"  pipe="and" />
+	</conditions>
+</query>

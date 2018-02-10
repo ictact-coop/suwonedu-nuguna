@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <grants />
+    <permissions />
+    <actions>
+	
+	<action name="procBannermgmAdminUpdate" type="controller" standalone="true"/>
+	<action name="procBannermgmAdminDelete" type="controller" standalone="true"/>
+	<action name="procBannermgmAdminUploadBanner" type="controller" standalone="true"/>
+	<action name="dispBannermgmAdminContent" type="view" standalone="true" admin_index="true"/>
+	<action name="dispBannermgmAdminInfo" type="view" standalone="true"/>
+	<action name="dispBannermgmAdminInsert" type="view" standalone="true"/>	
+    </actions>
+</module>

@@ -1,0 +1,16 @@
+<query id="updateSmsUserUse" action="update">
+    <tables>
+        <table name="sms_user_use" />
+    </tables>
+    <columns>
+	   <column name="user_id" var="user_id" />
+	   <column name="user_name" var="user_name" />
+	   <column name="user_pcs" var="user_pcs" />
+	   <column name="smsuse"  var="smsuse" />
+	</columns>
+	<conditions>
+       <condition operation="equal" column="bcode" var="bcode" />
+       <condition operation="equal" column="bcate" var="bcate" />
+       <condition operation="equal" column="dcode" var="dcode" />
+	</conditions>
+</query>

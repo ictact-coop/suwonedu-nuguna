@@ -1,0 +1,65 @@
+<!--#include("./header.html")-->
+<!--%import("js/signup_check.js")-->
+
+<!-- 검색 -->
+<form action="./" method="get" name="adminSearch">
+<input type="hidden" name="module" value="{$module}" />
+<input type="hidden" name="act" value="{$act}" />
+<input type="hidden" name="mode" value="{$mode}" />
+<input type="hidden" name="module_name" value="{$module_name}" />
+<input type="hidden" name="choice_year" value="{$choice_year}" />
+<input type="hidden" name="choice_month" value="{$choice_month}" />
+<input type="hidden" name="choice_day" value="{$choice_day}" />
+
+<input type="hidden" name="module_srl" value="{$module_srl}" />
+	
+
+<table cellspacing="0" class="adminTable">
+<tr>
+	<td width=300><span class="button strong red"><input type='button' value='{$lang->cmd_sms_search_year}' onclick="statis.search('year');"></span> <span class="button strong red"><input type='button' value='{$lang->cmd_sms_search_month}' onclick="statis.search('month');"></span>
+	<span class="button strong red"><input type='button' name='fr' value='{$lang->cmd_sms_search_day}' onclick="statis.search('day');"></span>
+	</td>
+	<td align=right>
+	
+	<!--@if($mode!='year')--><span class="button  green"><input type='button' value='◀' onclick="statis.search_year('{$choice_year}','pre');"></span>  <strong>{$choice_year}</strong> <span class="button  green"><input type='button' value='▶' onclick="statis.search_year('{$choice_year}','next');"></span><!--@end-->
+	&nbsp;
+	<!--@if($mode=='day'  || $mode=='choice')--><span class="button  green"><input type='button' value='◀'  onclick="statis.search_month('{$choice_month}','pre');"></span> <strong>{$choice_month}</strong> <span class="button  green"><input type='button' value='▶' onclick="statis.search_month('{$choice_month}','next');"></span><!--@end-->
+&nbsp;
+	<!--@if($mode=='choice')--><span class="button  green"><input type='button' name='ftr' value='◀' onclick="statis.search_day('{$choice_day}','pre');"></span> <strong>{$choice_day}</strong> <span class="button  green"><input type='button' value='▶' onclick="statis.search_day('{$choice_day}','next');"></span><!--@end-->
+
+
+	</td>
+	</tr>
+</table>
+</form>
+	
+
+<!-- 목록 -->
+<div>
+    <strong>{$choice_year_text} {$choice_month_text} {$choice_day_text} {$lang->cmd_sms_total_mount}  {$total_sms} {$lang->cmd_sms_send_unit}</strong>
+</div>
+<table cellspacing="0" class="rowTable">
+<thead>
+    <tr>
+        <th scope="col"  class="half_wide">{$lang->cmd_sms_stat_date}</th>
+        <th scope="col" class="half_wide"><div><!--@if($module_srl)-->{$lang->cmd_sms_board}<!--@else-->{$lang->cmd_sms_domain}<!--@end--></div></th>
+        <th scope="col" class="half_wide"><div>{$lang->cmd_sms_send_num}</div></th>
+       <!--@if($mode!='choice')--><th scope="col" class="half_wide"><div>{$lang->cmd_sms_detail_view}</div></th><!--@end-->
+    </tr>
+</thead>
+<tbody>
+	<!--@foreach($list as $no=>$val)-->
+    <tr <!--@if($val[select])-->style='background-color:#DADAB4;'<!--@end-->>
+        <td align=center><strong><!--@if($mode!='choice')--><a href="./?module=admin&act=dispSmsAdminStatis&module_srl={$val[module_no]}{$val[nextMode]}"><!--@end-->{$val[date]}<!--@if($mode!='choice')--></a><!--@end--></strong></td>
+		
+		<td><!--@if($mode!='choice')--><a href="./?module=admin&module_srl={$val[module_no]}&act=dispSmsAdminStatis{$val[nextMode]}"><!--@end--><!--@if($module_srl)-->{htmlspecialchars($val[module_name])}<!--@else-->{$val[domain]}<!--@end--><!--@if($mode!='choice')--></a><!--@end--></td>
+        
+		<td><!--@if($mode!='choice')--><a href="./?module=admin&act=dispSmsAdminStatis&module_srl={$val[module_no]}{$val[nextMode]}"><!--@end-->{$val[succ]}<!--@if($mode!='choice')--></a><!--@end--></td>
+		<!--@if($mode!='choice')--><td><!--@if($mode!='choice' && $val[nextMode])--><span class="button strong blue"><input type='button' onclick="location.href='./?module=admin&act=dispSmsAdminStatis&module_srl={$val[module_no]}{$val[nextMode]}'" value='view'></span><!--@end--></td><!--@end-->
+    </tr>
+    <!--@end-->
+</tbody>
+</table>
+
+
+

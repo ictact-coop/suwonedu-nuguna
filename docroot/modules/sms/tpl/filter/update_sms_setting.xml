@@ -1,0 +1,7 @@
+<filter name="update_sms_setting" module="sms" act="updateSmsAdminSetting" confirm_msg_code="confirm_submit">
+    <form/>
+	<response callback_func="completeSmsSetting">
+	<tag name="error" />
+	<tag name="message" />
+    </response>
+</filter>

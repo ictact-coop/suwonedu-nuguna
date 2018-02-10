@@ -1,0 +1,9 @@
+<query id="deleteSmsAdminGmGroupList" action="delete">
+    <tables>
+        <table name="sms_gm_use" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="bcode" var="bcode" pipe="and" />
+	    <condition operation="equal" column="gcode" var="gcode" pipe="and" />
+	</conditions>
+</query>

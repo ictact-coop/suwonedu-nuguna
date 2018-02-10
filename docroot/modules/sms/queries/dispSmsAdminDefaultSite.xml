@@ -1,0 +1,8 @@
+<query id="dispSmsAdminDefaultSite" action="select">
+    <tables>
+        <table name="sms_site" />
+    </tables>
+  	<columns>
+        <column name="*" />
+    </columns>
+</query>

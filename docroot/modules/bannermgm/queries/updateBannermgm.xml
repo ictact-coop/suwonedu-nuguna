@@ -1,0 +1,13 @@
+<query id="updateBannermgm" action="update">
+	<tables>
+		<table name="bannermgm"/>
+	</tables>
+	<columns> 
+	    <column name="image_path" var="image_path" notnull="notnull"/>
+		<column name="banner_name" var="banner_name" notnull="notnull" />
+		<column name="link_url" var="link_url" notnull="notnull" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="bannermgm_srl" var="bannermgm_srl" filter="number" notnull="notnull"/>
+	</conditions>
+</query>

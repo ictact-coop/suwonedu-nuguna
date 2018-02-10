@@ -1,0 +1,80 @@
+<!--%import("filter/insert_sms_address.xml")-->
+<!--%import("filter/delete_sms_address.xml")-->
+<!--#include("popup_header.html")-->
+<!--%import("js/sms_admin_popup.js")-->
+<table cellspacing="3">
+<tr valign='top'>
+	<td>
+	<table cellspacing="0" cellpadding=0 border=0>
+	<tr>
+		<Td style='padding-left:10px;'><span class="button strong green"><input type='button' name='butMe' id='butMe' value='{$lang->cmd_sms_user_view}' onclick="smsAddress.sms_layer_set('user')"></span>
+		<span class="button strong blue"><input type='button' name='butGr' id='butGr' value='{$lang->cmd_sms_group_view}' onclick="smsAddress.sms_layer_set('group')"></span></td>
+	<td style='padding-left:120px;'><input type='checkbox' name='alluser' id='alluser' value='yes' onclick="smsAddress.allUserCheck();"> 회원전체 </td>
+	</tr>
+	</table>
+	</tD>
+</tr>
+<form name='smsSetForm' id='smsSetForm' method='post'>
+	<input type="hidden" name="hidden_check" id="hidden_check" value="" />
+	<input type="hidden" name="bsort" id="bsort" value="" />
+	<input type="hidden" name="bcode" id="bcode" value="{$module_srl}"/>
+<!--@if($bcate && $bcate != 'defaultaddr')--><input type="hidden" name="bcate" id="bcate" value="{$bcate}"/><!--@end-->
+	<input type="hidden" name="uid" id="uid" value=""/>
+
+<tr valign='top'>
+<td  width=450>
+	<table cellspacing="0" class="rowTable" cellpadding=0 border=0  width="100%">
+	<tr >
+		<td>
+		<span id='groupLayer' style='display:none;'>
+			<select name='member_group_select' id='member_group_select' size='17' style="width:160px;" ondblclick="smsAddress.doInsertItem(); return false;">
+			<!--@foreach($groupList as $key=>$val)-->   
+				<option value='{$key}|{$val->title}' style='width:200px;'>{$val->title}</option>
+			<!--@end-->
+			</select>
+		   <p></p><p></p>
+			<div class="pagination a1" align=left></div>
+
+		</span>
+		
+		<span id='userLayer' >
+				<select name='member_user_select' id='member_user_select' size='17'  style="width:160px;" ondblclick="smsAddress.doInsertItem(); return false;">
+				<!--@foreach($member_list as $val)-->   
+					<option value='{$val->member_srl}|{$val->user_id}|{$val->user_name}' style='width:200px;'>{$val->user_name}({$val->user_id}) </option>
+				<!--@end-->
+				</select>
+			   <!-- 페이지 네비게이션 -->
+				<div class="pagination a1" align=left>
+			    <a href="{getUrl('page','','module_srl','')}" class="prevEnd">{$lang->first_page}</a> 
+			    <!--@while($page_no = $page_navigation->getNextPage())-->
+		        <!--@if($page == $page_no)-->
+		        <strong>{$page_no}</strong> 
+				 <!--@else-->
+			     <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+				 <!--@end-->
+			    <!--@end-->
+				<a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="nextEnd">{$lang->last_page}</a>
+				</div>
+			
+		</span>
+        </td>
+		<td valign='middle' align=center>
+			<div class="displayButton">
+			<a href="#" onclick="smsAddress.doInsertItem(); return false;" class="buttonSet buttonRight"><span>{$lang->cmd_insert}</span></a><br />
+			<a href="#" onclick="smsAddress.doDeleteItem(); return false;" class="buttonSet buttonLeft"><span>{$lang->cmd_delete}</span></a><br />
+			</div>
+		</td>
+		<td>
+			<select name='member_sms_select' id='member_sms_select' size='17' style="width:160px;" ondblclick="smsAddress.doDeleteItem();">
+			</select>
+		</td>
+    </tr>
+	</table>
+	</td>
+</tr>
+</form>
+</table>
+
+<!--@if($bcate && $bcate != 'defaultaddr')-->
+<input type='hidden' name='shot_sub_layer' id='shot_sub_layer' value='no'>
+<!--@end-->

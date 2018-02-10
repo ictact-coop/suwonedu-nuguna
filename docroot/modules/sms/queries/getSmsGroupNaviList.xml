@@ -1,0 +1,20 @@
+<query id="getSmsGroupNaviList" action="select">
+     <tables>
+        <table name="sms_userlist" />
+	</tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+       <condition operation="equal" column="bcode" var="module_srl"  pipe="and" />
+	   <condition operation="equal" column="bsort" default="group"  pipe="and" />
+      <condition operation="equal" column="bcate" var="bcate"  pipe="and" />
+
+	</conditions>
+    <navigation>
+        <index var="sort_index" default="uid" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

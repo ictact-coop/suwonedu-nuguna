@@ -1,0 +1,8 @@
+<filter name="banner_insert" module="bannermgm" act="procBannermgmAdminUpdate" confirm_msg_code="confirm_submit">
+  <form />
+  <parameter />
+  <response callback_func="completeBannermgmInsert">
+    <tag name="error" />
+    <tag name="message" />
+  </response>
+</filter>

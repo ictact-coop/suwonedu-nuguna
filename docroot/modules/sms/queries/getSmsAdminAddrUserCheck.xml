@@ -1,0 +1,14 @@
+<query id="getSmsAdminAddrUserCheck" action="select">
+     <tables>
+        <table name="sms_userlist" />
+	</tables>
+    <columns>
+        <column name="count(sms_srl)"  alias="srl" />
+    </columns>
+    <conditions>
+       <condition operation="equal" column="bcode" var="bcode" pipe="and" />
+       <condition operation="equal" column="bsort" var="bsort"  pipe="and" />
+       <condition operation="equal" column="bcate" var="bcate"  pipe="and" />
+	   <condition operation="equal" column="useq" var="uid"  pipe="and" />
+	</conditions>
+</query>

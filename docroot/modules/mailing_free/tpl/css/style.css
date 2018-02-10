@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+/* style 
+---------------------------------------------- */
+h3.title { }
+p.info { } 
+.admin_mailing { position:relative; border-collapse:collapse; width:100%; margin:30px 0 10px; padding:0; background:#f9f9f9; }
+.admin_mailing th { width:100px; padding:10px; text-align:right; font-family:NanumGothic, "나눔고딕"; border:1px solid #e1e1e1; }
+.admin_mailing td { vertical-align:middle;  padding:10px; font-family:NanumGothic, "나눔고딕"; border:1px solid #e1e1e1; }
+.admin_mailing td .sel { padding:10px; font-family:NanumGothic, "나눔고딕"; border:1px solid #eee; }
+.admin_mailing .input_text { width:95%; padding:10px; font-family:NanumGothic, "나눔고딕"; border:1px solid #eee; }
+.admin_mailing .input_textarea { width:95%; height:400px; padding:10px; font-family:NanumGothic, "나눔고딕"; border:1px solid #eee; }
+.right { float:right }
+
+/* button 
+---------------------------------------------- */
+.xet_btn {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	outline: none;
+	cursor:pointer;
+	vertical-align:baseline;
+	text-align: center;
+	text-decoration:none !important;
+	margin:0;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.xet_btn:hover { text-decoration: none; }
+.xet_btn:active { position: relative; top: 1px; }
+.medium {
+	font-size:12px;	
+	padding:6px 12px; *padding:4px 12px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.white {
+	color: #606060 !important;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}

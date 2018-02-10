@@ -1,0 +1,9 @@
+<filter name="check_id" module="sms" act="checkIdSmsAdminResult">
+    <form>
+	<node target="user_id" required="true" filter="userid" minlength="3" maxlength="20"/>
+	</form>
+	<response callback_func="completeCheckId">
+	<tag name="error" />
+	<tag name="message" />
+    </response>
+</filter>

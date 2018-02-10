@@ -1,0 +1,21 @@
+<query id="getSmsDomainStatisMonth" action="select">
+     <tables>
+        <table name="sms_static" />
+	</tables>
+    <columns>
+        <column name="sum(succNum)" alias="succ" />
+	    <column name="sms_domain" alias="domain" />
+	    <column name="rmonth" alias="day" />
+	    <column name="bcode" alias="bcode" />
+	</columns>
+    <conditions>
+       <condition operation="equal" column="sms_domain" var="sms_domain" pipe="and" />
+	   <group pipe="and"> 
+			<condition operation="more" column="regdate" var="start_date" pipe="and" />
+			<condition operation="less" column="regdate" var="end_date" pipe="and" />
+	   </group> 
+	</conditions>
+    <groups>
+        <group column="rmonth" />
+    </groups>
+</query>

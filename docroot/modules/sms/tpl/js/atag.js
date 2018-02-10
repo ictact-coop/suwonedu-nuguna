@@ -1,0 +1,3 @@
+location.href="#sms";
+
+

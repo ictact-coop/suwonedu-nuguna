@@ -1,0 +1,9 @@
+<filter name="select_group_member" module="sms" act="selectSmsGroupMember">
+    <form>
+        <node target="uid" required="true" />
+    </form>
+    <response callback_func="completeGroupMember">
+		<tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

@@ -1,0 +1,25 @@
+<query id="getSmsAdminList" action="select">
+    <tables>
+        <table name="modules" alias="modu" />
+	    <table name="sms_board" alias="sms" type="left join">
+			<conditions>
+				<condition operation="equal" column="modu.module_srl" default="sms.bcode" />
+	         </conditions>
+	   </table>
+    </tables>
+    <columns/>
+    <conditions>
+        <condition operation="equal" column="modu.module" default="board" />
+		<condition operation="less" column="modu.site_srl" default="1" pipe="and" />
+		<condition operation="like" column="modu.mid" var="string" pipe="and" />
+		<condition operation="like" column="modu.browser_title" var="browser" pipe="and" />
+		<condition operation="equal" column="sms.buse" var="buse" pipe="and" />
+		<condition operation="notequal" column="modu.module_srl" var="modu_srl" pipe="and" />
+	</conditions>
+    <navigation>
+        <index var="sort_index" default="modu.module_srl" order="desc" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

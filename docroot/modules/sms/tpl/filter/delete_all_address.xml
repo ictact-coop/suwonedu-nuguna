@@ -1,0 +1,10 @@
+<filter name="delete_all_address" module="sms" act="deleteSmsAdminAllMemberSet">
+    <form>
+        <node target="bcode" required="true" />
+        <node target="bsort" required="true" />
+	</form>
+    <response callback_func="completeSmsAllAddress">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

@@ -1,0 +1,21 @@
+<query id="getSmsMemberList" action="select">
+    <tables>
+        <table name="member" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+	 <conditions>
+       <condition operation="like" column="user_id" var="search_string" />
+	   <condition operation="like" column="user_name" var="search_string"  pipe="or" />
+	   <condition operation="like" column="nick_name" var="search_string"  pipe="or" />
+	</conditions>
+  	
+	getSmsMemberList
+	<navigation>
+        <index var="sort_index" default="regdate" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

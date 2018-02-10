@@ -1,0 +1,7 @@
+<table name="sms_user_group">
+    <column name="sms_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="bcode" type="varchar" size="20" notnull="notnull" index="bcode" />
+ <column name="bcate" type="varchar" size="20" notnull="notnull" index="bcate" />
+	<column name="useq" type="varchar" size="30" notnull="notnull" index="useq" />
+    <column name="group_seq" type="varchar" size="40" notnull="group_seq" index="group_seq" />
+</table>

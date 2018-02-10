@@ -1,0 +1,9 @@
+<filter name="update_set" module="sms" act="updateSmsAdminCopySetting">
+	<form>
+		<node target="bcode" required="true"/>
+	</form>
+	<response callback_func="completeCopySet">
+		<tag name="error"/>
+		<tag name="message"/>
+	</response>
+</filter>

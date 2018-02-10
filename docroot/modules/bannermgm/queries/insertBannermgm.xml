@@ -1,0 +1,13 @@
+<query id="insertBannermgm" action="insert">
+	<tables>
+		<table name="bannermgm"/>
+	</tables>
+	<columns> 
+		<column name="bannermgm_srl" var="bannermgm_srl" default="0" notnull="notnull" />
+		<column name="image_path" var="image_path" notnull="notnull"/>
+		<column name="link_url" var="link_url" notnull="notnull" />
+		<column name="banner_name" var="banner_name" notnull="notnull" />
+		<column name="regdate" default="curdate()"/>
+		<column name="updatedate" default="curdate()" />
+	</columns>
+</query>

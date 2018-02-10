@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">SMS</title>
+    <description xml:lang="ko">SMS 문자발송 모듈</description>
+
+    <version>1.3.10</version>
+    <date>2010-03-05</date>
+    <category>interlock</category>
+    <link>http://sms.xpressengine.net/</link>
+
+    <author email_address="bnu@perbiz.co.kr" link="http://perbiz.co.kr">
+        <name xml:lang="ko">Perbiz</name>
+    </author>
+</module>

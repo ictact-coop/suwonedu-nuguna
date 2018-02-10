@@ -1,0 +1,65 @@
+<script>
+	jQuery(function($){
+		$('#formComponents input:text').css('width','260px');
+
+		$('#formComponents input[class=\'tel\']').css('width','80px');
+
+		if($('input.tel').length>0){
+			$('input.tel').each(function(index,value){
+				$(this).css('margin-right','2px');
+			});
+		}
+
+		$('form#form_contact').submit(function(){
+			// add phone number together
+			if($('input.tel').length>0){
+				var phone_number = "";
+				$('input.tel').each(function(index,value){
+					
+					phone_number += $(this).attr('value') + " ";
+				});
+				$('input.tel').last().attr('value',phone_number);
+			}
+		});
+	});
+</script>
+
+<input type="hidden" name="mid" value="{$mid}" />
+<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+<div id="contact_form">
+	<div class="formTitle">
+		<p class="text-required">
+			<img src="img/bg-star-required.gif"> 별표로 표기된 항목은 필수입력해야 메일을 보낼 수 있습니다.
+		</p>
+	</div>
+	<div id="formComponents">
+    	<dl class="mandatory_field">
+		<dt><label>작성자</label><img src="img/bg-star-required.gif"></dt>
+		<dd><input class="text" type="text" name="who"></dd>
+		</dl>
+		<dl class="mandatory_field">
+		<dt><label>회신이메일</label><img src="img/bg-star-required.gif"></dt>
+		<dd><input class="text" type="text" name="Email"></dd>
+		</dl>
+
+        <dl class="mandatory_field">
+		<dt><label>연락처</label><img src="img/bg-star-required.gif"></dt>
+		<dd>
+        <input type="text" name="extra_vars1[]" value="" size="4" maxlength="4" class="tel" style="width: 80px; margin-right: 2px;">
+        <input type="text" name="extra_vars1[]" value="" size="4" maxlength="4" class="tel" style="width: 80px; margin-right: 2px;">
+        <input type="text" name="extra_vars1[]" value="" size="4" maxlength="4" class="tel" style="width: 80px; margin-right: 2px;">
+        </dd>
+		</dl>
+        <dl class="mandatory_field">
+		<dt><label>메일제목</label><img src="img/bg-star-required.gif"></dt>
+		<dd><input class="text" type="text" name="Subject" style="width:400px !important;"></dd>
+		</dl>
+		<dl class="comment_textarea">
+		<dt><label>메일내용</label><img src="img/bg-star-required.gif"></dt>
+		<dd><fieldset><div><textarea class="textarea" name="Comment"></textarea></div></fieldset></dd>
+		</dl>
+        
+        <p class="send"><input type="submit" value="메일보내기" style="padding:5px 10px"></p>
+	</div>
+</div>
+

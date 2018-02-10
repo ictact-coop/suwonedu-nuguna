@@ -1,0 +1,62 @@
+<!--%import("filter/insert_sms.xml")-->
+<!--%import("js/sms_admin.js")-->
+<!--#include("header.html")-->
+
+<form action="./" method="post" onsubmit="return procFilter(this, insert_sms)" enctype="multipart/form-data">
+<input type="hidden" name="page" value="{$page}" />
+<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+
+    <table cellspacing="0" class="rowTable">
+
+    <!--@if($logged_info->is_admin!='Y')-->
+    <input type="hidden" name="mid" value="{$module_info->mid}" />
+    <!--@else-->
+    <tr>
+        <th scope="row"><div>게시판모듈명</div></th>
+        <td style='width:800px;'>
+            <input type="text" name="bcode" value="{$bcode}" class="inputTypeText w200" readonly/>
+
+        </td>
+    </tr>
+    <!--@end-->
+    <tr>
+        <th scope="row"><div>SMS사용여부</div></th>
+        <td>
+               <input type="radio" name="buse" value="yes"  {$buse_yes}/> <span>사용</span>
+                <input type="radio" name="buse" value="no" {$buse_no}/> <span>미사용</span>
+
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>알림글(새글) 설정</div></th>
+        <td>
+            <input type="radio" name="bwrite_use" value="no"  onclick="check_set('bwrite','hide');" {$bwrite_no}/> <span>게시물제목</span>
+            <input type="radio" name="bwrite_use" value="yes"  onclick="check_set('bwrite','show');" {$bwrite_yes}/> <span>직접설정</span>
+            <br><span id='bwrite_layer' style='display:{$bwrite_dis};'><input type="text" name="bwrite" value="{$module_info->bwrite}"  class="inputTypeText w200" style='width:400px;'/></span>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>알림글(댓글) 설정</div></th>
+        <td>
+
+            <input type="radio" name="breply_use" value="no" onclick="check_set('breply','hide');" {$breply_no}/> <span>게시물제목</span>
+            <input type="radio" name="breply_use" value="yes" onclick="check_set('breply','show');" {$breply_yes}/> <span>직접설정</span>
+            <br><span id='breply_layer' style='display:{$breply_dis};'><input type="text" name="breply" value="{$module_info->breply}"  class="inputTypeText w200" style='width:400px;'/></span>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>기본 회신번호</div></th>
+        <td>
+            <span><input type="text" name="bpcs" value="{$module_info->bpcs}"  class="inputTypeText w20;"/></span>
+        </td>
+    </tr>
+
+
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+            <span class="button"><input type="button" value="{$lang->cmd_back}" onclick="history.back(); return false;" /></span>
+        </th>
+    </table>
+</form>

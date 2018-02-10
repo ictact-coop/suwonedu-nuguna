@@ -1,0 +1,16 @@
+<include target="_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<div id="success_form">
+	<div id="mail_content">
+		<ul>
+			<li loop="$mail_content => $title, $val"><strong class="mail_var_title"><block cond="$mail_title[$title]">{$mail_title[$title]}:</block></strong>{$val}</li>
+		</ul>
+	</div>
+	<div id="link_back_contact"><a href="{getUrl('','mid',$module_info->mid)}" style="border:1px solid #CCC; border-radius:6px; padding:6px 12px; height:25px;">되돌아가기</a></div>
+</div>
+
+<include target="_footer.html" />

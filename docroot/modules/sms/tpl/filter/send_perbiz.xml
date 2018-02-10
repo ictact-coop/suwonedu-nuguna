@@ -1,0 +1,22 @@
+<filter name="send_perbiz" module="sms" act="sendperbizSmsAdminResult" confirm_msg_code="confirm_submit">
+    <form>
+	<node target="site_domain" required="true" />
+	<node target="user_id" required="true" filter="userid" minlength="3" maxlength="20"/>
+	<node target="password1" required="true" minlength="6" maxlength="20"/>
+	<node target="password2" required="true" minlength="6" maxlength="20" equalto="password1"/>
+	<node target="user_name" required="true" minlength="2" maxlength="20" />
+	<node target="email" required="true" filter="email"/>
+	<node target="phone1" required="true" />
+	<node target="phone2" required="true" />
+	<node target="phone3" required="true" />
+	<node target="remain_sms1" required="true" />
+	<node target="remain_sms2" required="true" />
+	<node target="remain_sms3" required="true" />
+	<node target="pcsfield" required="true" />
+	</form>
+	<response callback_func="completeSendperbiz">
+	<tag name="error" />
+	<tag name="mid" />
+	<tag name="message" />
+    </response>
+</filter>

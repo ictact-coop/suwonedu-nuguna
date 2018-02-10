@@ -1,0 +1,8 @@
+<filter name="insert_sms_module_config" module="sms" act="procPointAdminInsertPointModuleConfig" confirm_msg_code="confirm_update">
+    <form />
+    <parameter />
+    <response>
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

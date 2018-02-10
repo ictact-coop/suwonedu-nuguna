@@ -1,0 +1,11 @@
+<query id="getBannermgm" action="select">
+    <tables>
+        <table name="bannermgm" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="bannermgm_srl" var="bannermgm_srl" />
+    </conditions>
+</query>

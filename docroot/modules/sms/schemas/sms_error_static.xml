@@ -1,0 +1,8 @@
+<table name="sms_error_static">
+    <column name="sms_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="sms_domain" type="varchar" size="40" notnull="notnull" index="sms_domain" />
+    <column name="bcode" type="varchar" size="40" notnull="notnull" index="bcode" />
+    <column name="err_code" type="varchar" size="3" />
+	<column name="err_msg" type="varchar" size="200" />
+	<column name="regdate"  type="date" index="regdate" />
+</table>

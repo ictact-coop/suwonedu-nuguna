@@ -1,0 +1,68 @@
+<!--%import("filter/login.xml")-->
+<!--%import("css/default.css")-->
+<!--%import("js/signup_check.js")-->
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+
+<!-- XE 로그인 폼 -->
+<div id="memberModule">
+<div class="memberSmallBox">
+
+    <div class="header">{$lang->cmd_login}<p><div align="left"><font color='#990000'>{$lang->cmd_sms_reset_db}<br>{$lang->cmd_sms_reset_server}</font></div>    </div>
+
+    <form action="./" method="post" onsubmit="return procFilter(this, login)" id="fo_member_login">
+        <fieldset class="login">
+            <dl>
+                <dt><label for="uid">{$lang->user_id}</label></dt>
+                <dd><input type="text" name="user_id" id="uid" value="" class="inputTypeText w140" /></dd>
+                <dt><label for="upw">{$lang->password}</label></dt>
+                <dd><input type="password" name="password" id="upw" value="" class="inputTypeText w140" /></dd>
+            </dl>
+
+
+            <dl>
+                <dt><label for="pcs">{$lang->cmd_sms_return_pcs} </label></dt>
+                <dd>
+                    <input type="text" name="remain_sms1" value="" size="3" class="inputTypeText"/>
+                    <input type="text" name="remain_sms2" value="" size="3" class="inputTypeText"/>
+                    <input type="text" name="remain_sms3" value="" size="3" class="inputTypeText"/>
+                </dd>
+                <dt><label for="upw">{$lang->cmd_sms_set_pcs2} </label></dt>
+                <dd>
+            <!--@if($pcs_list)-->
+                <!--@foreach($pcs_list as $val)-->
+                <!--@if($val[is_active] == 'Y')-->
+                <input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText" />
+                 {$val[column_title]}
+                &nbsp;&nbsp;
+                <!--@else-->
+                <input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText" disabled="disabled" />
+                 {$val[column_title]} <span style="color:#990000;">{$lang->cmd_sms_nonact}</span>
+                &nbsp;&nbsp;
+                <!--@end-->
+                <!--@end-->
+            <!--@else-->
+            <input type="hidden" name="pcsfield" value="" />
+            <span class="button strong red"><input type="button" value="{$lang->cmd_sms_menu_set}" onclick="location.href='{getUrl('act','dispMemberAdminInsertJoinForm')}'" /></span>
+            </dd>
+            </dl>
+            <dl>
+            <dt></dt>
+            <dd>
+            {$lang->js_sms_new_add_pcs}
+            <!--@end-->
+            </dd>
+            </dl>
+
+            <div class="buttonArea">
+                <span class="button black strong"><input type="submit" value="{$lang->cmd_login}" /></span>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="help tCenter" >
+        <div align="left"><font color="#990000"><strong>{$lang->sms_join_first}</strong></font></div>
+        <p><span class="button strong blue"><input type="button" onclick="location.href='{getUrl('act','dispSmsAdminContents', join_check, 'join')}'" value="{$lang->cmd_signup_go}"></span></p>
+    </div>
+</div>
+</div>
+

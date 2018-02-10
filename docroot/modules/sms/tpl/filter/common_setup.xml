@@ -1,0 +1,20 @@
+<filter name="common_setup" module="sms" act="procSmsAdminCommonSetup">
+    <form>
+        <node target="join_sms_admin_phone" />
+        <node target="join_sms_member_return_phone" />
+    </form>
+    <response callback_func="completeCommonSetup">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>
+<filter name="common_setup" module="sms" act="procSmsAdminCommonSetup">
+    <form>
+        <node target="join_sms_admin_phone" />
+        <node target="join_sms_member_return_phone" />
+    </form>
+    <response callback_func="completeCommonSetup">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

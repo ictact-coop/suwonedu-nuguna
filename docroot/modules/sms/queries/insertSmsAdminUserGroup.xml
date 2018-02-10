@@ -1,0 +1,12 @@
+<query id="insertSmsAdminUserGroup" action="insert">
+    <tables>
+        <table name="sms_user_group" />
+    </tables>
+    <columns>
+       <column name="sms_srl" var="sms_srl" />
+	   <column name="bcode" var="bcode" />
+	   <column name="bcate" var="bcate" />
+	   <column name="useq" var="useq" />
+      <column name="group_seq" var="group_seq" />
+    </columns>
+</query>

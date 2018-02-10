@@ -1,0 +1,15 @@
+<query id="insertSmsMemberSet" action="insert">
+    <tables>
+        <table name="sms_site" />
+    </tables>
+    <columns>
+  	   <column name="sms_srl" var="sms_srl" />
+	   <column name="site_domain" var="site_domain" />
+	   <column name="site_id" var="site_id" />
+       <column name="authKey" var="authKey" />
+      <column name="pcs" var="pcs" />
+       <column name="pcsfield" var="pcsfield" />
+      <column name="user_pcs" var="user_pcs" />
+      <column name="regdate" var="regdate" />
+   </columns>
+</query>

@@ -1,0 +1,8 @@
+<table name="sms_gm_use">
+    <column name="sms_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="bcode" type="varchar" size="11" notnull="notnull" index="bcode" />
+    <column name="bcate" type="varchar" size="20" notnull="notnull" index="bcate" />
+	<column name="gcode" type="varchar" size="11" notnull="notnull" index="gcode" />
+    <column name="userId" type="varchar" size="40" notnull="notnull" index="userId" />
+	<column name="regdate" type="date" notnull="notnull" />
+</table>

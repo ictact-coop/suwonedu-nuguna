@@ -1,0 +1,11 @@
+<query id="updateSmsAdminSite" action="update">
+    <tables>
+        <table name="sms_site" />
+    </tables>
+    <columns>
+	<column name="authKey" var="authKey" /> 
+   </columns>
+   <conditions>
+       <condition operation="equal" column="site_id" var="user_id" />
+	</conditions>
+</query>

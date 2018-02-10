@@ -1,0 +1,182 @@
+<h4 class="xeAdmin">SMS</h4>
+<a name="sms"></a>
+<table cellspacing="0" class="rowTable">
+<form method="post" name="smsBoardForm" onsubmit="return sms_check_submit(this,'{$module_srl}')">
+    <input type="hidden" name="page" value="{$page}" />
+    <input type="hidden" name="bcode" value="{$module_srl}" />
+
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_use}</div></th>
+        <td class="wide">
+            <div>
+                <label><input type="radio" name="buse" id="buse" value="yes" {$buse_yes} onclick="boardUseCheck('block')" /> <span>{$lang->cmd_sms_use_yes}</span></label>
+                <label><input type="radio" name="buse" id="buse" value="no" {$buse_no}  onclick="boardUseCheck('none')" /> <span>{$lang->cmd_sms_use_no}</span></label>
+            </div>
+            <div id="boardUseLayer" style="<!--@if($boardUseDis == 'none')-->display:none;<!--@end-->">
+                <label><input type="checkbox" name="admin_use" id="admin_use" value="yes" {$admin_check} /> <span>{$lang->cmd_sms_admin_use}</span></label>
+                <label><input type="checkbox" name="user_use" id="user_use" value="yes"  onclick="extraCheck();" {$user_check} /> <span>{$lang->cmd_sms_user_use}</span></label>
+            </div>
+        </td>
+    </tr>
+
+    <tr id="extra_layer" <!--@if($extra_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_extra_vars}</div></th>
+        <td  class="wide">
+        <!--@foreach($extra_keys as $val)-->
+             <label><input type="radio" name="extraid" value="{$val->idx}" <!--@if($extraid == $val->idx)-->checked<!--@end--> /> <span style="width:300px;">{$val->name}</span></label>
+        <!--@end-->
+        <!--@if($extra_total < 1)-->
+            <span class="button strong blue"><input type="button" value="{$lang->cmd_sms_set_button}" onclick="location.href='./?module=admin&act=dispBoardAdminExtraVars&module_srl={$module_srl}'" /></span>
+        <!--@end-->
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_log_set}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="log_use" value="yes" {$log_yes} /> <span>{$lang->cmd_sms_use_yes}</span></label>
+            <label><input type="radio" name="log_use" value="no" {$log_no} /> <span>{$lang->cmd_sms_use_no}</span></label>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_head_text}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="bhead_use" id="bhead_use" value="no" onclick="check_set('bhead','hide');" {$bhead_no} /> {$lang->cmd_sms_set_site}</label>
+            <label><input type="radio" name="bhead_use" value="yes" id="bhead_use"  onclick="check_set('bhead','show');" {$bhead_yes}/> {$lang->cmd_sms_set_direct}</label>
+            <br><span id="bhead_layer" <!--@if($bhead_dis == 'none')-->style="display:none;"<!--@end-->><input type="text" name="bhead" id="bhead" value="{$sms_info->bhead}" class="inputTypeText w400" /><p>{$lang->cmd_sms_head_msg}</p></span>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_set_board_new_use}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="bwrite_sms_use" value="yes" onclick="check_set('bwrite_sms','show');" {$bwrite_sms_yes} /> {$lang->cmd_sms_use_yes}</label>
+            <label><input type="radio" name="bwrite_sms_use" value="no" onclick="check_set('bwrite_sms','hide');" {$bwrite_sms_no} /> {$lang->cmd_sms_use_no}</label>
+
+            <p id="bwrite_sms_modify_layer" <!--@if($bwrite_sms_dis == 'none')-->style="display:none;"<!--@end-->><label><input type="checkbox" name="bwrite_sms_modify_use" id="bwrite_sms_modify_use" value="yes" {$bwrite_sms_modify_use} /> {$lang->cmd_sms_set_board_new_modify_use}</label></p>
+        </td>
+    </tr>
+    <tr id="bwrite_sms_layer" <!--@if($bwrite_sms_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_set_board_new}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="bwrite_use" value="no"  onclick="check_set('bwrite','hide');" {$bwrite_no} /> {$lang->cmd_sms_board_title}</label>
+            <label><input type="radio" name="bwrite_use" value="yes"  onclick="check_set('bwrite','show');" {$bwrite_yes} /> {$lang->cmd_sms_set_direct}</label>
+            <br><span id="bwrite_layer" <!--@if($bwrite_dis == 'none')-->style="display:none;"<!--@end-->><input type="text" name="bwrite" id="bwrite" value="{$sms_info->bwrite}"  class="inputTypeText w400" /><p>#id#({$lang->cmd_sms_user_id}), #name# ({$lang->cmd_sms_user_name})
+            <br>{$lang->cmd_sms_sample} : #id#{$lang->cmd_sms_board_msg}</p></span>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_set_board_reply_use}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="breply_sms_use" value="yes" onclick="check_set('breply_sms','show');" {$breply_sms_yes} /> {$lang->cmd_sms_use_yes}</label>
+            <label><input type="radio" name="breply_sms_use" value="no" onclick="check_set('breply_sms','hide');" {$breply_sms_no} /> {$lang->cmd_sms_use_no}</label>
+
+            <p id="breply_sms_modify_layer" <!--@if($breply_sms_dis == 'none')-->style="display:none;"<!--@end-->><label><input type="checkbox" name="breply_sms_modify_use" id="breply_sms_modify_use" value="yes" {$breply_sms_modify_use} / > {$lang->cmd_sms_set_board_reply_modify_use}</label></p>
+        </td>
+    </tr>
+    <tr id='breply_sms_layer' <!--@if($breply_sms_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_set_board_reply}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="breply_use" id="breply_use" value="no" onclick="check_set('breply','hide');" {$breply_no} /> {$lang->cmd_sms_board_content}</label>
+            <label><input type="radio" name="breply_use" value="yes" id="breply_use" onclick="check_set('breply','show');" {$breply_yes} /> {$lang->cmd_sms_set_direct}</label>
+            <br><span id="breply_layer" <!--@if($breply_dis == 'none')-->style="display:none;"<!--@end-->><input type="text" name="breply" id="breply" value="{$sms_info->breply}"  class="inputTypeText w400" /><p>#id#({$lang->cmd_sms_user_id}), #name# ({$lang->cmd_sms_user_name})
+            <br>{$lang->cmd_sms_sample} : #id#{$lang->cmd_sms_board_msg}</p></span>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_return_set_pcs}</div></th>
+        <td  class="wide">
+            <div>
+                <label><input type="radio" name="pcs_use" id="pcs_use" value="yes" onclick="check_set('return','show');" {$pcs_yes} /> {$lang->cmd_sms_use_yes}</label>
+                <label><input type="radio" name="pcs_use" id="pcs_use" value="no" onclick="check_set('return','hide');" {$pcs_no} /> {$lang->cmd_sms_use_no}</label>
+            </div>
+
+            <div id="return_layer" <!--@if($pcs_dis == 'none')-->style="display:none;"<!--@end-->><p><strong>{$lang->cmd_sms_return_pcs}</strong> <input type="text" name="bpcs1" id="bpcs1" value="{$bpcs1}" class="inputTypeText w40" maxlength="3" /> <input type="text" name="bpcs2" id="bpcs2" value="{$bpcs2}" class="inputTypeText w40" maxlength="4" /> <input type="text" name="bpcs3" id="bpcs3" value="{$bpcs3}" class="inputTypeText w40" maxlength="4" /></p></div>
+
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>{$lang->cmd_sms_search_use_id}</div></th>
+        <td  class="wide">
+            <label><input type="radio" name="searchid_use" id="searchid_use" value="yes" onclick="check_set('searchid','show');" {$searchId_yes} /> {$lang->cmd_sms_use_yes}</label>
+            <label><input type="radio" name="searchid_use" id="searchid_use" value="no" onclick="check_set('searchid','hide');" {$searchId_no} /> {$lang->cmd_sms_use_no}</label>
+        </td>
+    </tr>
+    <tr id="searchid_layer" <!--@if($searchId_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_search_set_id}</div></th>
+        <td  class="wide">
+            <span class="button strong green"><input type="button" value="{$lang->cmd_sms_set_button}"  onclick="popWindow.init('{$module_srl}',630,30,'','searchId','searchId');"/></span>  &nbsp;<input type="hidden" name='hiddenMemberTotal_{$module_srl}_searchId' id='hiddenMemberTotal_{$module_srl}_searchId' value="{$searchTotal}" /><strong>Member Total : <span style="color:#006699;" id="memberTotal_{$module_srl}_searchId">{$searchTotal}</span></strong>
+
+            <p>
+                <strong>{$lang->cmd_sms_get_pcs}</strong> <input type="text" name="sear_pcs1" id="sear_pcs1" value="{$sear_pcs1}"  class="inputTypeText w40" maxlength="3" /> <input type="text" name="sear_pcs2" id="sear_pcs2" value="{$sear_pcs2}"  class="inputTypeText w40" maxlength="4" /> <input type="text" name="sear_pcs3" id="sear_pcs3" value="{$sear_pcs3}"  class="inputTypeText w40" maxlength="4" />
+            </p>
+
+        </td>
+    </tr>
+
+    <tr valign="top">
+        <th scope="row"><div>{$lang->cmd_sms_cate_vars}</div></th>
+        <td class="wide">
+            <label><input type="radio" name="cate_use" id="cate_use" value="yes" onclick="addrCheck('yes');" {$cate_yes} /> {$lang->cmd_sms_use_yes}</label>
+            <label><input type="radio" name="cate_use" id="cate_use" value="no" onclick="addrCheck('no');" {$cate_no} /> {$lang->cmd_sms_use_no}</label>
+        </td>
+    </tr>
+    <tr id="cateset_layer" <!--@if($cate_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_cate_set}</div></th>
+        <td class="wide">
+            <!--@if($cate_total < 1)-->
+                <span class="button strong blue"><input type="button" value="{$lang->cmd_sms_set_button}" onclick="location.href='./?module=admin&act=dispBoardAdminCategoryInfo&module_srl={$module_srl}'" /></span>
+            <!--@else if($sms_info->use_category!='Y')-->
+                <span class="button strong red"><input type="button" value="{$lang->cmd_sms_set_button}" onclick="location.href='./?module=admin&act=dispBoardAdminBoardInfo&module_srl={$module_srl}'" /></span>
+            <!--@else-->
+
+                <!--@foreach($cate_list as $val)-->
+                <span class="w100">
+                <!--@for($i=1; $i<=$val->depth; $i++)-->&nbsp;&nbsp;<!--@end-->
+                <img src="./img/pageicon.gif"><strong>{$val->title}</strong>&nbsp;&nbsp; </span>
+
+                <p>
+                <div id="cate_{$val->category_srl}_layer">
+                <!--@for($i=1; $i<=$val->depth; $i++)-->&nbsp;&nbsp;<!--@end-->
+                <span class="button strong green"><input type="button" value="{$lang->cmd_sms_cate_set_button}"  onclick="popWindow.init('{$module_srl}',630,30,'','bcate','{$val->category_srl}');"/></span>  &nbsp;<input type="hidden" name="hiddenMemberTotal_{$module_srl}_{$val->category_srl}" id="hiddenMemberTotal_{$module_srl}_{$val->category_srl}" value="{$memberAmount}" /><strong>Member Total : <span style="color:#006699;" id="memberTotal_{$module_srl}_{$val->category_srl}" />{$cate_user_list[$val->category_srl]}</span></strong>
+                </div>
+                </p>
+                <!--@end-->
+            <!--@end-->
+        </td>
+    </tr>
+    <tr valign="top" id="addr_layer" <!--@if($addr_dis == 'none')-->style="display:none;"<!--@end-->>
+        <th scope="row"><div>{$lang->cmd_sms_addr_set}</div></th>
+        <td class="wide">
+            <span class="button strong green"><input type="button" value="{$lang->cmd_sms_set_button}"  onclick="popWindow.init('{$module_srl}',630,30,'','');"/></span>  &nbsp;<input type='hidden' name='hiddenMemberTotal_{$module_srl}' id='hiddenMemberTotal_{$module_srl}' value='{$memberAmount}'><strong>Member Total : <font color='#006699' id='memberTotal_{$module_srl}'>{$memberAmount}</font></strong>
+        </td>
+    </tr>
+
+
+    <tr>
+        <th colspan="2" class="button"><span class="button strong black"><input type="submit" value="{$lang->cmd_save}" /></span></th>
+    </tr>
+</form>
+</table>
+
+<!--@if($atag)-->
+    <!--%import("js/atag.js")-->
+<!--@end-->
+<script type="text/javascript">
+    var lang_set_direct_msg = '{$lang->js_set_direct_msg}';
+    var lang_set_pcs_msg    = '{$lang->js_set_pcs_msg}';
+    var lang_set_tail_input_msg   = ' {$lang->js_set_tail_input_msg}';
+    var js_already_addrset  = '{$lang->js_already_addrset}';
+    var js_searchId_input_msg = '{$lang->js_searchId_input_msg}';
+    var lang_set_searchId_msg = '{$lang->js_set_searchId_msg}';
+</script>
+
+ <!--  Prototype Window Class Part -->
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+<!--%import("js/windows_js/javascripts/effects.js")-->
+<!--%import("js/windows_js/javascripts/window.js")-->
+<!--%import("js/windows_js/javascripts/window_effects.js")-->
+<!--%import("filter/insert_sms_board.xml")-->
+<!--%import("js/windows_js/themes/default.css")-->
+<!--%import("js/windows_js/themes/alphacube.css")-->
+<!--%import("js/sms_admin.js")-->

@@ -1,0 +1,14 @@
+<query id="getSmsAdminGmUseList" action="select">
+    <tables>
+        <table name="sms_gm_use" />
+    </tables>
+    <columns>
+        <column name="sms_srl" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="bcode" var="bcode" pipe="and" />
+        <condition operation="equal" column="gcode" var="gcode" pipe="and" />
+       <condition operation="equal" column="bcate" var="bcate"  pipe="and" />
+		<condition operation="equal" column="userId" var="userid" pipe="and" />
+	</conditions>
+</query>

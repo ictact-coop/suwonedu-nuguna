@@ -1,0 +1,17 @@
+<query id="dispSmsAdminAddDomain" action="select">
+    <tables>
+        <table name="sms_domain" />
+    </tables>
+  	<columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+       <condition operation="equal" column="user_id" var="user_id" />
+	</conditions>
+    <navigation>
+        <index var="sort_index" default="regdate" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

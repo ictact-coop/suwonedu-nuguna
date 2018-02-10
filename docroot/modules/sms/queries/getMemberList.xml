@@ -1,0 +1,11 @@
+<query id="getMemberList" action="select">
+    <tables>
+        <table name="member" />
+	</tables>
+    <columns>
+        <column name="member_srl" />
+		<column name="user_id" />
+		<column name="user_name" />
+		<column name="extra_vars" />
+	</columns>
+</query>

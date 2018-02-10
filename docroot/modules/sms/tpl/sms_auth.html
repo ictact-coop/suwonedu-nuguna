@@ -1,0 +1,142 @@
+<!--#include("./header.html")-->
+<!--%import("filter/send_perbiz.xml")-->
+<!--%import("filter/check_id.xml")-->
+<!--%import("js/signup_check.js")-->
+<!--%import("js/sms_admin.js")-->
+ <!--  Prototype Window Class Part -->
+<!--%import("js/windows_js/javascripts/effects.js")-->
+<!--%import("js/windows_js/javascripts/window.js")-->
+<!--%import("js/windows_js/javascripts/window_effects.js")-->
+  	
+<!--%import("js/windows_js/themes/default.css")-->
+<!--%import("js/windows_js/themes/alphacube.css")-->
+
+
+<div id='sms_input_layer'>
+	
+	<h3>SMS {$lang->join_sms}</h3>
+	
+	<div><font color=#0066CC><strong>{$lang->join_form_head}</font></strong> <span class="button strong green"><input type="button" value="{$lang->cmd_sms_menu_set}" onclick="location.href='./?module=admin&act=dispMemberAdminInsertJoinForm'"></span></div>
+   
+	<div><strong>{$lang->join_sms_info1}</font></strong></div>
+   <div><strong>{$lang->join_sms_info2}</font></strong> </div>
+   
+	<form id="perbiz_member" name="perbiz_member" method="post" onsubmit="return send_check(this)">
+  <table cellspacing="0" class="rowTable">
+    <tr>
+        <th colspan="2"></th>
+    </tr>
+	<tr>
+        <th><div>{$lang->member_sms_service} <span class="require">*</span></div></th>
+        <td ><span class="button strong red"><input type="button" value="{$lang->member_sms_service}  {$lang->member_sms_tail_text}" onclick="infoView.view('agreement')" id='agreementButton' name='agreementButton' style="width:154px;"></span>
+		<input type="checkbox" value="yes"  name="serviceInfo" id="serviceInfo" onclick="infoView.agreementCheck();"> {$lang->member_sms_service_agree}
+		</td>
+    </tr>
+	
+	<tr>
+        <th><div>{$lang->member_sms_user_info} <span class="require">*</span></div></th>
+        <td ><span class="button strong red"><input type="button" value="{$lang->member_sms_user_info} {$lang->member_sms_tail_text}" onclick="infoView.view('privacy')" name='privacyButton' id='privacyButton'></span>
+		<input type="checkbox" value="yes" name="userInfo" id="userInfo"  onclick="infoView.privacyCheck();"> {$lang->member_sms_user_agree}
+		</td>
+    </tr>
+
+    
+
+	<tr>
+        <th><div>{$lang->cmd_sms_domain} <span class="require">*</span></div></th>
+        <td class="wide"><p>{$domain}<input type="hidden" name="site_domain" value="{$domain}" /></p> </td>
+    </tr>
+  <tr>
+        <th><div>{$lang->user_id} <span class="require">*</span></div></th>
+        <td class="wide"><input type="text" name="user_id" id="user_id" value="" class="inputTypeText" onchange="userIdCheck()"/> <p>{$lang->about_user_id}</p> </td>
+    </tr>
+    <tr>
+        <th><div>{$lang->password} <span class="require">*</span></div></th>
+        <td><input type="password" name="password1" value="" class="inputTypeText"/><p>{$lang->about_password}</p></td>
+    </tr>
+    <tr>
+        <th><div>{$lang->password2} <span class="require">*</span></div></th>
+        <td><input type="password" name="password2" value="" class="inputTypeText" /></td>
+    </tr>
+    <tr>
+        <th><div>{$lang->user_name} <span class="require">*</span></div></th>
+        <td>
+            <input type="text" name="user_name" value="" class="inputTypeText"/><p>{$lang->about_user_name}</p>
+        </td>
+    </tr>
+    <tr>
+        <th><div>{$lang->email_address} <span class="require">*</span></div></th>
+        <td>
+            <input type="text" name="email" value="" class="inputTypeText"/>
+        </td>
+    </tr>
+	 <tr>
+        <th><div>{$lang->cmd_sms_pcs} <span class="require">*</span></div></th>
+        <td>	 <input type="text" name="phone1" value="" size="4" class="inputTypeText"/>
+                <input type="text" name="phone2" value="" size="4" class="inputTypeText" />
+                <input type="text" name="phone3" value="" size="4" class="inputTypeText" />
+		<p>{$lang->join_sms_pcs_msg} </p>
+		</td>
+    </tr>
+
+	<tr>
+        <th><div>{$lang->cmd_sms_return_pcs} <span class="require">*</span></div></th>
+        <td>	 <input type="text" name="remain_sms1" value="" size="4" class="inputTypeText"/>
+                <input type="text" name="remain_sms2" value="" size="4" class="inputTypeText"/>
+                <input type="text" name="remain_sms3" value="" size="4" class="inputTypeText"/>
+		<p>{$lang->join_sms_return_msg}</p>
+		</td>
+    </tr>
+	<tr>
+        <th><div>{$lang->homepage}</div></th>
+        <td>
+            <input type="text" name="homepage" value="" class="inputTypeText"/><p>{$lang->about_homepage}</p>
+        </td>
+    </tr>
+     <tr>
+        <th colspan="2" class="title" height=2></th>
+    </tr>
+  
+	<tr>
+        <th><div>{$lang->cmd_sms_set_pcs} <span class="require">*</span></div></th>
+        <td>	 
+		<!--@foreach($pcs_list as $val)-->
+		<!--@if($val[is_active] == 'Y')-->
+		<input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText"/>
+        {$val[column_title]}
+		&nbsp;&nbsp;
+		<!--@else-->
+		<input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText" disabled/>
+        {$val[column_title] <font color=#990000>{$lang->cmd_sms_nonact}</font>
+		&nbsp;&nbsp;
+		<!--@end-->
+		<!--@end-->
+
+		<p>{$lang->cmd_sms_set_xepcs}</p>
+		</td>
+    </tr>
+	
+	<tr>
+        <th class="button" colspan="2">
+            <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+            <a href="{getUrl('act','','member_srl','')}" class="button"><span>{$lang->cmd_cancel}</span></a>
+        </th>
+    </tr>
+
+    </table>
+</form>
+</div>
+<div id='sms_authkey_layer' style='display:none;border:solid 2px #B4B469;width:400px;'>
+<table cellpadding=4 cellspacing=4 border=0  width=400 valign='middle' align='center'>
+	<tr><td height=50><h5>{$lang->cmd_sms_auth_key} : </h5> </td><td><h5><strong><font id='authkeytext'></font><strong></h5></td></tr>
+	<tr><td height=30 align=center colspan=2><span class="button strong black"><input type="button" onclick="location.href='{getUrl('act','dispSmsAdminContents','module_srl','')}'" value='{$lang->join_sms_pcs_onclick}'></span></td></tr>
+
+</table>
+</div>
+
+<script type="text/javascript">
+	var js_member_sms_service	= '{$lang->member_sms_service}';
+	var js_member_sms_user_info	= '{$lang->member_sms_user_info}';
+	var js_member_sms_tail_text	= '{$lang->js_sms_tail_text}';
+	var js_userId_check_msg		= '{$lang->js_userId_check_msg}';
+</script>

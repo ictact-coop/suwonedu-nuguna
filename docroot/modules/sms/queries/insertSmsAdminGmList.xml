@@ -1,0 +1,12 @@
+<query id="insertSmsAdminGmList" action="insert">
+    <tables>
+        <table name="sms_gm_use" />
+    </tables>
+    <columns>
+       <column name="sms_srl" var="sms_srl" />
+	   <column name="bcode" var="bcode" />
+	   <column name="gcode" var="gcode" />
+	   <column name="userId" var="userid" />
+	   <column name="bcate" var="bcate" />
+    </columns>
+</query>

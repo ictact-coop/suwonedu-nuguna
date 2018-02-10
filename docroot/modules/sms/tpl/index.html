@@ -1,0 +1,131 @@
+<!--#include("./header.html")-->
+ <!--  Prototype Window Class Part -->
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+<!--%import("js/windows_js/javascripts/effects.js")-->
+<!--%import("js/windows_js/javascripts/window.js")-->
+<!--%import("js/windows_js/javascripts/windownew.js")-->
+<!--%import("js/windows_js/javascripts/window_effects.js")-->
+<!--%import("js/windows_js/themes/default.css")-->
+<!--%import("js/windows_js/themes/alphacube.css")-->
+<!--%import("js/sms_admin.js")-->
+
+	
+
+<!-- 정보 -->
+<div>
+    <table cellpadding=0 cellspacing=0 border=0>
+	<tr>
+		<Td colspan="2">
+		<!-- 검색 -->
+		<table cellspacing="0" cellpadding=0 border=0 >
+		<form action="./" method="get" name="adminSearch">
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+		<tr>
+			<th width=120 align="right" style="background-color:#f8f8f8;padding-right:4px;"> <strong>{$lang->cmd_sms_board_search}</strong></th>
+			<td align=left style="padding-left:5px;">
+			<select name='search'>
+				<option value='searchMid' <!--@if($search == 'searchMid')-->selected<!--@end-->>{$lang->mid}</option>
+				<option value='searchBrowser' <!--@if($search == 'searchBrowser')-->selected<!--@end-->>{$lang->browser_title}</option>
+			</select>
+
+			<input type='text' value='{$string}' name='string' id='string' class="inputTypeText w200">
+			<span class="button  strong black"><input type='submit' value='{$lang->cmd_search}'></span>
+			</td>
+		</tr>
+		</form>
+		</table>
+		<!--검색 끝-->
+
+		</td>
+	</tr>
+	<form name='serForm'>
+	<Tr>
+		<td width="450">
+		<strong>Total</strong> <em>{number_format($total_count)}</em>, Page <strong>{number_format($page)}</strong>/{number_format($total_page)}
+		</tD>
+		<td align="right" width='45%'><font color='#006699'><strong>{$lang->cmd_sms_remain_point} : <span id='view_sms_point'>{$point}</span> {$lang->cmd_sms_gun}</strong></font> <span class="button strong green"><input type="button"  value="{$lang->cmd_sms_update_point}"  onclick="popWindow.payPoint('{$user_id}','{$auth_key}',current_url);"/></span>
+		<span class="button  strong blue"><input type='button' value='{$lang->cmd_point_sync}' onclick="server_sync();"></span>
+		</td>
+	</tr>
+	</form>
+	</table>
+</div>
+	
+<!-- 목록 -->
+<table cellspacing="0" class="rowTable">
+<thead>
+    <form action="./" method="get" name="searchList">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<tr>
+        <th scope="col"><div>{$lang->cmd_sms_number}</div></th>
+        <th scope="col"><div>{$lang->cmd_sms_use}		<span>
+		<select name='buse' id='buse' onchange="document.searchList.submit()">
+		<option value='all' <!--@if($buse == 'all')-->selected<!--@end-->>{$lang->cmd_sms_use_all}</option>
+		<option value='yes' <!--@if($buse == 'yes')-->selected<!--@end-->>{$lang->cmd_sms_use_yes}</option>
+		</select>
+		</span>
+		</div>
+		</th>
+        <th scope="col" class="half_wide">
+		<div>{$lang->mid} <strong>/</strong> {$lang->browser_title}</div>
+		
+		</th>
+        <th scope="col"><div>{$lang->cmd_sms_rdate}</div></th>
+        <th scope="col" class="half_wide"><div>{$lang->cmd_sms_static_board}</div></th>
+		 <th scope="col" class="half_wide"><div>{$lang->cmd_sms_addr_direct_board}</div></th>
+       
+	   <th scope="col" colspan="3"><div>&nbsp;</div></th>
+    </tr>
+	</form>
+</thead>
+<tbody>
+    <!--@foreach($list as $val)-->
+    <tr>
+        <td class="center number">{$val[no]}</td>
+        <td align='center'>
+		    <!--@if($val[buse]=='yes')-->
+				{$lang->cmd_sms_use_yes}
+			<!--@else-->
+               <font color='#FF0000'>{$lang->cmd_sms_use_no}</font>
+            <!--@end-->
+        </td>
+        <td><a href="{getSiteUrl($val[domain],'','mid',$val[mid])}" onclick="window.open(this.href); return false;">{htmlspecialchars($val[mid])} <strong>/</strong> {$val[browser_title]}</a></td>
+        <td>{zdate($val[regdate],"Y-m-d")}</td>
+		<td>&nbsp;
+		<!--@if($val[buse]=='yes')-->
+		<span class="button strong blue"><input type='button' onclick="location.href='{getUrl('act','dispSmsAdminStatis','module_srl',$val[module_srl],module_name,$val[mid])}'" value='view'/></span>
+		<!--@end-->
+		</td>
+        <td>&nbsp;
+		<!--@if($val[buse]=='yes')--> 
+		<span class="button strong blue"><input type='button' onclick="popWindow.init('{$val[module_srl]}',350,70,'view','button')" id='memberTotal_{$val[module_srl]}' name='memberTotal_{$val[module_srl]}' value="Member Total : {$val[addr_member_total]}"></span><input type='hidden' name='hiddenMemberTotal_{$val[module_srl]}' id='hiddenMemberTotal_{$val[module_srl]}' value='{$val[addr_member_total]}'>
+        <!--@end-->
+		</td>
+		<td>&nbsp;
+		<a href="javascript:alinkGo('dispBoardAdminBoardAdditionSetup','{$val[module_srl]}','sms');" class="buttonSet buttonSetting"><span>{$lang->cmd_setup}</span></a></td>
+		<td>&nbsp;
+		<!--@if($val[buse]=='yes')--> 
+		<a href="{getUrl('','module','sms','act','dispSmsAdminCopySetting','bcode',$val[module_srl],'btitle',$val[browser_title])}" onclick="popopen(this.href);return false;" class="buttonSet buttonCopy"><span>{$lang->cmd_copy}</span></a></td>
+		<!--@end-->
+		<td></td>
+    </tr>
+    <!--@end-->
+</tbody>
+</table>
+
+
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+    <a href="{getUrl('page','','module_srl','')}" class="prevEnd">{$lang->first_page}</a> 
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+        <!--@if($page == $page_no)-->
+            <strong>{$page_no}</strong> 
+        <!--@else-->
+            <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+        <!--@end-->
+    <!--@end-->
+    <a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="nextEnd">{$lang->last_page}</a>
+</div>

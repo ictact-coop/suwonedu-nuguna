@@ -1,0 +1,10 @@
+<filter name="delete_group_member_na" module="sms" act="deleteSmsAddress">
+    <form>
+        <node target="uid" required="true" />
+		<node target="bcode" required="true" />
+    </form>
+    <response callback_func="completeDelMember">
+		<tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

@@ -1,0 +1,31 @@
+<query id="updateSmsBoardSet" action="update">
+    <tables>
+        <table name="sms_board" />
+    </tables>
+    <columns>
+	<column name="buse" var="buse" /> 
+	<column name="bhead_use" var="bhead_use" /> 
+	<column name="bhead" var="bhead" /> 
+	<column name="bwrite_sms_use" var="bwrite_sms_use" /> 
+	<column name="bwrite_sms_modify_use" var="bwrite_sms_modify_use" /> 
+	<column name="bwrite_use" var="bwrite_use" /> 
+	<column name="bwrite" var="bwrite" /> 
+	<column name="breply_sms_use" var="breply_sms_use" /> 
+	<column name="breply_use" var="breply_use" /> 
+	<column name="breply" var="breply" /> 
+	<column name="bpcs" var="bpcs" /> 
+   	<column name="breply_sms_modify_use" var="breply_sms_modify_use" /> 
+ 	<column name="admin_use" var="admin_use" /> 
+	<column name="user_use" var="user_use" /> 
+	<column name="extraid" var="extraid" /> 
+	<column name="log_use" var="log_use" /> 
+	<column name="bpcs_use" var="bpcs_use" /> 
+	<column name="cate_use" var="cate_use" /> 
+	<column name="searchid_pcs" var="searchid_pcs" /> 
+	<column name="searchid_use" var="searchid_use" /> 
+  	<column name="bregdate" var="bregdate" /> 
+   </columns>
+   <conditions>
+       <condition operation="equal" column="bcode" var="bcode" />
+	</conditions>
+</query>

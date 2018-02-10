@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<grants />
+	<permissions>
+		<permission action="dispSmsAdminInsert" target="manager" />
+		<permission action="dispSmsAdminInfo" target="manager" />
+		<permission action="dispSmsAdminStatis" target="manager" />
+		<permission action="dispSmsAdminDomain" target="manager" />
+		<permission action="insertSmsAdminAddDomain" target="manager" />
+		<permission action="insertSmsAdminBoard" target="manager" />
+		<permission action="insertSmsAdminAddress" target="manager" />
+		<permission action="insertSmsAdminAllMemberSet" target="manager" />
+		<permission action="deleteSmsAdminAllMemberSet" target="manager" />
+		<permission action="sendSmsDirectPerbizSend" target="member" />
+		<permission action="dispSmsAdminMemberAddrSetting" target="manager" />
+		<permission action="dispSmsAdminGroupAddrSetting" target="manager" />
+		<permission action="checkIdSmsAdminResult" target="manager" />
+		<permission action="dispSmsAdminCopySetting" target="manager" />
+		<permission action="checkSmsAdminLogin" target="manager" />
+		<permission action="updateSmsAdminPointSync" target="manager" />
+	</permissions>
+	<actions>
+	   <action name="checkIdSmsAdminResult" type="controller" standalone="true" />
+	   <action name="dispSmsAdminContents" type="view" admin_index="true" standalone="true" />
+	   <action name="insertSmsAdminBoard" type="controller" standalone="true" />
+	   <action name="insertSmsAdminGmList" type="controller" standalone="true" />
+	   <action name="deleteSmsAdminGmList" type="controller" standalone="true" />
+	   <action name="insertSmsAdminAddress" type="controller" standalone="true" />
+	   <action name="insertSmsAdminAllMemberSet" type="controller" standalone="true" />
+	   <action name="deleteSmsAdminAllMemberSet" type="controller" standalone="true" />
+	   <action name="sendperbizSmsAdminResult" type="controller" standalone="true" />
+	   <action name="dispSmsAdminInfo" type="view" standalone="true" />
+	   <action name="dispSmsAdminStatis" type="view" standalone="true" />
+	   <action name="dispSmsAdminDomain" type="view" standalone="true" />
+	   <action name="selectSmsAdminGroupMember" type="view" standalone="true" />
+		<action name="updateSmsAdminGroupMember" type="controller" standalone="true" />
+	   <action name="dispSmsAdminMemberAddrGroupView" type="view" standalone="true" />
+	   <action name="dispSmsAdminGroupAddrSetting" type="view" standalone="true" />
+	   <action name="dispSmsAdminMemberAddrMemberView" type="view" standalone="true" />
+	   <action name="deleteSmsAdminGroupMember" type="controller" standalone="true" />
+	   <action name="dispSmsAdminMemberAddrSet" type="view" standalone="true" />
+	   <action name="deleteSmsAdminAddress" type="controller" standalone="true" />
+	   <action name="insertSmsMemberSet" type="controller" standalone="true" />
+	   <action name="dispSmsAdminMemberAddrSetting" type="view" standalone="true" />
+	   <action name="getSmsAdminGmUseList" type="view" standalone="true" />
+	   <action name="insertSmsAdminAddDomain" type="controller" standalone="true" />
+	   <action name="dispSmsAdminAdminModify" type="view" standalone="true" />
+	   <action name="updateSmsAdminSetting" type="controller" standalone="true" />
+	   <action name="dispSmsAdminDirectSend" type="view" standalone="true" />
+	   <action name="sendSmsDirectPerbizSend" type="controller" standalone="true" />
+	   <action name="requestPerbizServer" type="controller" standalone="true" />
+	   <action name="getSmsAdminReauthkey" type="controller" standalone="true" />
+	   <action name="dispSmsAdminCateInfo" type="view" standalone="true" />
+	   <action name="dispSmsAdminCopySetting" type="view" standalone="true" />
+	   <action name="updateSmsAdminCopySetting" type="controller" standalone="true" />
+	   <action name="checkSmsAdminLogin" type="controller" standalone="true" />
+	   <action name="updateSmsAdminPointSync" type="controller" standalone="true" />
+	   <action name="procSmsAdminCommonSetup" type="controller" standalone="true" />
+	   <action name="dispSmsMemberAddrSetting" type="view" standalone="true" />
+	   <action name="dispSmsGroupAddrSetting" type="view" standalone="true" />
+
+	   <action name="insertSmsAllMemberSet" type="controller" standalone="true" />
+	   <action name="deleteSmsAllMemberSet" type="controller" standalone="true" />
+	   <action name="insertSmsAddress" type="controller" standalone="true" />
+	   <action name="updateSmsGroupMember" type="controller" standalone="true" />
+	   <action name="deleteSmsGroupMember" type="controller" standalone="true" />
+	   <action name="deleteSmsAddress" type="controller" standalone="true" />
+	</actions>
+</module>

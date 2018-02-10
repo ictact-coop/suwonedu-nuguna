@@ -1,0 +1,25 @@
+<table name="sms_board">
+    <column name="sms_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="bcode" type="varchar" size="40" notnull="notnull" index="bcode" />
+    <column name="buse" type="varchar" size="4" notnull="notnull" index="buse" />
+	<column name="bhead_use" type="varchar" size="4" />
+	<column name="bhead" type="varchar" size="255" notnull="notnull" />
+	<column name="bwrite_sms_use" type="varchar" size="4" />
+	<column name="bwrite_sms_modify_use" type="varchar" size="4" />
+	<column name="bwrite_use" type="varchar" size="4" />
+	<column name="bwrite" type="varchar" size="255" notnull="notnull" />
+	<column name="breply_sms_use" type="varchar" size="4" />
+	<column name="breply_sms_modify_use" type="varchar" size="4" />
+	<column name="breply_use" type="varchar" size="4" />
+	<column name="breply" type="varchar" size="255" notnull="notnull" />
+	<column name="bpcs" type="varchar" size="14" notnull="notnull" />
+	<column name="admin_use" type="varchar" size="4" notnull="notnull" />
+	<column name="user_use" type="varchar" size="4" notnull="notnull" />
+	<column name="extraid" type="varchar" size="30" notnull="notnull" />
+	<column name="log_use" type="varchar" size="4" notnull="notnull" />
+	<column name="bpcs_use" type="varchar" size="4" notnull="notnull" />
+	<column name="cate_use" type="varchar" size="4" notnull="notnull" />
+	<column name="searchid_pcs" type="varchar" size="14" notnull="notnull" />
+	<column name="searchid_use" type="varchar" size="4" notnull="notnull" />
+	<column name="bregdate" type="date" notnull="notnull" />
+</table>

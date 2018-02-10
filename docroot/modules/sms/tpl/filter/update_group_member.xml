@@ -1,0 +1,12 @@
+<filter name="update_group_member" module="sms" act="updateSmsAdminGroupMember">
+    <form>
+        <node target="userid" required="true" />
+        <node target="mode" required="true" />
+        <node target="bcode" required="true" />
+        <node target="gcode" required="true" />
+   </form>
+    <response callback_func="completeUpdGroupMember">
+		<tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

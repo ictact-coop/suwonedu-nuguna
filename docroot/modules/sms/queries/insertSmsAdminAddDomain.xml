@@ -1,0 +1,11 @@
+<query id="insertSmsAdminAddDomain" action="insert">
+    <tables>
+        <table name="sms_domain" />
+    </tables>
+    <columns>
+       <column name="sms_srl" var="sms_srl" />
+	   <column name="user_id" var="user_id" />
+	   <column name="add_domain" var="add_domain" />
+       <column name="regdate" var="regdate" />
+	</columns>
+</query>

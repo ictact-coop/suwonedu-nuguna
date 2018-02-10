@@ -1,0 +1,9 @@
+<filter name="banner_delete" module="bannermgm" act="procBannermgmAdminDelete" confirm_msg_code="confirm_delete">
+    <form>
+        <node target="bannermgm_srl" required="true" />
+    </form>
+    <response callback_func="completeDeleteBannermgm">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

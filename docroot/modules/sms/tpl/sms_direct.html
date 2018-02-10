@@ -1,0 +1,139 @@
+
+<!--#include("./header.html")-->
+ <!--  Prototype Window Class Part -->
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+<!--%import("js/windows_js/javascripts/effects.js")-->
+<!--%import("js/windows_js/javascripts/window.js")-->
+<!--%import("js/windows_js/javascripts/windownew.js")-->
+
+<!--%import("js/windows_js/javascripts/window_effects.js")-->
+
+<!--%import("js/windows_js/themes/default.css")-->
+<!--%import("js/windows_js/themes/alphacube.css")-->
+<!--%import("filter/send_sms_direct.xml")-->
+<!--%import("js/sms_admin.js")-->
+<!--%import("js/sms.lib.js")-->
+
+<!--// datepicker javascript plugin load -->
+<!--%load_js_plugin("ui.datepicker")-->
+<!--%load_js_plugin("filebox")-->
+<!-- 정보 -->
+
+<!--%import("css/sms_table.css")-->
+<div>
+	<table cellpadding="0" cellspacing="0" border="0">
+	<Tr>
+		<td width="75%">
+		</tD>
+		<td align="right" width='25%'><font color='#006699'><strong>{$lang->cmd_sms_remain_point} : {$point} {$lang->cmd_sms_gun}</strong></font> <span class="button strong green"><input type="button" value="{$lang->cmd_sms_update_point}"  onclick="popWindow.payPoint('{$user_id}','{$auth_key}','./?module=admin&act=dispSmsAdminDirectSend');"/></span></td>
+	</tr>
+	</table>
+</div>
+
+<table cellspacing="0" class="rowTable">
+	<tr valign='top'>
+		<th scope="row"><div>{$lang->cmd_sms_addr_direct}</div></th>
+		<td class="wide">
+			<span class="button strong  green"><input type="button" value="{$lang->cmd_sms_set_button}"  onclick="popWindow.init('direct',820,70);"/></span><input type='hidden' name='hiddenMemberTotal_direct' id='hiddenMemberTotal_direct' value='{$memberAmount}'> &nbsp;<strong>Member Total : <font color='#006699' id='memberTotal_direct'>{$memberAmount}</font></strong>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row"><div>{$lang->cmd_sms_head_text}</div></th>
+		<td  class="wide">
+			<label><input type="radio" name="bhead_use" value="yes" checked="checked" /> {$lang->cmd_sms_set_site}</label> <label><input type="radio" name="bhead_use" value="no" /> {$lang->cmd_sms_set_direct}</label>
+
+		</td>
+	</tr>
+	 <tr>
+		<th scope="row"><div>{$lang->cmd_sms_send_text}</div></th>
+		<td>
+			<div class="widgets smsxe">
+				<fieldset class="container">
+
+					<div class="bth_addressbook">
+						<a href="#"><span class="d">&lt;</span> 주소록 보기</a>
+					</div>
+
+					<div class="search_area">
+						<form action="./" method="post" id="fo_sms_widget_search" onsubmit="return false;">
+						<input type="hidden" name="bcode" value="direct" />
+							<input type="text" name="search" class="input_box" title="아이디/닉네임/이름" /><input type="submit" value="검색" class="btn_search" />
+						</form>
+					</div>
+
+					<form action="./" method="post" id="fo_sms_widget">
+						<input type="hidden" name="add_pcs_total" value="10" />
+						<input type="hidden" name="bcode" value="direct" />
+						<textarea name="send_content" class="content" disabled="disabled">[{$site_domain}]</textarea>
+
+						<div class="status">
+							<span class="status_byte">0</span>/<span class="limit_byte">80</span> Byte&nbsp;&nbsp;<span class="status_count">1</span>건
+						</div>
+
+						<div class="send_pcs_list">
+							<ul>
+								<li><span>0</span>1<input type="text" name="add_pcs_1" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>2<input type="text" name="add_pcs_2" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>3<input type="text" name="add_pcs_3" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>4<input type="text" name="add_pcs_4" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>5<input type="text" name="add_pcs_5" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>6<input type="text" name="add_pcs_6" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>7<input type="text" name="add_pcs_7" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>8<input type="text" name="add_pcs_8" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li><span>0</span>9<input type="text" name="add_pcs_9" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+								<li>10<input type="text" name="add_pcs_10" value="" maxlength="16" /><img src="./images/btn_delete.gif" class="btn_delete" alt="삭제" /></li>
+							</ul>
+						</div>
+
+						<div class="return_pcs">
+							<span>보내는 사람</span><input type="text" name="rec_pcs" value="{$sms_info->rec_pcs}" />
+						</div>
+
+						<div class="appoint" style="display:none;">
+							<div>
+								<label><input type="checkbox" name="appointment" value="yes" /> 예약 발송 사용</label>
+							</div>
+							<div class="close"><img src="./images/btn_delete.gif" alt="닫기" /></div>
+
+							<div id="appointment_div" style="display:none;">
+								<input type="hidden" name="send_appointment_time" id="send_appointment_time" value=""/>
+								<input type="hidden" name="appointment_day" id="appointment_day" value="" />
+								예약시간 : <input type="text" name="appointment_day" class="inputDate" value="" readonly="readonly" style="width:70px;" /> {$lang->cmd_sms_appoint_day}
+
+								<select name="appointment_hour">
+								<!--@for($i = 0; $i <= 23; $i++)-->
+									{@ $h = sprintf('%02d', $i)}
+									<option value="{$h}" <!--@if($module_config->sms_idle_time_eh == $h)-->selected="selected"<!--@end-->>{$h}</option>
+								<!--@end-->
+								</select> 시
+								<select name="appointment_min">
+								<!--@for($i = 0; $i <= 5; $i++)-->
+								{@ $m = sprintf('%02d', $i * 10)}
+									<option value="{$m}" <!--@if($module_config->sms_idle_time_em == $m)-->selected="selected"<!--@end-->>{$m}</option>
+								<!--@end-->
+								</select> 분
+							</div>
+						</div>
+
+						<div class="submit_area">
+							<input type="button" class="btn_appoint" value="예약발송" /><input type="submit" value="보내기" class="btn_submit" />
+						</div>
+					</form>
+
+				</fieldset>
+			</div>
+
+			<p>{$lang->cmd_sms_direct_msg}<br />#id# : {$lang->cmd_sms_user_id_msg}, #name# : {$lang->cmd_sms_user_name_msg}</p>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+var site_domain = '[{$site_domain}]';
+
+var lang_sms_confirm_direct = '{$lang->js_sms_confirm_direct}';
+var lang_require_sms_text   = '{$lang->js_sms_require_direct}';
+var js_add_pcs_msg			= '{$lang->js_add_pcs_msg}';
+var js_add_wrong_pcs_msg    = '{$lang->js_add_wrong_pcs_msg}';
+var lang_set_wrong_appoint_msg    = '{$lang->js_set_wrong_appoint_msg}';
+</script>

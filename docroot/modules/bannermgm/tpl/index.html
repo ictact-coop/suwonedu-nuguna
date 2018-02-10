@@ -1,0 +1,66 @@
+<!--%import("filter/banner_delete.xml")-->
+<!--%import("js/bannermgm_admin.js")-->
+<!--#include("./header.html")-->
+
+<!-- 삭제를 위한 임시 form -->
+<form id="fo_delete" action="./" method="get">
+    <input type="hidden" name="bannermgm_srl" value="" />
+</form>
+
+<!-- 정보 -->
+<div class="summary">
+    <strong>Total</strong> <em>{number_format($total_count)}</em>, Page <strong>{number_format($page)}</strong>/{number_format($total_page)}
+</div>
+
+<!-- 목록 -->
+<table cellspacing="0" class="rowTable">
+<thead>
+    <tr>
+        <th scope="col"><div>{$lang->no}</div></th>
+        <th scope="col" class="half_wide"><div>{$lang->banner_name}</div></th>
+        <th scope="col" class="half_wide"><div>{$lang->target_url}</div></th>
+        <th scope="col"><div>{$lang->regdate}</div></th>
+	<th scope="col"><div>{$lang->last_bannerupdate}</div></th>
+        <th scope="col" colspan="2"><div>&nbsp;</div></th>
+    </tr>
+</thead>
+<tbody>
+    <!--@foreach($bannermgm_list as $no => $val)-->
+    <tr>
+        <td class="center number">{$val->bannermgm_srl}</td>
+	<td>{htmlspecialchars($val->banner_name)}</td>
+        <td>{htmlspecialchars($val->link_url)}</td>		
+        <td>{zdate($val->regdate,"Y-m-d")}</td>
+		<td>
+			<!--@if($val->updatedate!=null && $val->updatedate > 0)-->
+				{zdate($val->updatedate,"Y-m-d")}
+			<!--@end-->
+		</td>
+        <td><a href="{getUrl('act','dispBannermgmAdminInfo','bannermgm_srl',$val->bannermgm_srl)}" class="buttonSet buttonSetting"><span>{$lang->cmd_setup}</span></a></td>
+        <td><a href="#" onClick="doDeleteBannermgm({$val->bannermgm_srl}); return false;" class="buttonSet buttonDelete"><span>{$lang->cmd_delete}</span></a></td>
+    </tr>
+    <!--@end-->
+</tbody>
+</table>
+
+
+<div class="clear">
+    <div class="fr">
+        <a href="{getUrl('act','dispBannermgmAdminInsert','bannermgm_srl','')}" class="button black strong"><span>{$lang->cmd_make}</span></a>
+    </div>
+</div>
+
+<!-- 페이지 네비게이션 -->
+<div class="pagination a1">
+    <a href="{getUrl('page','','module_srl','')}" class="prevEnd">{$lang->first_page}</a> 
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+        <!--@if($page == $page_no)-->
+            <strong>{$page_no}</strong> 
+        <!--@else-->
+            <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a> 
+        <!--@end-->
+    <!--@end-->
+    <a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="nextEnd">{$lang->last_page}</a>
+</div>
+
+

@@ -1,0 +1,10 @@
+<filter name="insert_add_domain" module="sms" act="insertSmsAdminAddDomain" confirm_msg_code="confirm_submit">
+    <form>
+	<node target="domain" required="true" />
+	</form>
+    <response callback_func="completeInsertSmsAddDomain">
+        <tag name="error" />
+        <tag name="message" />
+    </response>     
+</filter>
+

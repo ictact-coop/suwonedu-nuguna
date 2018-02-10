@@ -1,0 +1,7 @@
+<filter name="submit_reauthKey" module="sms" act="getSmsAdminReauthkey" confirm_msg_code="confirm_submit">
+     <form />
+	<response callback_func="completeReauthkey">
+        <tag name="message" />
+        <tag name="error" />
+	</response>
+</filter>

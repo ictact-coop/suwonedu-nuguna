@@ -1,0 +1,11 @@
+<query id="getBannermgmImagePath" action="select">
+    <tables>
+        <table name="bannermgm" />
+    </tables>
+    <columns>
+        <column name="bannermgm.image_path" />
+    </columns>
+    <navigation>
+        <index var="sort_index" default="image_path" order="asc" />
+    </navigation>
+</query>

@@ -1,0 +1,41 @@
+<load target="filter/send_mail.xml" />
+<load target="css/style.css" />
+<load target="js/script.js" />
+
+<h1 class="title">{$lang->mailing}</h1>
+<p class="info">{nl2br($lang->about_mailing)}</p>
+다양한 기능을 탑재한 유료버전 보러가기 -> <a href="http://www.xetemplate.com/zbxe/index.php?mid=store&item_srl=103157" target="_blank">[링크]</a>
+<form action="./" method="get" onsubmit="return procFilter(this, send_mail)">
+	<table cellspacing="0" border="0" class="admin_mailing">
+		<thead>
+			<tr>
+				<th>{$lang->sender_nickname}</th>
+				<td>
+					<input type="text" name="sender_nickname" value="{$logged_info->nick_name}" class="input_text" /> 
+				</td>
+			</tr>
+			<tr>
+				<th>{$lang->sender_email}</th>
+				<td>
+					<input type="text" name="sender_email" value="{$logged_info->email_address}" class="input_text" /> 
+				</td>
+			</tr>
+			<tr>
+				<th>{$lang->title}</th>
+				<td>
+					<input type="text" name="title" value="" class="input_text" /> 
+				</td>
+			</tr>
+			<tr>
+				<th>{$lang->content}</th>
+				<td>
+          <textarea name="content" class="input_textarea"></textarea>
+				</td>
+			</tr>
+		</thead> 
+	</table>
+
+	<div class="right">
+		<input type="submit" value="{$lang->sender}" accesskey="s" class="xet_btn medium white" />
+	</div>
+</form>

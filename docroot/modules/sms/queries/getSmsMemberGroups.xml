@@ -1,0 +1,17 @@
+<query id="getSmsMemberGroups" action="select">
+    <tables>
+        <table name="member_group_member" alias="b" />
+        <table name="sms_userlist" alias="a" />
+	</tables>
+
+    <columns>
+        <column name="b.group_srl" alias="group_srl" />
+    </columns>
+	<conditions>  
+		<condition operation="equal" column="a.gseq" default="b.group_srl" />
+		<condition operation="equal" column="a.bcode" var="module_srl"   pipe="and" />
+		<condition operation="equal" column="a.bsort" default="group"   pipe="and" />
+		<condition operation="equal" column="a.bcate" var="bcate"  pipe="and" />
+		<condition operation="equal" column="b.member_srl" var="member_srl" filter="number" notnull="notnull"  pipe="and" />
+    </conditions>
+</query>

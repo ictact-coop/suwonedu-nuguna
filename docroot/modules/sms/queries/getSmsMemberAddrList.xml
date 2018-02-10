@@ -1,0 +1,16 @@
+<query id="getSmsMemberAddrList" action="select">
+    <tables>
+        <table name="sms_userlist" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+       <condition operation="equal" column="bcode" var="module_srl" pipe="and" />
+      <condition operation="equal" column="bcate" var="bcate"  pipe="and" />
+      <condition operation="equal" column="bsort" default="user"  pipe="and" />
+      <condition operation="equal" column="useq" var="useq"  pipe="and" />
+	</conditions>
+</query>
+
+</query>

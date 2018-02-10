@@ -1,0 +1,12 @@
+<query id="putsSmsLogInfo" action="insert">
+<tables>
+	<table name="sms_error_static" />
+</tables>
+<columns>
+	<column name="sms_srl" var="sms_srl" />
+	<column name="sms_domain" var="sms_domain" />
+	<column name="bcode" var="bcode" />
+	<column name="err_code" var="err_code" />
+	<column name="regdate" var="regdate" />
+</columns>
+</query>

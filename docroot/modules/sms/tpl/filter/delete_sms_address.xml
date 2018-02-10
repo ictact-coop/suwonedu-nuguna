@@ -1,0 +1,12 @@
+<filter name="delete_sms_address" module="sms" act="deleteSmsAdminAddress">
+    <form>
+        <node target="bcode" required="true" />
+        <node target="bsort" required="true" />
+        <node target="uid" required="true" />
+    
+	</form>
+    <response callback_func="completeSmsDelAddress">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

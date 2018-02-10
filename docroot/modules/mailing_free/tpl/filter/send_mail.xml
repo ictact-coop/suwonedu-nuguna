@@ -1,0 +1,12 @@
+<filter name="send_mail" module="mailing_free" act="procMailing_freeAdminSendMail">
+    <form>
+	    <node target="s_n" required="true"  maxlength="250" />
+	    <node target="s_e" required="true"  maxlength="250" />
+	    <node target="title" required="true" minlength="1" maxlength="250" />
+	    <node target="content" required="true" maxlength="10000" />
+    </form>
+    <response callback_func="completeSend">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

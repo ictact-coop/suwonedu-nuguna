@@ -1,0 +1,16 @@
+
+<h3 class="xeAdmin">{$lang->bannermgm} <span class="gray">{$lang->cmd_management}</span></h3>
+
+<div class="infoText">{nl2br($lang->about_bannermgm)}</div>
+
+<!--@if($module_info)-->
+<div class="header4">
+
+    <ul class="localNavigation">
+        <li <!--@if($act=='dispBannermgmAdminContent')-->class="on"<!--@end-->><a href="{getUrl('act','dispBannermgmAdminContent','module_srl','')}">{$lang->cmd_bannermgm_list}</a></li>
+        <li <!--@if($act=='dispBannermgmAdminInfo'||$act=='dispBannermgmAdminInsert')-->class="on"<!--@end-->><a href="{getUrl('act','dispBannermgmAdminInfo')}"><!--@if($bannermgm_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_bannermgm}<!--@end--></a></li>
+
+    </ul>
+</div>
+<!--@end-->
+

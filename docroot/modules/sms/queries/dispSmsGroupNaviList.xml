@@ -1,0 +1,18 @@
+<query id="dispSmsGroupNaviList" action="select">
+     <tables>
+        <table name="member_group" />
+	</tables>
+    <columns>
+        <column name="*" />
+    </columns>
+	<conditions>
+	 <condition operation="less" column="site_srl" default="1" />
+	 <condition operation="equal" column="title" var="group" pipe="and" />
+	</conditions>
+	<navigation>
+        <index var="sort_index" default="group_srl" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

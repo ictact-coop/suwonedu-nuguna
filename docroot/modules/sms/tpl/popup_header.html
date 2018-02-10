@@ -1,0 +1,71 @@
+<!--%import("js/windows_js/javascripts/prototype.js")-->
+<script type="text/javascript">
+	var lang_set_addrset_msg= '{$lang->js_set_addrset_msg}';
+	var lang_set_ok_msg		= '{$lang->js_set_ok_msg}';
+	var lang_set_direct_msg = '{$lang->js_set_direct_msg}';
+	var lang_set_pcs_msg	= '{$lang->js_set_pcs_msg}';
+	var lang_set_date_msg	= '{$lang->js_set_date_msg}';
+	var lang_set_hour_msg	= '{$lang->js_set_hour_msg}';
+	var lang_set_min_msg	= '{$lang->js_set_min_msg}';
+	var lang_set_hours_msg	= '{$lang->js_set_hours_msg}';
+	var lang_set_tail_input_msg	  = ' {$lang->js_set_tail_input_msg}';
+	var lang_set_tail_number_msg  = ' {$lang->js_set_tail_number_msg}';
+	
+	var lang_set_wrong_hour_msg   = '{$lang->js_set_wrong_hour_msg}';
+	var lang_set_wrong_min_msg    = '{$lang->js_set_wrong_min_msg}';
+	var lang_set_wrong_appoint_msg= '{$lang->js_set_wrong_appoint_msg}';
+
+
+	var lang_set_wrong_hour_msg		= '{$lang->js_set_wrong_hour_msg}';
+	var lang_set_wrong_min_msg		= '{$lang->js_set_wrong_min_msg}';
+	var lang_set_wrong_appoint_msg  = '{$lang->js_set_wrong_appoint_msg}';
+	var lang_sms_del_msg			= '{$lang->cmd_sms_del_msg}';
+	var lang_sms_add_pcs			= '{$lang->js_sms_add_pcs}';
+	var lang_sms_differ_pass		= '{$lang->js_sms_differ_pass}';
+	var lang_sms_choice_object		= '{$lang->js_sms_choice_object}';
+	var lang_sms_fail_del			= '{$lang->js_sms_fail_del}';
+	var lang_sms_do_send			= '{$lang->js_sms_do_send}';
+	var lang_sms_donot_send			= '{$lang->js_sms_donot_send}';
+	var lang_sms_set				= '{$lang->js_sms_set}';
+	var lang_sms_msg				= '{$lang->js_sms_msg}';
+
+	var lang_f206_msg     = '{$lang->js_f206_msg}';
+	var lang_f207_msg     = '{$lang->js_f207_msg}';
+
+	var lang_f213_msg     = '{$lang->js_f213_msg}';
+
+	var lang_f227_msg     = '{$lang->js_f227_msg}';
+	var lang_f237_msg     = '{$lang->js_f237_msg}';
+	var lang_f273_msg     = '{$lang->js_f273_msg}';
+	var lang_f274_msg     = '{$lang->js_f274_msg}';
+	var lang_f247_msg     = '{$lang->js_f247_msg}';
+	var lang_f246_msg     = '{$lang->js_f246_msg}';
+
+	var lang_c5_msg     = '{$lang->js_c5_msg}';
+	var lang_c7_msg     = '{$lang->js_c7_msg}';
+	var lang_c3_msg     = '{$lang->js_c3_msg}';
+
+</script>
+
+
+<style type="text/css">
+body{
+scrollbar-face-color: #FFFFFF; 
+scrollbar-shadow-color: #FDB402; 
+scrollbar-highlight-color: #FFFFFF; 
+scrollbar-3dlight-color: #FDB402; 
+scrollbar-darkshadow-color: #FFFFFF; 
+scrollbar-track-color:#FFFFFF; 
+scrollbar-arrow-color: #FDB402 
+}
+</style>
+
+<body style='width:470px;' >
+<h4 class="xeAdmin" style='padding-left:20px;'>{$lang->cmd_sms_addr_set}</h4>
+<div class="header4" style='width:455px;'>
+    <ul class="localNavigation">
+        <li <!--@if($act=='dispSmsAdminMemberAddrSet' || $act=='dispSmsAdminMemberAddrGroupView' || $act=='dispSmsAdminMemberAddrMemberView')-->class="on"<!--@end-->><a href="{getUrl('act','dispSmsAdminMemberAddrSet','admin_send',$admin_send,'bcate',$bcate)}">{$lang->cmd_sms_addr_view}</a></li>
+		<li <!--@if($act=='dispSmsAdminMemberAddrSetting')-->class="on"<!--@end-->><a href="{getUrl('act','dispSmsAdminMemberAddrSetting','admin_send',$admin_send,'bcate',$bcate)}">{$lang->cmd_sms_addr_add}</a></li>
+
+    </ul>
+</div>

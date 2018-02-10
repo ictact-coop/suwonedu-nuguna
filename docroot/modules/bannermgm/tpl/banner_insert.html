@@ -1,0 +1,56 @@
+<!--%import("filter/banner_insert.xml")-->
+<!--%import("js/bannermgm_admin.js")-->
+
+<!--#include("header.html")-->
+
+
+<form id="fo_banner" action="./" method="post" onsubmit="return procFilter(this, banner_insert)" class="clear" target="tmp_upload_iframe" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="bannermgm" />
+	<input type="hidden" name="act" value="" />
+	<input type="hidden" name="target" value="" />
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="bannermgm_srl" value="{$bannermgm_srl}" />
+	<input type="hidden" name="image_path" value="" />
+	
+	<table cellspacing="0" class="rowTable">
+		<tr>
+			<th scope="row"><div>{$lang->bannername}</div></th>
+			<td>
+				<input type="text" name="banner_name" value="{htmlspecialchars($banner_name)}" class="inputTypeText w200" />
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->linkurl}</div></th>
+			<td>
+				<input type="text" name="link_url" value="{$link_url}" class="inputTypeText w300" />
+			</td>
+		</tr>	
+		<tr>
+			<th scope="row"><div>{$lang->file_upload}</div></th>
+			<td>
+				<input type="file" name="banner_file" value="{$file_name}" onchange="doUploadBannerImage(this); return false;" />
+			</td>
+		</tr>
+		<tr>
+		</tr>
+			<th scope="row"><div>{$lang->preview}</div></th>
+			<td>
+				<!--@if($image_path == "")-->
+					{@$zone_style = "style='display:none;'";}
+				<!--@else-->
+					{@$zone_style = "style='display:block;'";}
+				<!--@end-->
+				<div id="banner_file_zone" {$zone_style}>
+					<img id="banner_file_img" src="{$image_path}" />
+				</div>
+			</td>	
+		<tr>
+			<th colspan="2" class="button">
+				<span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+				<span class="button"><input type="button" value="{$lang->cmd_back}" onclick="history.back(); return false;" /></span>
+			</th>
+		</tr>
+	</table>
+</form>
+
+<iframe id='tmp_upload_iframe' name='tmp_upload_iframe' style='display:none;width:1px;height:1px;position:absolute;top:-10px;left:-10px'></iframe>

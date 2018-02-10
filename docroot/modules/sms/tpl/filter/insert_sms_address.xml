@@ -1,0 +1,12 @@
+<filter name="insert_sms_address" module="sms" act="insertSmsAdminAddress">
+    <form>
+        <node target="bcode" required="true" />
+        <node target="bsort" required="true" />
+        <node target="uid" required="true" />
+    
+	</form>
+    <response callback_func="completeSmsAddress">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

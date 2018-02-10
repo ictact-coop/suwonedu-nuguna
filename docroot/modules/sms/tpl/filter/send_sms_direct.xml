@@ -1,0 +1,13 @@
+<filter name="send_sms_direct" module="sms" act="sendSmsDirectPerbizSend">
+    <form>
+        <node target="bcode" default="direct" required="true" />
+      	<node target="bpcs1" required="true" />
+		<node target="bpcs2" required="true" />
+		<node target="bpcs3" required="true" />
+		<node target="send_content" required="true" />
+   </form>
+    <response callback_func="completeSmsDirect">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

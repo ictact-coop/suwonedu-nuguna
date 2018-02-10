@@ -1,0 +1,13 @@
+<table name="sms_site">
+    <column name="sms_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="site_domain" type="varchar" size="50" notnull="notnull" index="site_domain" />
+    <column name="site_lisence" type="varchar" size="20" />
+	<column name="site_id" type="varchar" size="30" notnull="notnull" />
+	<column name="authkey" type="varchar" size="50" notnull="notnull" />
+	<column name="pcs" type="varchar" size="15" />
+	<column name="pcsfield" type="varchar" size="40" />
+	<column name="point" type="number" size="11" />
+	<column name="user_pcs" type="varchar" size="15" />
+	<column name="regdate" type="date" notnull="notnull" />
+</table>
+

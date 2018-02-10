@@ -1,0 +1,237 @@
+<!--#include("./header.html")-->
+<!--%import("filter/update_sms_setting.xml")-->
+<!--%import("filter/insert_add_domain.xml")-->
+<!--%import("filter/submit_reauthKey.xml")-->
+<!--%import("filter/common_setup.xml")-->
+<!--%import("js/signup_check.js")-->
+
+<h4 class="xeAdmin">{$lang->cmd_sms_menu_default}</h4>
+<form id="setForm" method="post" onsubmit="return procFilter(this,update_sms_setting)">
+<table cellspacing="0" class="rowTable">
+<tr>
+    <th><div>{$lang->cmd_sms_default_pcs}</div></th>
+    <td class="wide">
+        <input type="text" name="user_pcs1" value="{$user_pcs1}" size="4" class="inputTypeText"/>
+        <input type="text" name="user_pcs2" value="{$user_pcs2}" size="4" class="inputTypeText" />
+        <input type="text" name="user_pcs3" value="{$user_pcs3}" size="4" class="inputTypeText"/>
+        <p>{$lang->cmd_sms_pcs_fmsg}</p>
+    </td>
+</tr>
+<tr>
+    <th><div>{$lang->cmd_sms_set_pcs}</div></th>
+    <td>
+        <!--@foreach($pcs_list as $val)-->
+        <!--@if($val[is_active] == 'Y')-->
+        <input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText" <!--@if($pcsfield==$val[column_name])-->checked<!--@end-->/>
+        {$val[column_title]}
+        &nbsp;&nbsp;
+        <!--@else-->
+        <input type="radio" name="pcsfield" value="{$val[column_name]}" size="4" class="inputTypeText" disabled="disabled" <!--@if($pcsfield==$val[column_name])-->checked<!--@end--> />
+        {$val[column_title] <span style="color:#990000;">{$lang->cmd_sms_nonact}</span>
+        <!--@endif-->
+        <!--@endforeach-->
+        <p>{$lang->cmd_sms_set_xepcs}</p>
+    </td>
+</tr>
+<tr>
+    <th class="button" colspan="2">
+        <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+    </th>
+</tr>
+</table>
+</form>
+
+
+<h4 class="xeAdmin">{$lang->setup_option}</h4>
+<form id="common_setup" action="./" method="post" onsubmit="return checkCommonSetup(this);">
+<table cellspacing="0" class="rowTable">
+<caption>{$lang->join_sms_send}</caption>
+<tr>
+    <th><div>{$lang->join_sms_send}</div></th>
+    <td class="wide">
+        <label><input type="checkbox" name="join_sms_admin" value="Y" <!--@if($module_config->join_sms_admin == 'Y')-->checked="checked"<!--@end--> /> {$lang->join_sms_send_admin}</label>
+        <label><input type="checkbox" name="join_sms_member" value="Y" <!--@if($module_config->join_sms_member == 'Y')-->checked="checked"<!--@end--> /> {$lang->join_sms_send_member}</label>
+    </td>
+</tr>
+<tr id="insertmember_sms_head" <!--@if($module_config->join_sms_admin != 'Y' && $module_config->join_sms_member != 'Y')-->style="display:none;"<!--@end-->>
+    <th><div>{$lang->cmd_sms_head_text}</div></th>
+    <td>
+        <label><input type="radio" name="join_head_use" value="Y" <!--@if($module_config->join_head_use == 'Y')-->checked="checked"<!--@endif--> /> {$lang->cmd_sms_set_site}</label> <label><input type="radio" name="join_head_use" value="N" <!--@if($module_config->join_head_use == 'N')-->checked="checked"<!--@endif--> />{$lang->cmd_sms_set_direct}</label>
+    </td>
+</tr>
+<tr id="insertmember_sms_admin" <!--@if($module_config->join_sms_admin != 'Y')-->style="display:none;"<!--@end-->>
+    <th><div>{$lang->join_sms_admin_text}</div></th>
+    <td>
+        <input type="text" name="join_sms_admin_text" value="{$module_config->join_sms_admin_text}" class="inputTypeText w400" />
+        <p>{$lang->join_sms_admin_about}</p>
+    </td>
+</tr>
+<tr id="insertmember_sms_member" <!--@if($module_config->join_sms_member != 'Y')-->style="display:none;"<!--@end-->>
+    <th><div>{$lang->join_sms_member_text}</div></th>
+    <td>
+        <input type="text" name="join_sms_member_text" value="{$module_config->join_sms_member_text}" class="inputTypeText w400" />
+        <p>{$lang->join_sms_admin_about}</p>
+    </td>
+</tr>
+</table>
+
+<table cellspacing="0" class="rowTable">
+<caption>{$lang->setup_sms_remain_alert}</caption>
+<tr>
+    <th><div>{$lang->setup_sms_remain_alert}</div></th>
+    <td class="wide">
+        <label><input type="checkbox" name="sms_remain_alert_use" value="Y" <!--@if($module_config->sms_remain_alert_use == 'Y')-->checked="checked"<!--@end--> /> {$lang->setup_sms_remain_alert_use}</label>
+    </td>
+</tr>
+<tr id="area_sms_remain_alert" <!--@if($module_config->sms_remain_alert_use != 'Y')-->style="display:none;"<!--@end-->>
+    <th><div>{$lang->setup_sms_remain_alert_setup}</div></th>
+    <td>
+        <input type="text" name="sms_remain_alert_chk" value="{implode(',', $module_config->sms_remain_alert_chk)}" class="inputTextType w200" /> {$lang->setup_sms_remain_alert_item}
+        <p>{$lang->setup_sms_remain_alert_item_about}</p>
+    </td>
+</table>
+
+
+<table cellspacing="0" class="rowTable">
+<caption>{$lang->setup_sms_idle_setup}</caption>
+<tr>
+	<th><div>{$lang->setup_use_sms_idle}</div></th>
+	<td class="wide">
+		<label><input type="checkbox" name="use_sms_idle" value="Y" <!--@if($module_config->use_sms_idle == 'Y')-->checked="checked"<!--@end--> /> {$lang->setup_use_sms_idle}</label>
+	</td>
+</tr>
+<tr id="area_sms_idle" <!--@if($module_config->use_sms_idle != 'Y')-->style="display:none;"<!--@end-->>
+	<th><div>{$lang->setup_sms_idle_time}</div></th>
+	<td class="wide">
+		<select name="sms_idle_time_sh">
+		<!--@for($i = 0; $i <= 23; $i++)-->
+			{@ $h = sprintf('%02d', $i)}
+			<option value="{$h}" <!--@if($module_config->sms_idle_time_sh == $h)-->selected="selected"<!--@end-->>{$h}</option>
+		<!--@end-->
+		</select> {$lang->cmd_sms_appoint_hour}
+		<select name="sms_idle_time_sm">
+		<!--@for($i = 0; $i <= 5; $i++)-->
+		{@ $m = sprintf('%02d', $i * 10)}
+			<option value="{$m}" <!--@if($module_config->sms_idle_time_sm == $m)-->selected="selected"<!--@end-->>{$m}</option>
+		<!--@end-->
+		</select> {$lang->cmd_sms_appoint_min} ~
+
+
+		<select name="sms_idle_time_eh">
+		<!--@for($i = 0; $i <= 23; $i++)-->
+			{@ $h = sprintf('%02d', $i)}
+			<option value="{$h}" <!--@if($module_config->sms_idle_time_eh == $h)-->selected="selected"<!--@end-->>{$h}</option>
+		<!--@end-->
+		</select> {$lang->cmd_sms_appoint_hour}
+		<select name="sms_idle_time_em">
+		<!--@for($i = 0; $i <= 5; $i++)-->
+		{@ $m = sprintf('%02d', $i * 10)}
+			<option value="{$m}" <!--@if($module_config->sms_idle_time_em == $m)-->selected="selected"<!--@end-->>{$m}</option>
+		<!--@end-->
+		</select> {$lang->cmd_sms_appoint_min}
+		<p>{$lang->setup_sms_idle_time_about}</p>
+	</td>
+</tr>
+</table>
+
+<table cellspacing="0" class="rowTable">
+<caption>위젯 설정</caption>
+<tr>
+	<th><div>주소록 사용 권한</div></th>
+	<td class="wide">
+		<!--@foreach($group_list as $group_srl => $group_item)-->
+		<label><input type="checkbox" class="checkbox" name="permit_addressbook" value="{$group_srl}" <!--@if(in_array($group_srl, $module_config->permit_addressbook) || $group_item->is_admin=='Y')-->checked="checked"<!--@end--> /> 
+		{$group_item->title}</label>
+		<!--@end-->
+	</td>
+</tr>
+</table>
+
+<div class="button tRight">
+    <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+</div>
+</form>
+
+
+<h4 class="xeAdmin">{$lang->cmd_sms_menu_domain}</h4>
+<form id="perbiz_member" method="post" onsubmit="return sms_domain_check(this);">
+<table cellspacing="0" class="rowTable">
+<tr>
+    <th><div>{$lang->user_id}</div></th>
+    <td class="wide">{$authId}</td>
+</tr>
+<tr>
+    <th><div>{$lang->cmd_sms_auth_key}</div></th>
+    <td>
+        <span id="auth_key_text">{$authKey}</span> &nbsp;<span class="button strong green"><input type="button" value="{$lang->cmd_set_reauthkey}" onclick="reauthkey_send(this)" /></span>
+    </td>
+</tr>
+<tr>
+    <th><div>{$lang->cmd_sms_domain}</div></th>
+    <td class="wide">
+        <input type="text" name="domain" value="" class="inputTypeText" />
+        <p>{$lang->cmd_sms_addDomain_msg}</p>
+    </td>
+</tr>
+<tr>
+    <th class="button" colspan="2">
+        <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+    </th>
+</tr>
+</table>
+</form>
+
+<!--// 도메인 목록 -->
+<h4 class="xeAdmin">{$lang->cmd_sms_domain} {$lang->cmd_sms_add_list}</h4>
+<div>
+    <strong>Total</strong> <em>{number_format($total_count)}</em>, Page <strong>{number_format($page)}</strong>/{number_format($total_page)}
+</div>
+<table cellspacing="0" class="rowTable">
+<thead>
+    <tr>
+        <th scope="col"><div>{$lang->cmd_sms_number}</div></th>
+        <th scope="col" class="half_wide"><div>{$lang->cmd_sms_domain}</div></th>
+        <th scope="col"><div>{$lang->cmd_sms_rdate}</div></th>
+        <th scope="col" colspan="3"><div>&nbsp;</div></th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td class="tCenter number">1</td>
+        <td class="tCenter">{$site_domain} </td>
+        <td>{$auth_date}</td>
+        <td></td>
+        <td></td>
+        <td class="tCenter">{$lang->default_domain}</td>
+    </tr>
+    <!--@foreach($list as $no => $val)-->
+    <tr>
+        <td class="tCenter number">{$no+1}</td>
+        <td class="tCenter">{$val->add_domain} </td>
+        <td>{$val->regdate}</td>
+        <td></td>
+        <td></td>
+        <td class="tCenter"><a href="javascript:if(confirm('{$lang->cmd_sms_del_msg}'))location.href='./?module=admin&act=dispSmsAdminAdminModify&delMode=delete&del_domain={$val->add_domain}';" class="buttonSet buttonDelete"><span>{$lang->cmd_delete}</span></a></td>
+    </tr>
+    <!--@end-->
+</tbody>
+</table>
+
+
+<!--// 페이지 네비게이션 -->
+<div class="pagination a1">
+    <a href="{getUrl('page','','module_srl','')}" class="prevEnd">{$lang->first_page}</a>
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+        <!--@if($page == $page_no)-->
+            <strong>{$page_no}</strong>
+        <!--@else-->
+            <a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a>
+        <!--@end-->
+    <!--@end-->
+    <a href="{getUrl('page',$page_navigation->last_page,'module_srl','')}" class="nextEnd">{$lang->last_page}</a>
+</div>
+
+
+<script type="text/javascript">
+var site_domain = '[{$site_domain}]';
+</script>

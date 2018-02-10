@@ -1,0 +1,9 @@
+<query id="deleteSmsAdminAddDomain" action="delete">
+    <tables>
+        <table name="sms_domain" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="user_id" var="user_id" pipe="and" />
+        <condition operation="equal" column="add_domain" var="add_domain" pipe="and" />
+	</conditions>
+</query>
