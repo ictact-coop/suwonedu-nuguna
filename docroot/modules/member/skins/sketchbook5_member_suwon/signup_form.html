@@ -10,7 +10,7 @@
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
 	</div>
     
-    <form ruleset="@insertMember" id="fo_insert_member" class="form" action="./" method="post" enctype="multipart/form-data">
+    <form ruleset="@insertMember" id="fo_insert_member" name="signupForm" class="form" action="./" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="act" value="procMemberInsert" />
 		<div class="agreement" cond="$member_config->agreement">
 			<div class="text">111
@@ -26,8 +26,19 @@
 			<tr>
 				<th scope="row" id="signup_th">이메일(아이디) <em style="color:red">*</em></th>
 				<td id="signup">
-					<input type="text" name="{$identifierForm->name}" value="{$identifierForm->value}"/>
-                    &nbsp; 비밀번호 분실 시 확인메일 전송用 (※ 다음(daum)·한메일(hanmail) 사용 불가)
+					<input name="email1" id="email1" type="text"> @ 
+					<input name="email2" id="email2" type="text">
+					<select name="emailSelect" id="emailSelect" onChange="checkemailaddy();">
+						<option value="" selected>선택하세요</option>
+						<option value="naver.com">naver.com</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="nate.com">nate.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="1">직접입력</option>
+					</select>
+					<input type="hidden" name="{$identifierForm->name}" id="email" value="dev@mozo.kr"/>
+					<!-- <input type="hidden" name="{$identifierForm->name}" id="email" value="{$identifierForm->value}"/> -->
 				</td>
 			</tr>
 			<tr>
@@ -40,19 +51,19 @@
 					<input type="password" name="password2" value=""/>
 				</td>
 			</tr>
-			            <tr>
+			<tr>
             	<th scope="row" id="signup_th">비밀번호 찾기 질문 <em style="color:red">*</em></th>
                 <td id="signup">
                 	<select name="find_account_question" id="find_account_question" style="margin-right:20px;">
-                    <option value="1"  >다른 이메일 주소는?</option>
-                    <option value="2"  >나의 보물 1호는?</option>
-                    <option value="3"  >나의 출신 초등학교는?</option>
-                    <option value="4"  >나의 출신 고향은?</option>
-                    <option value="5"  >나의 이상형은?</option>
-                    <option value="6"  >어머니 성함은?</option>
-                    <option value="7"  >아버지 성함은?</option>
-                    <option value="8"  >가장 좋아하는 색깔은?</option>
-                    <option value="9"  >가장 좋아하는 음식은?</option>
+                    <option value="1">다른 이메일 주소는?</option>
+                    <option value="2">나의 보물 1호는?</option>
+                    <option value="3">나의 출신 초등학교는?</option>
+                    <option value="4">나의 출신 고향은?</option>
+                    <option value="5">나의 이상형은?</option>
+                    <option value="6">어머니 성함은?</option>
+                    <option value="7">아버지 성함은?</option>
+                    <option value="8">가장 좋아하는 색깔은?</option>
+                    <option value="9">가장 좋아하는 음식은?</option>
                     </select>
                      <span style="font-weight:bold; padding:5px;">답변</span> <input type="text" name="find_account_answer" id="find_account_answer" title="비밀번호 찾기 답변" value="" class="inputText long tall" /></td>
 			</tr>
@@ -83,8 +94,8 @@
            <tr>
             	<th scope="row" id="signup_th">문자수신 허용<em style="color:red">*</em></td>
                 <td id="signup" style="padding:10px 0;border-top:1px dashed #DDD;">
-					<input type="radio" name="mms" id="mailingYes" value="Y" checked="checked"|cond="$member_info->mms != 'N'"> <label for="mailingYes">{$lang->cmd_yes}</label>
-					<input type="radio" name="mms" id="mailingNo" value="N" checked="checked"|cond="$member_info->mms == 'N'" > <label for="mailingNo">{$lang->cmd_no}</label>
+					<input type="radio" name="mms" id="mmsYes" value="Y" checked="checked"|cond="$member_info->mms != 'N'"> <label for="mmsYes">{$lang->cmd_yes}</label>
+					<input type="radio" name="mms" id="mmsNo" value="N" checked="checked"|cond="$member_info->mms == 'N'" > <label for="mmsNo">{$lang->cmd_no}</label>
                     <span style="margin-top:10px; color:#999;">문자로 유용한 소식을 전달 받을 수 있습니다.</span>
 				</td>
 			</tr>
@@ -148,24 +159,41 @@
 			
 		</table>
 		<div class="btnArea">
-			<span class="btn"><input type="submit" value="{$lang->cmd_registration}" /></span>
+			<span class="btn"><input type="button" value="{$lang->cmd_registration}" onclick="submitForm()" /></span>
 			<span class="btn"><a href="{getUrl('act','','member_srl','')}">{$lang->cmd_cancel}</a></span>
 		</div>
 	</form>
 </div>
-	<script type="text/javascript">
-	(function($){
-		$(function(){
-			var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', dateFormat:'yy-mm-dd', onSelect:function(){
-	
-				$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
-			};
-			$.extend(option,$.datepicker.regional['{$lang_type}']);
-			$(".inputDate").datepicker(option);
-			$(".dateRemover").click(function() {
-				$(this).prevAll('input').val('');
-				return false;});
-		});
-	})(jQuery);
-	</script>
+<script type="text/javascript">
+(function($){
+	$(function(){
+		var option = { changeMonth: true, changeYear: true, gotoCurrent: false,yearRange:'-100:+10', dateFormat:'yy-mm-dd', onSelect:function(){
+			$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))}
+		};
+		$.extend(option,$.datepicker.regional['{$lang_type}']);
+		$(".inputDate").datepicker(option);
+		$(".dateRemover").click(function() {
+			$(this).prevAll('input').val('');
+			return false;});
+	});
+})(jQuery);
+
+function submitForm() {
+	var fullEmail = jQuery("#email1").val() +"@"+ jQuery("#email2").val();
+	jQuery("#email").val(fullEmail);
+	jQuery('#fo_insert_member').submit();
+}
+
+function checkemailaddy(){
+	if (signupForm.emailSelect.value == '1') {
+		signupForm.email2.readonly = false;
+		signupForm.email2.value = '';
+		signupForm.email2.focus();
+	}
+	else {
+		signupForm.email2.readonly = true;
+		signupForm.email2.value = signupForm.emailSelect.value;
+	}
+}
+</script>
 <include target="./common_footer.html" />
