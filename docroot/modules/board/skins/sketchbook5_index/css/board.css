@@ -678,7 +678,7 @@
 .bd_zine.zine .info{font-size:11px;line-height:1}
 .bd_zine.zine .info>span{display:inline-block;margin:7px 7px 0 0;padding-right:9px;border-right:1px solid #DDD;*display:inline;*zoom:1}
 .bd_zine.zine .info>span:last-of-type{border:0}
-.bd_zine.card>li{float:left;padding:9px;background:#FFF;border:1px solid #DDD;border-bottom-color:#BBB; }
+.bd_zine.card>li{float:left;padding:9px;background:#FFF;border:1px solid #DDD;border-bottom-color:#BBB; min-height:410px; }
 .bd_zine.card2>li{padding:10px;background:transparent;border:0;box-shadow:none}
 .bd_zine.card .hx,.bd_zine.card .notice a{border-style:solid}
 .bd_zine.card .tmb_wrp{width:100%}
