@@ -1,3 +1,11 @@
+{@
+	$excluded_tabs = array(
+		'dispMemberScrappedDocument', // 스크랩 보기
+		'dispCommunicationFriend', // 친구 보기
+		'dispCommunicationMessages' // 쪽지함 보기
+	);
+}
+
 <load target="js/member.js" />
 <load target="js/login.js" type="body" />
 <load target="css/member.css" />
@@ -5,7 +13,7 @@
 <div class="xm">
     <div class="nav" cond="$is_logged && $logged_info->menu_list && (!$member_srl || $member_srl == $logged_info->member_srl)">
 		<ul>
-			<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act">
+			<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act" cond="!in_array($key, $excluded_tabs)">
 				<a href="{getUrl('', 'act',$key, 'mid', $mid, 'vid', $vid)}"><span>{Context::getLang($val)}</span></a>
 			</li>
 		</ul>
