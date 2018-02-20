@@ -46,3 +46,29 @@ xe 깃헙 레포지토리를 upstream으로 잡아서 버전을 찍어 머지하
 일단 계약한거니 진행하자...ㅎ
 
 
+## 2018/02/21 - 메모
+
+원고 수정 #10
+
+```html
+
+## http://nuguna-dev.ictact.kr/index.php?mid=lec_infor
+
+<th class="xe_selected_cell">
+	<p style="line-height: 1.8;">
+		<strong><span style="color: rgb(255, 255, 255); font-size: 16px; background-color: rgb(255, 102, 0);">학습관에서 열리는</span></strong>
+		<br />
+		<span style="color: rgb(255, 255, 255); font-size: 16px; background-color: rgb(255, 102, 0);">누구나학교 만들기</span>
+	</p>
+</th>
+<th class="xe_selected_cell">
+	<p style="line-height: 1.8;">
+		<strong><span style="color: rgb(255, 255, 255); font-size: 16px; background-color: rgb(255, 102, 0);">어디서나 열리는</span></strong>
+		<br />
+		<span style="color: rgb(255, 255, 255); font-size: 16px; background-color: rgb(255, 102, 0);">누구나학교 만들기</span>
+	</p>
+</th>
+
+
+
+```
