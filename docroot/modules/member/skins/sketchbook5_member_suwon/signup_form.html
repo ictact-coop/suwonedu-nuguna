@@ -107,16 +107,6 @@
                     <span style="margin-top:10px; color:#999;">가입 시, 격주 발간되는 ‘평생학습웹진 와’ 구독 가능</span>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row" id="signup_th" style="padding-bottom:20px; border-bottom:1px solid #CCC;padding-top:10px;border-top:1px dashed #DDD;">{$lang->allow_message}<em style="color:red">*</em></th>
-				<td id="signup" style="padding-bottom:20px; border-bottom:1px solid #CCC; padding-top:10px;border-top:1px dashed #DDD;">
-					<block loop="$lang->allow_message_type=>$key,$val">
-						<input type="radio" name="allow_message" value="{$key}" checked="checked"|cond="$member_info->allow_message == $key || (!$member_info && $key == 'Y')" id="allow_{$key}" /> <label for="allow_{$key}">{$val}</label>
-					</block>
-                    <span style="margin-top:10px; color:#999;">쪽지로 실시간 답변,대화 가능 (강사 신청시 '모두허용' 필수)</span>
-				</td>
-			</tr>
-
             <tr>
             	<td colspan="2" style="padding:20px 0; border-bottom:1px solid #DDD;">
                 아래의 항목은 강사를 신청하실 분만 입력해주세요.
