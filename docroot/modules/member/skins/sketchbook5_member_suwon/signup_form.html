@@ -27,7 +27,7 @@
 				<th scope="row" id="signup_th">이메일(아이디) <em style="color:red">*</em></th>
 				<td id="signup">
 					<input name="email1" id="email1" type="text"> @ 
-					<input name="email2" id="email2" type="text">
+					<input name="email2" id="email2" type="text" style="visibility: hidden; position: absolute;">
 					<select name="emailSelect" id="emailSelect" onChange="checkemailaddy();">
 						<option value="" selected>선택하세요</option>
 						<option value="naver.com">naver.com</option>
@@ -176,11 +176,13 @@ function submitForm() {
 
 function checkemailaddy(){
 	if (signupForm.emailSelect.value == '1') {
+		signupForm.email2.setAttribute("style", "visibility: visible; position: relative");
 		signupForm.email2.readonly = false;
 		signupForm.email2.value = '';
 		signupForm.email2.focus();
 	}
 	else {
+		signupForm.email2.setAttribute("style", "visibility: hidden; position: absolute");
 		signupForm.email2.readonly = true;
 		signupForm.email2.value = signupForm.emailSelect.value;
 	}
