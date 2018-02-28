@@ -5,14 +5,14 @@
 	);
 }
 
-<load target="js/member.js" />
-<load target="js/login.js" type="body" />
-<load target="css/member.css" />
+<load target="css/communication.css" />
+<load target="../../../member/skins/sketchbook5_member_suwon/css/member.css" />
 <load cond="$layout_info->colorset=='black'" target="css/black.css" />
-<div class="xm">
+<load target="js/communication.js" />
+<div class="xc">
     <div class="nav" cond="$is_logged && $logged_info->menu_list && (!$member_srl || $member_srl == $logged_info->member_srl)">
 		<ul>
-			<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act" cond="!in_array($key, $excluded_tabs)">
+			<li loop="$logged_info->menu_list => $key,$val" class="active"|cond="$key==$act" cond="!in_array($key, $excluded_tabs)">
 				<a href="{getUrl('', 'act',$key, 'mid', $mid, 'vid', $vid)}">
 					<span cond="$key !== 'dispCommunicationMessages'">{Context::getLang($val)}</span>
 					<span cond="$key == 'dispCommunicationMessages'">댓글 알림</span>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+body{background:#191919;color:#DDD}
+a{color:#EEE}
+/* Element Reset */
+.xc,
+.xc table,
+.xc input,
+.xc textarea,
+.xc select,
+.xc button{font-family:Tahoma,Geneva,sans-serif;font-size:12px;color:#DDD}
+/* Lined Tab Navigation */
+.xc .nav li a{position:relative;float:left;text-decoration:none;border:1px solid #eee;border-bottom-color:#ccc;background:#131313;color:#DDD}
+/* Form */
+.xc .form em{font-style:normal;color:#FAA}
+.xc .form label.overlap{position:absolute;color:#777}
+.xc .form input[type=text][disabled=disabled],
+.xc .form input[type=password][disabled=disabled],
+.xc .form input[type=checkbox][disabled=disabled],
+.xc .form input[type=radio][disabled=disabled],
+.xc .form input[type=file][disabled=disabled],
+.xc .form textarea[disabled=disabled],
+.xc .form select[disabled=disabled]{background:#0B0B0B !important;text-shadow:1px 1px 0 #fff}
+/* Table */
+.xc .table caption strong{color:#FAA}
+.xc .table th{background:#0B0B0B}
+.xc .table tfoot td{font-weight:bold;background:#0B0B0B}
+.xc .table.even tbody tr:nth-of-type(even) td{background-color:#131313}
+.xc .table em{font-style:normal;font-weight:normal;color:#FAA}
+/* Pagination */
+.xc .pagination strong{position:relative;display:inline-block;padding:2px 4px;font-weight:bold;text-decoration:none;line-height:normal;color:#DDD !important;vertical-align:middle}
+.xc .pagination strong{color:#FAA !important;font-size:20px}
+/* Text Button */
+.xc select{color:#333}
+.xc input,
+.xc button{font-weight:bold;color:#333}
+/* Border */
+#border{width:290px;margin:20px auto;border:1px solid #ccc;box-shadow:0 0 6px rgba(0,0,0,.1);border-radius:8px;padding:25px 30px;background:#191919;}
+
