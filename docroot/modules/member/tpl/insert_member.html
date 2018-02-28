@@ -62,7 +62,7 @@
 			<label class="x_inline" for="mailingNo"><input type="radio" name="allow_mailing" id="mailingNo" value="N" checked="checked"|cond="$member_info->allow_mailing != 'Y'" > {$lang->cmd_no}</label>
 		</div>
 	</div>
-	<div class="x_control-group">
+	<div class="x_control-group" style="display: none;">
 		<label class="x_control-label">{$lang->allow_message}</label>
 		<div class="x_controls">
 			<block loop="$lang->allow_message_type=>$key,$val">
