@@ -92,3 +92,20 @@ xe 깃헙 레포지토리를 upstream으로 잡아서 버전을 찍어 머지하
 - CC 아이콘 이미지 교체
 
 #14, #15 학교소식 4개 게시판 정상화
+
+```
+누구나학습마을 > 게시판 - nuguna_town_bbs - sketchbook5_nu2016_town
+학교소식 > 
+- 공지사항 - publish - sketchbook5_nuguna2016
+- 후기 - postscript - sketchbook5_nuguna2016
+- 학교 일상 -  story_human - sketchbook5_nuguna2016
+- 언론 보도 - media - sketchbook5_nuguna2016
+
+에디터 컴포넌트
+- multimedia_link
+- photo_editor
+- quotation
+- soo_youtube
+- textbox_0.1
+```
+
