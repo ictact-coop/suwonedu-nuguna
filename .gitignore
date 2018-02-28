@@ -1,4 +1,6 @@
 dump
+sftp-config.json
+*.log
 
 # https://github.com/xpressengine/xe-core/blob/master/.gitignore
 .DS_Store
@@ -25,6 +27,3 @@ Thumbs.db
 *.sublime-workspace
 *.sublime-project
 .codeintel
-
-sftp-config.json
-*.log
