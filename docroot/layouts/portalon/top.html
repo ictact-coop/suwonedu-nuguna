@@ -100,7 +100,7 @@
 		<!--@else-->  				
 		<!--@if($layout_info->profile)-->	   				 
 		<!--@else-->
-			 <a href="{getUrl('act','dispMemberInfo')}" title="회원정보보기" onfocus=this.blur()> <i class="fa11 fa fa-user"></i>&nbsp;  내정보&nbsp;</a>
+			 <a href="/index.php?act=dispMemberInfo" title="회원정보보기" onfocus=this.blur()> <i class="fa11 fa fa-user"></i>&nbsp;  내정보&nbsp;</a>
 			 <a cond="$logged_info->is_admin=='Y'" href="{getUrl('','module','admin')}" target="_blank" title="관리자페이지" onfocus=this.blur()>&nbsp;<i class="fa11 fa fa-gear"></i>&nbsp; 관리 &nbsp;</a>
 		 <!--@end-->		
 		 <!--@end-->														   									  
