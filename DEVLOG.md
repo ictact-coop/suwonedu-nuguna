@@ -113,3 +113,24 @@ xe 깃헙 레포지토리를 upstream으로 잡아서 버전을 찍어 머지하
 - soo_youtube
 - textbox_0.1
 ```
+
+## 2018-03-01 확장검색에 확장변수 추가하기
+
+참고
+<https://www.xpressengine.com/tip/17366138>
+
+```
+### 추가하려는 확장 변수
+
+- 강좌제목: title (이건 확장 변수가 아님...)
+- 강좌번호: 14
+- 강사명: 13
+
+/modules/integration_search/integration_search.view.php 
++105 // 검색 대상 검사 시 확장 변수 추가
++142 // 출력 대상에 확장 변수 추가
+
+/modules/integration_search/lang/lang.xml
++178 tag 뒤에 확장 변수 레이블 추가
+
+```

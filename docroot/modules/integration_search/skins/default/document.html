@@ -4,7 +4,7 @@
 
 <ul class="subNavigation">
     <!--@foreach($lang->is_search_option['document'] as $key => $val)-->
-    <li value="{$key}" class="<!--@if($search_target == $key)-->on<!--@end--><!--@if($key=="tag")--> last<!--@end-->"><a href="{getUrl('where','document','search_target',$key,'page',1,'division','')}">{$val}</a></li>
+    <li value="{$key}" class="<!--@if($search_target == $key)-->on<!--@end--><!--@if($key=="extra_vars13")--> last<!--@end-->"><a href="{getUrl('where','document','search_target',$key,'page',1,'division','')}">{$val}</a></li>
     <!--@end-->
 </ul>
 

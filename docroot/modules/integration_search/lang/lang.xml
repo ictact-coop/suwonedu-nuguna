@@ -176,6 +176,14 @@
 				<value xml:lang="tr"><![CDATA[Etiketler]]></value>
 				<value xml:lang="vi"><![CDATA[Tag]]></value>
 			</item>
+			<item name="extra_vars14">
+				<value xml:lang="ko"><![CDATA[강좌번호]]></value>
+				<value xml:lang="en"><![CDATA[Lecture No.]]></value>
+			</item>
+			<item name="extra_vars13">
+				<value xml:lang="ko"><![CDATA[강사명]]></value>
+				<value xml:lang="en"><![CDATA[Lecturer]]></value>
+			</item>
 		</item>
 		<item name="trackback" type="array">
 			<item name="url">
