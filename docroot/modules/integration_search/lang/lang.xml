@@ -184,6 +184,10 @@
 				<value xml:lang="ko"><![CDATA[강사명]]></value>
 				<value xml:lang="en"><![CDATA[Lecturer]]></value>
 			</item>
+			<item name="all">
+				<value xml:lang="ko"><![CDATA[전체]]></value>
+				<value xml:lang="en"><![CDATA[all]]></value>
+			</item>
 		</item>
 		<item name="trackback" type="array">
 			<item name="url">

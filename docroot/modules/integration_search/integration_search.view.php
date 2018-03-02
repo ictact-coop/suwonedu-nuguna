@@ -102,7 +102,7 @@ class integration_searchView extends integration_search
 			{
 				case 'document' :
 					$search_target = Context::get('search_target');
-					if(!in_array($search_target, array('title','content','title_content','tag', 'extra_vars14', 'extra_vars13'))) $search_target = 'title';
+					if(!in_array($search_target, array('title','content','title_content','tag', 'extra_vars14', 'extra_vars13', 'all'))) $search_target = 'all';
 					Context::set('search_target', $search_target);
 
 					$output = $oIS->getDocuments($target, $module_srl_list, $search_target, $is_keyword, $page, 10);
@@ -134,15 +134,16 @@ class integration_searchView extends integration_search
 					$this->setTemplateFile("file", $page);
 					break;
 				default :
-					$output['document'] = $oIS->getDocuments($target, $module_srl_list, 'title', $is_keyword, $page, 5);
+					$output['document'] = $oIS->getDocuments($target, $module_srl_list, 'all', $is_keyword, $page, 5);
 					$output['comment'] = $oIS->getComments($target, $module_srl_list, $is_keyword, $page, 5);
-					$output['trackback'] = $oIS->getTrackbacks($target, $module_srl_list, 'title', $is_keyword, $page, 5);
+					$output['trackback'] = $oIS->getTrackbacks($target, $module_srl_list, 'all', $is_keyword, $page, 5);
 					$output['multimedia'] = $oIS->getImages($target, $module_srl_list, $is_keyword, $page, 5);
 					$output['file'] = $oIS->getFiles($target, $module_srl_list, $is_keyword, $page, 5);
 					$output['extra_vars14'] = $oIS->getDocuments($target, $module_srl_list, 'extra_vars14', $is_keyword, $page, 5);
 					$output['extra_vars13'] = $oIS->getDocuments($target, $module_srl_list, 'extra_vars13', $is_keyword, $page, 5);
+					$output['all'] = $oIS->getDocuments($target, $module_srl_list, 'all', $is_keyword, $page, 5);
 					Context::set('search_result', $output);
-					Context::set('search_target', 'title');
+					Context::set('search_target', 'all');
 					$this->setTemplateFile("index", $page);
 					break;
 			}

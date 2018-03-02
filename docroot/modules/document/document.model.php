@@ -1471,6 +1471,13 @@ class documentModel extends document
 					$args->var_value = str_replace(' ', '%', $search_keyword);
 					$query_id = 'document.getDocumentListWithinExtraVars';
 					break;
+				case 'all':
+					$args->s_title = $search_keyword;
+					$args->s_content = $search_keyword;
+					$args->var_value = str_replace(' ', '%', $search_keyword);
+					$use_division = true;
+					$query_id = 'document.getDocumentListWithinExtraVars';
+					break;
 				default :
 					if(strpos($search_target,'extra_vars')!==false) {
 						$args->var_idx = substr($search_target, strlen('extra_vars'));
