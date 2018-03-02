@@ -11,11 +11,11 @@ Thumbs.db
 /docroot/build/
 
 /docroot/codeception.yml
-/docroot//tests/_output/
-/docroot//tests/_support/*Tester.php
-/docroot//tests/_support/_generated/
-/docroot//tests/*.suite.yml
-/docroot//doxygen/dist
+/docroot/tests/_output/
+/docroot/tests/_support/*Tester.php
+/docroot/tests/_support/_generated/
+/docroot/tests/*.suite.yml
+/docroot/doxygen/dist
 
 /docroot/node_modules/
 /docroot/bower_components/
@@ -27,3 +27,5 @@ Thumbs.db
 *.sublime-workspace
 *.sublime-project
 .codeintel
+
+/vendor/
