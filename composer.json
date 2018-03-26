@@ -12,5 +12,8 @@
     "require": {},
     "scripts": {
         "start": "php -S localhost:8888 -t docroot"
+    },
+    "config": {
+        "process-timeout": 0
     }
 }
