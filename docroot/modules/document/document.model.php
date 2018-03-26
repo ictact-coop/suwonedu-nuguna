@@ -116,9 +116,9 @@ class documentModel extends document
 			if($vars[-1][$user_lang_code]) $_document_list[$document_srl]->add('title',$vars[-1][$user_lang_code]);
 			// Information processing
 			if($vars[-2][$user_lang_code]) $_document_list[$document_srl]->add('content',$vars[-2][$user_lang_code]);
-			
-			// static 데이터를 갱신해주기 위해 들어간 코드같으나 어차피 언어 변경 자체는 페이지 전환이 일어나면서 발생하는게 대부분이라 효용이 없음. 또한 예기치않게 권한이 없는 다국어 문서 내용을 보여주는 부효과가 일어남		
-			/*		
+
+			// static 데이터를 갱신해주기 위해 들어간 코드같으나 어차피 언어 변경 자체는 페이지 전환이 일어나면서 발생하는게 대부분이라 효용이 없음. 또한 예기치않게 권한이 없는 다국어 문서 내용을 보여주는 부효과가 일어남
+			/*
 			if($vars[-1][$user_lang_code] || $vars[-2][$user_lang_code])
 			{
 				unset($checked_documents[$document_srl]);
@@ -1474,6 +1474,13 @@ class documentModel extends document
 					$args->var_value = str_replace(' ', '%', $search_keyword);
 					$query_id = 'document.getDocumentListWithinExtraVars';
 					break;
+				case 'all':
+				  $args->s_title = $search_keyword;
+				  $args->s_content = $search_keyword;
+				  $args->var_value = str_replace(' ', '%', $search_keyword);
+				  $use_division = true;
+				  $query_id = 'document.getDocumentListWithinExtraVars';
+				  break;
 				default :
 					if(strpos($search_target,'extra_vars')!==false) {
 						$args->var_idx = substr($search_target, strlen('extra_vars'));
