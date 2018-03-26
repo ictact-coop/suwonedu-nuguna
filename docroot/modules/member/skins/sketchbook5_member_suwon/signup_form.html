@@ -9,7 +9,7 @@
 	<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
 	</div>
-    
+
     <form ruleset="@insertMember" id="fo_insert_member" name="signupForm" class="form" action="./" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="act" value="procMemberInsert" />
 		<div class="agreement" cond="$member_config->agreement">
@@ -21,12 +21,12 @@
 				<label for="accept_agree">{$lang->about_accept_agreement}</label>
 			</div>
 		</div>
-		
+
 		<table style="border-spacing:0;">
 			<tr>
 				<th scope="row" id="signup_th">이메일(아이디) <em style="color:red">*</em></th>
 				<td id="signup">
-					<input name="email1" id="email1" type="text"> @ 
+					<input name="email1" id="email1" type="text"> @
 					<input name="email2" id="email2" type="text" style="visibility: hidden; position: absolute;">
 					<select name="emailSelect" id="emailSelect" onChange="checkemailaddy();">
 						<option value="" selected>선택하세요</option>
@@ -71,7 +71,7 @@
             	<th scope="row" id="signup_th">{$lang->user_name} <em style="color:red">*</em></td>
                 <td id="signup"><input type="text" name="user_name" id="user_name" value="" class="inputText long tall" />
                  &nbsp; 실명 입력
-                
+
                 </td>
 			</tr>
             <tr>
@@ -79,16 +79,16 @@
                 <td id="signup"><input type="text" name="nick_name" id="nick_name" value="" class="inputText long tall" />
                 &nbsp; 게시판에서 사용할 별칭 입력
                 </td>
-			</tr>            
+			</tr>
 
             <tr>
             	<th scope="row" id="signup_th" style="padding-bottom:10px;">연락처  <em style="color:red">*</em></td>
                 <td id="signup" style="padding-bottom:10px;">
-                <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" 
-                /> - <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" 
+                <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px"
+                /> - <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px"
                 /> - <input type="text" name="mobile[]" value="" size="4" maxlength="4" style="width:37px" />
                  &nbsp; 연락 가능한 연락처(스마트폰·집전화) 입력
-                 
+
                 </td>
 			</tr>
            <tr>
@@ -115,11 +115,11 @@
             <tr>
             	<th scope="row" id="signup_th" style="padding-top:20px;">강사사진</td>
                 <td style="padding-top:20px;">
-                <input type="hidden" name="__profile_image_exist" value="false" 
-                /><input type="file" name="profile_image" id="profile_image" value="" 
+                <input type="hidden" name="__profile_image_exist" value="false"
+                /><input type="file" name="profile_image" id="profile_image" value=""
                 /><span class="desc">가로길이:{$member_config->profile_image_max_width}px, 세로길이:{$member_config->profile_image_max_height}px 미만</span></p>
                 </td>
-			</tr> 
+			</tr>
             <tr>
             	<th scope="row" id="signup_th">강사소개</th>
                 <td>
@@ -138,15 +138,15 @@
                 <p style="color:#999;"><input name="join_teacher" id="join_teacher" type="checkbox" value="누구나강사 신청"/> 위와 같이 누구나강사를 신청합니다 (강사신청 시 필수) </p>
                 </td>
 			</tr>
-            
-            
-            
+
+
+
 			<!--<tr loop="$formTags=>$formTag" cond="$formTag->name != 'signature'">
 				<th scope="row" id="signup_th">{$formTag->title}{$formTag->name}</th>
 				<td id="signup">{$formTag->inputTag}</td>
 			</tr>-->
-           
-			
+
+
 		</table>
 		<div class="btnArea">
 			<span class="btn"><input type="button" value="{$lang->cmd_registration}" onclick="submitForm()" /></span>
@@ -171,6 +171,9 @@
 function submitForm() {
 	var fullEmail = jQuery("#email1").val() +"@"+ jQuery("#email2").val();
 	jQuery("#email").val(fullEmail);
+	if (jQuery("#email").val().includes("ruu.kr")) {
+		alert("입력하신 이메일로 가입할 수 없습니다."); return;
+	}
 	jQuery('#fo_insert_member').submit();
 }
 
