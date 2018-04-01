@@ -171,7 +171,7 @@
 function submitForm() {
 	var fullEmail = jQuery("#email1").val() +"@"+ jQuery("#email2").val();
 	jQuery("#email").val(fullEmail);
-	if (jQuery("#email").val().includes("ruu.kr")) {
+	if (jQuery("#email").val().indexOf("ruu.kr") > 0) {
 		alert("입력하신 이메일로 가입할 수 없습니다."); return;
 	}
 	jQuery('#fo_insert_member').submit();
