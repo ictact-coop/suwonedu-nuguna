@@ -1,8 +1,46 @@
-<!--@if($link_url && $link_url != "")-->
-<a href="{$link_url}" target="{$target}">
-<!--@endif-->
-<img src="{$image_path}" {$img_width}{$img_height}>
-<!--@if($link_url && $link_url != "")-->
-</a>
-<!--@endif-->
+<div>
+  <!--@if($link_url && $link_url != "")-->
+  <a href="{$link_url}" target="{$target}">
+  <!--@endif-->
+    <img src="{$image_path}" {$img_width}{$img_height}>
+  <!--@if($link_url && $link_url != "")-->
+  </a>
+  <!--@endif-->
+</div>
 
+<div class="popup-footer">
+    <label for="nopopup"> 오늘 하루 이 창 열지 않음 </label>
+    <input type="checkbox" id="nopopup">
+</div>
+
+<style media="screen">
+.popup-footer{
+    width: 100%;
+    margin-top: -0.5rem;
+    padding: .5rem 0;
+    text-align: right;
+    background-color: #d4d4d4;
+}
+</style>
+
+<script type="text/javascript" src="/modules/board/skins/sketchbook5_index/js/jquery.cookie.js"></script>
+<script>
+(function($){
+  console.log($);
+  if ($.cookie("nopopup") != "Y") {
+    $(".absolute-banner").css('display','block');
+  } else {
+    $(".absolute-banner").css('display','none');
+  }
+
+  $("#nopopup").on("change", function(){
+      event.preventDefault();
+      if ($('#nopopup').is(":checked")){
+          $.cookie("nopopup", "Y", {
+              expires : 1
+          });
+      }
+      $(".absolute-banner").css('display','none');
+  });
+})(jQuery);
+</script>
