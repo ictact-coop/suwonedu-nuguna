@@ -7,13 +7,13 @@ $query = $oDB->_query("select extra_vars from xe_member where member_srl = " . $
 $result = $oDB->_fetch($query);
 $extra_vars = unserialize($result->extra_vars);
 
-if($extra_vars->privacy2018agreeYN == 'Y') {
+if(property_exists('extra_vars', 'agree20181YN') && $extra_vars->agree20181YN == 'Y') {
   echo '<script>location.href="/"</script>';
 } else {
-  if(!empty($_POST['checkAgreement']) && $_POST['checkAgreement'] == 'Y') {
-    $extra_vars->privacy2018agreeYN = $_POST['checkAgreement'];
+  if(!empty($_POST['checkPrivateAgreement']) && $_POST['checkPrivateAgreement'] == 'Y') {
+    $extra_vars->agree20181YN = 'Y';
     date_default_timezone_set('Asia/Seoul');
-    $extra_vars->privacy2018agreeYNTime = date('Y-m-d H:i:s');
+    $extra_vars->agree20181YNTime = date('Y-m-d H:i:s');
     $serials = serialize($extra_vars);
     $query = $oDB->_query("update xe_member set extra_vars = '" . $serials . "' where member_srl = " . $logged_info->member_srl);
     $oDB->_fetch($query);
@@ -29,7 +29,7 @@ if($extra_vars->privacy2018agreeYN == 'Y') {
     <h1>누구나학교 홈페이지</h1>
     <h2>2018 개정 회원 약관 및 개인정보 취급방침 재동의 요청</h2>
     <p>안정적인 관리를 위해, 개인정보 제공에 대한 재동의를 실시하오니 적극적인 협조 부탁드립니다.</p>
-    <p>※요청기간 : 2018.5.1 이후 첫 로그인시 ~ 2019.4.30 종료예정</p>
+    <p>※요청기간 : 2018.4.1 이후 첫 로그인시 ~ 2019.3.31 종료예정</p>
   </div>
 
 	<h4 class="joinTitle">약관 동의</h4>
