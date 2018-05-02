@@ -2,7 +2,7 @@
 <include cond="$notice_list && $mi->notice_style=='2'" target="_notice.html" />
 <ol class="{$mi->zine_info_icon} bd_lst bd_zine<!--@if(!$mi->zine_style)--> zine zine1<!--@elseif($mi->zine_style=='2')--> zine zine2<!--@elseif($mi->zine_style=='3')--> card card1<!--@elseif($mi->zine_style=='4')--> card card2<!--@end--> img_load{$mi->tmb_effect}" data-masonry="_{$mi->card_effect}"|cond="$mi->zine_style=='3' || $mi->zine_style=='4'">
 	<li cond="!$document_list && !$notice_list" class="no_doc">{$lang->no_documents}</li>
-	
+
 	<!--// 일반 목록 -->
 	<li loop="$document_list=>$no,$document" class="<!--@if($document_srl==$document->document_srl)-->select <!--@end-->clear">
 		<!--// 날짜 -->
@@ -18,9 +18,9 @@
 		<div class="rt_area<!--@if($list_config['thumbnail'] && $document->thumbnailExists())--> is_tmb<!--@end-->">
 			<div cond="$list_config['thumbnail']" class="tmb_wrp ribbon_v{$mi->ribbon_style}">
 				<!--// 썸네일 -->
-                
+
 				<span cond="!$document->thumbnailExists($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)" class="no_img tmb">No Image</span>
-                
+
 				<block cond="$document->thumbnailExists($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)">
                 <div style="position:absolute; margin-left:154px;"><!--@if($document->get('category_srl')==642)--><img src="/img/nuguna/end_sticker.png" alt="마감"><!--@else--><!--@end--></div>
                 <span cond="$mi->tmb_effect=='2'" class="no_img loading"></span><img class="tmb" src="{$document->getThumbnail($mi->zine_thumb_width,$mi->zine_thumb_height,$mi->zine_thumb_type)}" alt="" /></block>
@@ -50,7 +50,7 @@
 			<div class="cnt" cond="$list_config['summary']">{$document->getSummary($mi->content_cut_size)}</div>
 			<!--// 글 정보 -->
 			<div class="info">
-				
+
 				<!--<span cond="$mi->use_category=='Y' && $document->get('category_srl')"><strong>{$category_list[$document->get('category_srl')]->title}</strong></span>
 				<span cond="$list_config['nick_name']"><i class="fa fa-user"></i><span>By</span><b><a href="#popup_menu_area" class="member_{$document->get('member_srl')}" onclick="return false;">{$document->getNickName()}</a></b></span>
 				<span cond="@in_array('zine',$mi->cmt_count)"><i class="fa fa-comment"></i><span>Reply</span><b>{$document->getCommentCount()}</b></span>
@@ -61,8 +61,8 @@
                 <div class="ngeb" style="font-size:16px; color:#000; line-height:20px; margin-top:5px; margin-bottom:5px; font-weight:700">{$document->getTitle($mi->subject_cut_size)}</div>
                 <table class="lec_table">
                 <tr>
-                <th>기간</th>
-                <td><strong>{$document->getExtraEidValueHTML('lec_hopedate1')}<!--@if($document->getExtraEidValueHTML('lec_hopedate2'))-->~{$document->getExtraEidValueHTML('lec_hopedate2')}<!--@end--></strong></td>
+                <th style="white-space: nowrap;">기간</th>
+                <td style="white-space: nowrap;"><strong>{$document->getExtraEidValueHTML('lec_hopedate1')}<!--@if($document->getExtraEidValueHTML('lec_hopedate2'))-->~{$document->getExtraEidValueHTML('lec_hopedate2')}<!--@end--></strong></td>
                 </tr>
                 <tr>
                 <th>시간</th>
@@ -77,6 +77,14 @@
                 <th>장소</th>
                 <td><!--@if($document->getExtraEidValueHTML('lec_where')=='수원시평생학습관')-->{$document->getExtraEidValueHTML('lec_where')} <!--@end-->{$document->getExtraEidValueHTML('lec_whereetc')}</span></td>
                 </tr>
+<!--@if($logged_info)-->
+	<!--@if($logged_info->is_admin = 'Y') -->
+								<td colspan="2">
+									<strong style="color: red;">{$document->getExtraEidValueHTML('lec_who')}</strong>
+									<strong style="color: red;">{$document->getExtraEidValueHTML('lec_many')}</strong>
+								</td>
+	<!--@end-->
+<!--@end-->
                 <!--<tr>
                 <th>게시</th>
                 <td><strong>{$document->getRegdate("Y.m.d")}</strong></span></td>
