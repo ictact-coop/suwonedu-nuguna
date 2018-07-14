@@ -1,6 +1,7 @@
 dump
 sftp-config.json
 *.log
+.php-version
 
 # https://github.com/xpressengine/xe-core/blob/master/.gitignore
 .DS_Store
