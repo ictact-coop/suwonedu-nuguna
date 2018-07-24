@@ -42,9 +42,9 @@
 <script>
 (function($){
   if ($.cookie("nopopup") != "Y") {
-    $(".absolute-banner").css('display','block');
+    $(".absolute-banner-container").css('display','block');
   } else {
-    $(".absolute-banner").css('display','none');
+    $(".absolute-banner-container").css('display','none');
   }
 
   $("#nopopup").on("change", function(){
@@ -54,7 +54,7 @@
               expires : 1
           });
       }
-      $(".absolute-banner").css('display','none');
+      $(".absolute-banner-container").css('display','none');
   });
 })(jQuery);
 </script>
