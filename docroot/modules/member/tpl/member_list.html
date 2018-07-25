@@ -29,6 +29,7 @@
 		<thead>
 			<tr>
 				<th scope="col" class="nowr">{$lang->email}</th>
+				<th scope="col" class="nowr">20181재동의</th>
 				<th scope="col" class="nowr" loop="$usedIdentifiers=>$name,$title">{$title}</th>
 				<th scope="col" class="nowr"><a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminList', 'sort_index', 'regdate', 'sort_order', ($sort_order == 'asc') ? 'desc' : 'asc', 'selected_group_srl', $selected_group_srl)}">{$lang->signup_date}<block cond="$sort_index == 'regdate'"> <em cond="$sort_order=='asc'">▲</em><em cond="$sort_order != 'asc'">▼</em></block></a></th>
 				<th scope="col" class="nowr"><a href="{getUrl('', 'module', 'admin', 'act', 'dispMemberAdminList', 'sort_index', 'last_login', 'sort_order',  ($sort_order == 'asc') ? 'desc' : 'asc', 'selected_group_srl', $selected_group_srl)}">{$lang->last_login}<block cond="$sort_index == 'last_login'"> <em cond="$sort_order=='asc'">▲</em><em cond="$sort_order != 'asc'">▼</em></block></a></th>
@@ -44,6 +45,10 @@
 				{@$member_info = get_object_vars($member_info)}
 				<td class="nowr">
 					<a href="#popup_menu_area" class="member_{$member_info['member_srl']}" title="Info">{getEncodeEmailAddress($member_info['email_address'])}</a>
+				</td>
+				{@$member_extra_info = unserialize($member_info['extra_vars'])}
+				<td class="nowr">
+					{@ echo substr($member_extra_info->agree20181YNTime, 0 ,10)}
 				</td>
 				{@ $member_info['group_list'] = implode(', ', $member_info['group_list'])}
 				<td class="nowr" loop="$usedIdentifiers=>$name,$title">{$member_info[$name]}</td>
@@ -74,7 +79,7 @@
 		<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
 		<ul>
 			<li class="x_disabled"|cond="!$page || $page == 1"><a href="{getUrl('page', '')}">&laquo; {$lang->first_page}</a></li>
-	
+
 			<block cond="$page_navigation->first_page != 1 && $page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page - 1 && $page_navigation->page_count != $page_navigation->total_page">
 				{@$isGoTo = true}
 				<li>
@@ -85,12 +90,12 @@
 					</span>
 				</li>
 			</block>
-	
+
 			<!--@while($page_no = $page_navigation->getNextPage())-->
 				{@$last_page = $page_no}
 				<li class="x_active"|cond="$page_no == $page"><a  href="{getUrl('page', $page_no)}">{$page_no}</a></li>
 			<!--@end-->
-	
+
 			<block cond="$last_page != $page_navigation->last_page && $last_page + 1 != $page_navigation->last_page">
 				{@$isGoTo = true}
 				<li>
@@ -100,9 +105,9 @@
 						<button type="submit" class="x_add-on">Go</button>
 					</span>
 				</li>
-				
+
 			</block>
-	
+
 			<li class="x_disabled"|cond="$page == $page_navigation->last_page"><a href="{getUrl('page', $page_navigation->last_page)}" title="{$page_navigation->last_page}">{$lang->last_page} &raquo;</a></li>
 		</ul>
 	</form>
