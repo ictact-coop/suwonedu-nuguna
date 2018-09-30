@@ -22,7 +22,7 @@
 		</block>
 		<!--// 댓글 정보 -->
 		<div class="meta">
-			<a cond="$comment->member_srl">{$comment->getNickName()}</a>
+			<a cond="$comment->member_srl" href="#popup_menu_area" class="member_{$comment->member_srl}" onclick="return false">{$comment->getNickName()}</a>
 			<a cond="!$comment->member_srl && $comment->homepage" href="{$comment->getHomepageUrl()}" target="_blank">{$comment->getNickName()}</a>
 			<b cond="!$comment->member_srl && !$comment->homepage">{$comment->getNickName()}</b>
 			<span class="date">{getTimeGap($comment->get('regdate'), "Y.m.d H:i")}</span>
@@ -85,7 +85,7 @@
 <div class="bd_pg clear {$mi->fdb_hide}">
 	<a href="{getUrl('cpage',1)}#{$oDocument->get('document_srl')}_comment" class="direction" title="{$lang->first_page}"><i class="fa fa-angle-double-left"></i> <span>First</span></a>
 	<block loop="$page_no=$oDocument->comment_page_navigation->getNextPage()">
-		<strong cond="$cpage==$page_no" class="this">{$page_no}</strong> 
+		<strong cond="$cpage==$page_no" class="this">{$page_no}</strong>
 		<a cond="$cpage!=$page_no" href="{getUrl('cpage',$page_no)}#{$oDocument->get('document_srl')}_comment">{$page_no}</a>
 	</block>
 	<a href="{getUrl('cpage',$oDocument->comment_page_navigation->last_page)}#{$oDocument->get('document_srl')}_comment" class="direction" title="{$lang->last_page}"><span>Last</span> <i class="fa fa-angle-double-right"></i></a>
