@@ -72,8 +72,8 @@ $lang->join_sms_info2   = 'SMS 서비스를 이용하기 위해서는 서비스�
 $lang->js_sms_new_add_pcs    = '회원가입시 수신받을 휴대폰번호 설정 추가';
 
 $lang->member_sms_service   = '서비스 이용약관';
-$lang->member_sms_user_info = '개인정보 취급방침';
-$lang->member_sms_user_agree    = '개인정보 취급방침에 동의합니다';
+$lang->member_sms_user_info = '개인정보 처리방침';
+$lang->member_sms_user_agree    = '개인정보 처리방침에 동의합니다';
 $lang->member_sms_service_agree= '서비스 이용약관에 동의합니다';
 $lang->member_sms_tail_text = '보기';
 $lang->js_sms_tail_text = '을 확인하세요!';
