@@ -208,3 +208,24 @@ O:8:"stdClass":3:{s:6:"mobile";a:3:{i:0;s:3:"000";i:1;s:4:"0000";i:2;s:4:"0000";
 # 추가 후
 O:8:"stdClass":5:{s:6:"mobile";a:3:{i:0;s:3:"000";i:1;s:4:"0000";i:2;s:4:"0000";}s:3:"mms";s:1:"Y";s:21:"__profile_image_exist";s:5:"false";s:18:"privacy2018agreeYN";s:1:"Y";s:22:"privacy2018agreeYNTime";s:19:"2018-04-02 05:07:19";}
 ```
+
+
+## 2019-11-01
+
+```
+#24 (~19.11.7) 개인정보 처리방침 재동의 요청페이지
+
+- [x] 개인정보 취급방침 => 개인정보 처리방침 (번역 파일 수정)
+- [x] 회원가입 시 개인정보 처리방침 2차안으로 수정
+- [x] 배너 띄우기
+
+애드온 > 이용약관/개인정보 처리방침
+/index.php?module=admin&act=dispAddonAdminSetup&selected_addon=member_join_ex
+
+배너 띄우기
+모듈 > 배너관리자
+/index.php?module=admin&act=dispBannermgmAdminContent
+
+
+```
+
