@@ -27,7 +27,7 @@
   top: 10%;
   left: 50%;
   z-index: 999;
-  transform: translate( -50%, 0)
+  transform: translate( -50%, 0);
 }
 .popup-footer{
     width: 100%;
@@ -35,6 +35,13 @@
     padding: .5rem 0;
     text-align: right;
     background-color: #d4d4d4;
+}
+@media (max-width: 1024px) {
+	.absolute-banner-container {
+		top: 2%;
+		left: 2%;
+		transform: translate( -1%, 0);
+	}
 }
 </style>
 
