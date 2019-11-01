@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon version="0.2">
-    <title xml:lang="ko">이용약관/개인정보취급방침 애드온</title>
+    <title xml:lang="ko">이용약관/개인정보 처리방침 애드온</title>
     <description xml:lang="ko">
-        회원가입시 14세이상/미만 구분 및 이용약관/개인정보취급방침을 표출하는 애드온입니다.
+        회원가입시 14세이상/미만 구분 및 이용약관/개인정보 처리방침을 표출하는 애드온입니다.
     </description>
     <version>0.2.3</version>
     <date>2013-07-19</date>
@@ -39,8 +39,8 @@
 		</var>
 
 		<var name="use_private_agreement" type="select">
-			<title xml:lang="ko">개인정보취급방침 표시</title>
-			<description xml:lang="ko">개인정보취급방침을 표시 및 동의를 받습니다.</description>
+			<title xml:lang="ko">개인정보 처리방침 표시</title>
+			<description xml:lang="ko">개인정보 처리방침을 표시 및 동의를 받습니다.</description>
 			<options value="">
 				<title xml:lang="ko">표시하지 않음</title>
 			</options>

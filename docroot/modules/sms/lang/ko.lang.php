@@ -67,7 +67,7 @@ $lang->js_add_wrong_pcs_msg = '전화번호는 숫자로 입력해주세요.';
 $lang->js_already_addrset = '다른 설정창이 열려있습니다';
 
 $lang->join_sms_info1   = 'SMS 서비스를 이용하기 위해서는 아래의 회원가입절차를 진행해야 합니다.';
-$lang->join_sms_info2   = 'SMS 서비스를 이용하기 위해서는 서비스이용약관과 개인정보취급방침에 동의해야 합니다.';
+$lang->join_sms_info2   = 'SMS 서비스를 이용하기 위해서는 서비스이용약관과 개인정보 처리방침에 동의해야 합니다.';
 
 $lang->js_sms_new_add_pcs    = '회원가입시 수신받을 휴대폰번호 설정 추가';
 

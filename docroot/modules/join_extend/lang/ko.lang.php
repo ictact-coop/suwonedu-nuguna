@@ -49,9 +49,9 @@
     $lang->about_use_agreement = '이용약관을 표시 및 동의를 받습니다.';
     $lang->agreement = '이용약관';
 
-    $lang->use_private_agreement = '개인정보취급방침 표시';
-    $lang->about_use_private_agreement = '개인정보취급방침을 표시 및 동의를 받습니다.';
-    $lang->private_agreement = '개인정보취급방침';
+    $lang->use_private_agreement = '개인정보 처리방침 표시';
+    $lang->about_use_private_agreement = '개인정보 처리방침을 표시 및 동의를 받습니다.';
+    $lang->private_agreement = '개인정보 처리방침';
     $lang->private_gathering_agreement = '개인정보 수집 및 이용';
 
     $lang->use_jumin = '주민등록번호 받기';
@@ -132,7 +132,7 @@
     $lang->notify_title = '가입/탈퇴 통보';
     
     $lang->agree_agreement= '이용약관에 동의 합니다.'; 
-    $lang->agree_private_agreement= '개인정보취급방침에 동의 합니다.'; 
+    $lang->agree_private_agreement= '개인정보 처리방침에 동의 합니다.'; 
     $lang->agree = '동의';
     $lang->junior = '%d세 이상';
     $lang->senior = '%d세 미만';

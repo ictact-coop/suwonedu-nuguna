@@ -56,7 +56,7 @@
             $editor_agreement = $oEditorModel->getEditor(0, $option);
             Context::set('editor_agreement', $editor_agreement);
             
-            // 개인정보취급방침 에디터
+            // 개인정보 처리방침 에디터
             $option->content_key_name = 'private_agreement';
             $editor_private_agreement = $oEditorModel->getEditor(0, $option);
             Context::set('editor_private_agreement', $editor_private_agreement);
