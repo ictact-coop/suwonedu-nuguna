@@ -3,7 +3,7 @@
     $lang->member_join_extend_title = '약관 동의'; 
     $lang->agreement = "이용 약관";
     $lang->agree_agreement= '이용 약관에 동의 합니다.'; 
-    $lang->private_agreement = "개인정보 취급 방침";
+    $lang->private_agreement = "개인정보 처리방침";
     $lang->agree_private_agreement= '개인 정보 수집 및 이용에 동의합니다.'; 
 	$lang->agree = '동의';
 	$lang->junior = '14세 이상';
