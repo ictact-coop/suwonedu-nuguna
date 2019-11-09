@@ -37,7 +37,7 @@
 						<option value="gmail.com">gmail.com</option>
 						<option value="1">직접입력</option>
 					</select>
-					<input type="hidden" name="{$identifierForm->name}" id="email" value="dev@mozo.kr"/>
+					<input type="hidden" name="{$identifierForm->name}" id="email_address" value=""/>
 					<!-- <input type="hidden" name="{$identifierForm->name}" id="email" value="{$identifierForm->value}"/> -->
 				</td>
 			</tr>
@@ -164,15 +164,25 @@
 		$(".inputDate").datepicker(option);
 		$(".dateRemover").click(function() {
 			$(this).prevAll('input').val('');
-			return false;});
+			return false;
+		});
+		$('#email1, #email2').on('blur', function(){
+			if($('#email1').val() && $('#email2').val()) checkEmail();
+		});
+		$('#emailSelect').on('change', function(){
+			if($('#email1').val() && $('#email2').val()) checkEmail();
+		});
 	});
 })(jQuery);
 
 function submitForm() {
 	var fullEmail = jQuery("#email1").val() +"@"+ jQuery("#email2").val();
-	jQuery("#email").val(fullEmail);
-	if (jQuery("#email").val().indexOf("ruu.kr") > 0) {
+	jQuery("#email_address").val(fullEmail);
+	if (jQuery("#email_address").val().indexOf("ruu.kr") > 0) {
 		alert("입력하신 이메일로 가입할 수 없습니다."); return;
+	}
+	if(jQuery("[id^=dummy_check]").length > 0 && jQuery("[id^=dummy_check]").html() != '') {
+		alert("입력한 내용 중에 적절하지 않은 부분이 있습니다."); return;
 	}
 	jQuery('#fo_insert_member').submit();
 }
@@ -190,5 +200,17 @@ function checkemailaddy(){
 		signupForm.email2.value = signupForm.emailSelect.value;
 	}
 }
+
+function checkEmail() {
+	var email = $('#email1').val() + '@' + $('#email2').val();
+	$('#email_address').val(email);
+	console.log(email);
+	var field  = $('#email_address').get(0);
+	var params = {name:'email_address', value: $('#email_address').val()};
+	var response_tags = ['error','message'];
+
+	exec_xml('member','procMemberCheckValue', params, completeMemberCheckValue, response_tags, field);
+}
+
 </script>
 <include target="./common_footer.html" />
