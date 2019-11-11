@@ -202,15 +202,13 @@ function checkemailaddy(){
 }
 
 function checkEmail() {
-	var email = $('#email1').val() + '@' + $('#email2').val();
-	$('#email_address').val(email);
-	console.log(email);
-	var field  = $('#email_address').get(0);
-	var params = {name:'email_address', value: $('#email_address').val()};
+	var email = jQuery('#email1').val() + '@' + jQuery('#email2').val();
+	jQuery('#email_address').val(email);
+	var field  = jQuery('#email_address').get(0);
+	var params = {name:'email_address', value: jQuery('#email_address').val()};
 	var response_tags = ['error','message'];
 
 	exec_xml('member','procMemberCheckValue', params, completeMemberCheckValue, response_tags, field);
 }
-
 </script>
 <include target="./common_footer.html" />
