@@ -1,13 +1,17 @@
 <div class="cont_w" style="margin-top:0px;">
 
 <?php
+// 현재 로그인 사용자 정보
 $logged_info = Context::get('logged_info');
+// 사용자 확장변수 가져오기
 $oDB = &DB::getInstance();
 $query = $oDB->_query("select extra_vars from xe_member where member_srl = " . $logged_info->member_srl);
 $result = $oDB->_fetch($query);
 $extra_vars = unserialize($result->extra_vars);
+// 가입일
+$regdate = $logged_info->regdate;
 
-if($extra_vars->agree20181YN == 'Y') {
+if($regdate > 20180430235959 || $extra_vars->agree20181YN == 'Y') {
   echo '<script>location.href="/"</script>';
 } else {
   if(!empty($_POST['checkPrivateAgreement']) && $_POST['checkPrivateAgreement'] == 'Y') {

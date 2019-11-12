@@ -226,6 +226,33 @@ O:8:"stdClass":5:{s:6:"mobile";a:3:{i:0;s:3:"000";i:1;s:4:"0000";i:2;s:4:"0000";
 모듈 > 배너관리자
 /index.php?module=admin&act=dispBannermgmAdminContent
 
-
 ```
 
+## 2019-11-12
+
+### [22. (~19.11.7) 개인정보 처리방침 재동의 요청페이지 #24](https://github.com/ictact-coop/suwonedu-nuguna/issues/24)
+
+로그인 시 일단 무조건 /agree_201804 (XE 관리자 회원 설정 - 로그인에서 지정) 으로 리다리엑트된다.
+해당 외부 페이지에서 개정 약관 동의 여부 및 회원 가입일을 확인해서 메인으로 보내거나 
+약관 동의하면 확장변수에 ```agree20181YN: "Y", agree20181YNTime: "2018-05-02 02:18:35"``` 형식으로 저장한다.
+
+#### 외부 페이지 생성 및 설정 (재동의 요청)
+
+[사이트 메뉴 편집](http://localhost:8888/index.php?module=admin&act=dispMenuAdminSiteMap)에서 unlinked 아래
+메뉴 추가 > 외부 페이지에서 아래 정보로 생성한다. unlinked는 메뉴로 출력하지 않는 페이지들을 묶어놓은 메뉴이다.
+
+- 메뉴 이름 => 2018 개인정보처리방침 변경안 동의
+- 메뉴 ID => agree_201804
+
+으로 새로운 페이지를 만든 후 [즐겨찾기 > 페이지 관리 > 페이지 설정](http://localhost:8888/index.php?module=admin&act=dispPageAdminInfo&module_srl=134805) 화면에서 외부 페이지 템플릿으로 사용할 파일 위치를 입력하고 저장한다.
+
+```
+# 관련 파일
+- docroot/layouts/portalon/2018-privacy-policy-agreement.html <= 외부 페이지 템플릿 (외부 페이지에서는 php 사용 가능)
+- docroot/layouts/portalon/footer.html
+- docroot/layouts/portalon/block-members-not-agreed.php
+
+// 2018년 4월 30일 이전 가입자 수: 1367
+// 그 중 동의하지 않은 회원: 1217 (extra_vars not contains agree20181YN => 1217)
+
+```
