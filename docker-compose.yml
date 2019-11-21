@@ -3,7 +3,6 @@ version: "3"
 services:
   db:
     image: mysql:5.6
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: nuguna
       MYSQL_DATABASE: nuguna
@@ -18,7 +17,6 @@ services:
     build: ./
     ports:
       - "8888:80"
-    restart: always
     volumes:
       - ./docroot:/var/www/html:cached
       - ./docker/php.ini:/usr/local/etc/php/php.ini
