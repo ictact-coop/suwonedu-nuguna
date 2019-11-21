@@ -1,0 +1,84 @@
+<?php
+define('__ZBXE__',true);
+require_once("config/config.inc.php");
+$oContext = &Context::getInstance();
+$oContext->init();
+
+$logged_info = Context::get('logged_info');
+$isadmin = $logged_info->is_admin;
+
+if($isadmin) {
+    $host = "db";
+    $id  = "root";
+    $pass = "nuguna";
+    $db = "nuguna";
+    // $port = "33060";
+    $table = "xe_member";
+    $xls_filename = "memberlist.xls";
+
+    $mysqli = new mysqli($host, $id, $pass, $db);
+
+    /* check connection */
+	if ($mysqli->connect_errno) {
+	    printf("Connect failed: %s\n", $mysqli->connect_error);
+	    exit();
+	}
+    $mysqli->query("set character set utf8");
+} else {
+    die('...');
+}
+
+// header("Content-Type: application/vnd.ms-excel");
+// header("Content-Disposition: attachment; filename=$xls_filename");
+?>
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <table border=1>
+<?php
+if($result = $mysqli->query("select * from xe_member;")) {
+  // 이메일 주소, 사용자 아이디, 닉네임, 가입일, 확장변수
+  $fields = array(
+  	'email_address', 'user_name', 'nick_name', 'regdate', 'mobile', 'sms'
+  );
+  // 제목행 출력
+  echo '<tr>';
+  foreach ($fields as $val) {
+  	echo '<td>' . $val . '</td>';
+  }
+  echo '</tr>';
+
+  // 데이터 출력
+  foreach ($result as $row) {
+  	echo '<tr>';
+  	foreach ($fields as $val) {
+  		$data = '';
+  		switch ($val) {
+  			case 'regdate':
+  				$data = date('Y-m-d', strtotime($row[$val]));
+  				break;
+  			case 'mobile':
+  				$vars = unserialize($row['extra_vars']);
+  				$data = join("-", $vars->mobile);
+  				break;
+  			case 'sms':
+  				$vars = unserialize($row['extra_vars']);
+  				$data = $vars->mms;
+  				break;
+  			default:
+  				$data = $row[$val];
+  				break;
+  		}
+  		echo '<td>' . $data . '</td>';
+  	}
+  	echo '</tr>';
+  }
+  $result->free();
+  $mysqli->close();
+}
+?>
+    </table>
+  </body>
+</html>
