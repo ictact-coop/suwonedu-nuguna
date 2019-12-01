@@ -261,8 +261,8 @@ class memberView extends member
 	{
 		if($_SESSION['rechecked_password_step'] != 'VALIDATE_PASSWORD' && $_SESSION['rechecked_password_step'] != 'INPUT_DATA')
 		{
-			$this->dispMemberModifyInfoBefore();
-			return;
+			// $this->dispMemberModifyInfoBefore();
+			// return;
 		}
 
 		$_SESSION['rechecked_password_step'] = 'INPUT_DATA';

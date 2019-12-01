@@ -374,6 +374,9 @@ class memberController extends member
 		if($config->enable_confirm == 'Y') $args->denied = 'Y';
 		// Add extra vars after excluding necessary information from all the requested arguments
 		$extra_vars = delObjectVars($all_args, $args);
+		// 개인정보취급방침 동의 여부와 시간을 저장합니다.
+		$extra_vars->agree201912yn = 'Y';
+		$extra_vars->agree201912yntime = date('YmdHis');
 		$args->extra_vars = serialize($extra_vars);
 
 		// remove whitespace

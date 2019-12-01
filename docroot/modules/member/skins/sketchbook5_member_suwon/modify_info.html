@@ -1,10 +1,19 @@
+{@ $type = Context::get('type')}
 <include target="./common_header.html" />
 <load target="../../tpl/js/signup_check.js" />
 <!--// datepicker javascript plugin load -->
 <!--%load_js_plugin("ui")-->
 <!--%load_js_plugin("ui.datepicker")-->
+
 <div id="border">
+<block cond="!$type">
 <h1 class="h1">{$lang->msg_update_member}</h1>
+</block>
+<block cond="$type">
+<h1 class="h1">개인 정보 추가 입력</h1>
+<p>원활한 운영을 위해, 내 정보를 확인해주세요!</p>
+<p>3차 개인정보 처리방침 적용에 따라, 성별/생년월일/주소도 기재해주세요.</p>
+</block>
 <script type="text/javascript" >
 	xe.lang.deleteProfileImage = '{$lang->msg_delete_extend_form}';
 	xe.lang.deleteImageMark = '{$lang->msg_delete_extend_form}';
@@ -20,19 +29,19 @@
     <input type="hidden" name="signature" value="{htmlspecialchars($member_info->signature)}" />
     <input type="hidden" name="page" value="{$page}" />
 	<ul>
-		<li>
+		<li class="field field-{$identifierForm->name}">
 			<p class="q">{$identifierForm->title} <em style="color:red">*</em></p>
 			<p class="a">
 				<input type="hidden" name="{$identifierForm->name}" value="{$identifierForm->value}" />
 				<input type="text" name="{$identifierForm->name}" value="{$identifierForm->value}" disabled="disabled" />
 			</p>
 		</li>
-		<li loop="$formTags=>$formTag">
+		<li class="field field-{$formTag->name}" loop="$formTags=>$formTag">
 			<p class="q">{$formTag->title}</p>
 			<div class="a" cond="$formTag->name != 'signature'">{$formTag->inputTag}</div>
 			<div class="a" cond="$formTag->name =='signature'">{$editor}</div>
 		</li>
-		<li>
+		<li class="field field-allow_mailing">
 			<p class="q">{$lang->allow_mailing}</p>
 			<p class="a">
 				<input type="radio" name="allow_mailing" id="mailingYes" value="Y" checked="checked"|cond="$member_info->allow_mailing == 'Y'"> <label for="mailingYes">{$lang->cmd_yes}</label>
@@ -62,3 +71,24 @@
 })(jQuery);
 </script>
 <include target="./common_footer.html" />
+<style>
+.add_additional_info .field,
+.field-agree201912yn, .field-agree201912yntime {
+	visibility: hidden;
+	position: absolute;
+	z-index: -1000;
+}
+
+.add_additional_info .field.field-gender,
+.add_additional_info .field.field-birthday,
+.add_additional_info .field.field-address {
+	visibility: visible;
+	position: relative;
+	z-index: 10;
+	margin: 2rem 0;
+}
+.xm .form .dateRemover {
+	margin-top: 0;
+	margin-left: .5rem;
+}
+</style>
