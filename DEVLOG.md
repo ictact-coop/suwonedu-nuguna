@@ -256,3 +256,13 @@ O:8:"stdClass":5:{s:6:"mobile";a:3:{i:0;s:3:"000";i:1;s:4:"0000";i:2;s:4:"0000";
 // 그 중 동의하지 않은 회원: 1217 (extra_vars not contains agree20181YN => 1217)
 
 ```
+
+
+## 2019-12-01
+
+### [25. (~19.11.1 /~19.12.1) 팝업창 운영 후 수정/ 개인정보처리방침 3차 #27](https://github.com/ictact-coop/suwonedu-nuguna/issues/27)
+
+애드온 > 이용약관/개인정보 처리방침 > 수집하는 개인정보의 항목
+/index.php?module=admin&act=dispAddonAdminSetup&selected_addon=member_join_ex
+에 ```docroot/layouts/portalon/privacy-policy-201912.html``` 3차 개인정보처리방침 내용을 붙혀넣고 저장
+
