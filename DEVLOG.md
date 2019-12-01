@@ -266,3 +266,25 @@ O:8:"stdClass":5:{s:6:"mobile";a:3:{i:0;s:3:"000";i:1;s:4:"0000";i:2;s:4:"0000";
 /index.php?module=admin&act=dispAddonAdminSetup&selected_addon=member_join_ex
 에 ```docroot/layouts/portalon/privacy-policy-201912.html``` 3차 개인정보처리방침 내용을 붙혀넣고 저장
 
+
+### [27. (~19.12.1) 수정 / 회원가입 시 필수항목 추가 #29](https://github.com/ictact-coop/suwonedu-nuguna/issues/29)
+
+```
+이름
+닉네임
+성별 : 남, 여 선택 (*형식: 문자수신허용처럼)
+생년월일  (*형식:  연도/월/일자를 선택할 수 있는 박스)
+
+연락처
+주소(동까지)  (*형식: 이름처럼 네모박스) 
+                   ※옆에 예시로 회색글씨
+                     “예: 수원시 팔달구 우만1동” 넣어주세요
+```
+
+회원 > 회원설정 > 회원가입 > 가입 폼 관리
+/index.php?module=admin&act=dispMemberAdminSignUpConfig
+
+- [x] 성별 => radio 남|여
+- [x] 생년월일 => 생일 필드 재활용 (달력선택기)
+- [x] 주소(동까지) => text
+

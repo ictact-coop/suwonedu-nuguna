@@ -103,8 +103,8 @@
 .xm .table em{font-style:normal;font-weight:normal;color:#e00}
 .xm .table .title,
 .xm .table .text{white-space:normal}
-#signup_th{vertical-align:top; padding-top:10px; padding-right:10px; text-align: left;}
-#signup{height:40px;}
+.signup_th{vertical-align:top; padding-top:10px; padding-right:10px; text-align: left;}
+.signup{height:40px;}
 /* Pagination */
 .xm .pagination{margin:1em 0;text-align:center;line-height:normal}
 .xm .pagination *{vertical-align:middle}
