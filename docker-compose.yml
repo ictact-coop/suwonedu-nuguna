@@ -9,7 +9,7 @@ services:
     ports:
       - "33060:3306"
     volumes:
-      - ./dump:/docker-entrypoint-initdb.d:cached
+      - ./dump:/docker-entrypoint-initdb.d:ro
 
   xe:
     depends_on:
@@ -18,6 +18,6 @@ services:
     ports:
       - "8888:80"
     volumes:
-      - ./docroot:/var/www/html:cached
+      - ./docroot:/var/www/html:delegated
       - ./docker/php.ini:/usr/local/etc/php/php.ini
       - ./docker/db.config.php:/var/www/html/files/config/db.config.php
