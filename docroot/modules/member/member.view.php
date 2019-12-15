@@ -587,9 +587,9 @@ class memberView extends member
 	{
 		if($_SESSION['rechecked_password_step'] != 'VALIDATE_PASSWORD' && $_SESSION['rechecked_password_step'] != 'INPUT_DATA')
 		{
-			Context::set('success_return_url', getUrl('', 'mid', Context::get('mid'), 'act', 'dispMemberModifyEmailAddress'));
-			$this->dispMemberModifyInfoBefore();
-			return;
+			// Context::set('success_return_url', getUrl('', 'mid', Context::get('mid'), 'act', 'dispMemberModifyEmailAddress'));
+			// $this->dispMemberModifyInfoBefore();
+			// return;
 		}
 
 		$_SESSION['rechecked_password_step'] = 'INPUT_DATA';

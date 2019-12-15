@@ -14,7 +14,6 @@ if(!empty($logged_info)) {
   // 동의한 경우
   if(!empty($extra_vars->agree201912yn)) {
   	echo '<script>location.href="/"</script>';
-    /*
     // 성별/생년월일/주소 없는 경우 개인정보 추가 화면으로
     if(empty($logged_info->gender) || empty($logged_info->birthday) || empty($logged_info->address)) {
       if($_GET['act'] != 'dispMemberModifyInfo') {
@@ -24,7 +23,6 @@ if(!empty($logged_info)) {
       // 문제없음
       echo '<script>location.href="/"</script>';
     }
-    */
   } else {
     // 재동의 처리
     if(!empty($_POST['checkPrivateAgreement']) && $_POST['checkPrivateAgreement'] == 'Y') {
