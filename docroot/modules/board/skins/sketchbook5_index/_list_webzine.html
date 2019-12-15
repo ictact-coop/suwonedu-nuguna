@@ -79,10 +79,10 @@
                 </tr>
 <!--@if($logged_info)-->
 	<!--@if($logged_info->is_admin == 'Y') -->
-								<td colspan="2">
-									<strong style="color: red;">{$document->getExtraEidValueHTML('lec_who')}</strong>
-									<strong style="color: red;">{$document->getExtraEidValueHTML('lec_many')}</strong>
-								</td>
+				<td colspan="2" style="display: none;">
+					<strong style="color: red;">{$document->getExtraEidValueHTML('lec_who')}</strong>
+					<strong style="color: red;">{$document->getExtraEidValueHTML('lec_many')}</strong>
+				</td>
 	<!--@end-->
 <!--@end-->
                 <!--<tr>
