@@ -316,3 +316,33 @@ $extra_vars->agree201912yn = 'Y';
 $extra_vars->agree201912yntime = date('YmdHis');
 ```
 
+### [XE 업그레이드 #32](https://github.com/ictact-coop/suwonedu-nuguna/issues/32)
+
+```bash
+# 코어 업그레이드 변경분 다운로드 및 압축 풀기
+# https://github.com/xpressengine/xe-core/releases
+$ mkdir -p dump/xe-upgrade
+$ cd $_ && mkdir 1.11.0 1.11.1 1.11.2 1.11.3 1.11.4 1.11.5 1.11.6
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.0/xe.1.11.0.changed.tar.gz && tar zxvf xe.1.11.0.changed.tar.gz -C 1.11.0/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.1/xe.1.11.1.changed.tar.gz && tar zxvf xe.1.11.1.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.2/xe.1.11.2.changed.tar.gz && tar zxvf xe.1.11.2.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.3/xe.1.11.3.changed.tar.gz && tar zxvf xe.1.11.3.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.4/xe.1.11.4.changed.tar.gz && tar zxvf xe.1.11.4.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.5/xe.1.11.5.changed.tar.gz && tar zxvf xe.1.11.5.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.6/xe.1.11.6.changed.tar.gz && tar zxvf xe.1.11.6.changed.tar.gz
+
+# 변경분 실제 소스에 반영
+$ rsync -azvh 1.11.0/ ../../docroot/
+
+# 코어 수정 내역
+
+# docroot/modules/document/document.model.php
+# docroot/modules/integration_search/integration_search.view.php
+# docroot/modules/integration_search/lang/lang.xml
+# docroot/modules/integration_search/skins/default/document.html
+# docroot/modules/member/member.controller.php
+# docroot/modules/member/tpl/insert_member.html
+# docroot/modules/member/tpl/member_list.html
+
+# 번번히 패치를 만들기가 번거로워 그냥 눈으로 확인하고 변경 사항을 제외하고 커밋하기로 한다.
+```
