@@ -324,12 +324,12 @@ $extra_vars->agree201912yntime = date('YmdHis');
 $ mkdir -p dump/xe-upgrade
 $ cd $_ && mkdir 1.11.0 1.11.1 1.11.2 1.11.3 1.11.4 1.11.5 1.11.6
 $ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.0/xe.1.11.0.changed.tar.gz && tar zxvf xe.1.11.0.changed.tar.gz -C 1.11.0/
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.1/xe.1.11.1.changed.tar.gz && tar zxvf xe.1.11.1.changed.tar.gz
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.2/xe.1.11.2.changed.tar.gz && tar zxvf xe.1.11.2.changed.tar.gz
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.3/xe.1.11.3.changed.tar.gz && tar zxvf xe.1.11.3.changed.tar.gz
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.4/xe.1.11.4.changed.tar.gz && tar zxvf xe.1.11.4.changed.tar.gz
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.5/xe.1.11.5.changed.tar.gz && tar zxvf xe.1.11.5.changed.tar.gz
-$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.6/xe.1.11.6.changed.tar.gz && tar zxvf xe.1.11.6.changed.tar.gz
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.1/xe.1.11.1.changed.tar.gz && tar zxvf xe.1.11.1.changed.tar.gz -C 1.11.1/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.2/xe.1.11.2.changed.tar.gz && tar zxvf xe.1.11.2.changed.tar.gz -C 1.11.2/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.3/xe.1.11.3.changed.tar.gz && tar zxvf xe.1.11.3.changed.tar.gz -C 1.11.3/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.4/xe.1.11.4.changed.tar.gz && tar zxvf xe.1.11.4.changed.tar.gz -C 1.11.4/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.5/xe.1.11.5.changed.tar.gz && tar zxvf xe.1.11.5.changed.tar.gz -C 1.11.5/
+$ curl -LO https://github.com/xpressengine/xe-core/releases/download/1.11.6/xe.1.11.6.changed.tar.gz && tar zxvf xe.1.11.6.changed.tar.gz -C 1.11.6/
 
 # 변경분 실제 소스에 반영
 $ rsync -azvh 1.11.0/ ../../docroot/
