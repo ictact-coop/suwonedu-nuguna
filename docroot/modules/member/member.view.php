@@ -1,8 +1,8 @@
 <?php
-/* Copyright (C) NAVER <http://www.navercorp.com> */
+/* Copyright (C) XEHub <https://www.xehub.io> */
 /**
  * @class  memberView
- * @author NAVER (developers@xpressengine.com)
+ * @author XEHub (developers@xpressengine.com)
  * @brief View class of member module
  */
 class memberView extends member
@@ -261,8 +261,8 @@ class memberView extends member
 	{
 		if($_SESSION['rechecked_password_step'] != 'VALIDATE_PASSWORD' && $_SESSION['rechecked_password_step'] != 'INPUT_DATA')
 		{
-			// $this->dispMemberModifyInfoBefore();
-			// return;
+			$this->dispMemberModifyInfoBefore();
+			return;
 		}
 
 		$_SESSION['rechecked_password_step'] = 'INPUT_DATA';
