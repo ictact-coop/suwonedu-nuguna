@@ -2715,7 +2715,7 @@
 		<value xml:lang="mn"><![CDATA[Query ID буруу бичигдсэн байна.]]></value>
 	</item>
 	<item name="msg_not_permitted">
-		<value xml:lang="ko"><![CDATA[권한이 없습니다.]]></value>
+		<value xml:lang="ko"><![CDATA[로그인 후 이용 가능합니다.]]></value>
 		<value xml:lang="en"><![CDATA[You do not have permission to access.]]></value>
 		<value xml:lang="jp"><![CDATA[権限がありません。]]></value>
 		<value xml:lang="zh-CN"><![CDATA[没有权限]]></value>
@@ -2849,7 +2849,7 @@
 		<value xml:lang="mn"><![CDATA[Буруу хэлбэр байна.]]></value>
 	</item>
 	<item name="msg_not_permitted_act">
-		<value xml:lang="ko"><![CDATA[요청한 기능을 실행할 수 있는 권한이 없습니다.]]></value>
+		<value xml:lang="ko"><![CDATA[로그인 후 이용 가능합니다.]]></value>
 		<value xml:lang="en"><![CDATA[You do not have permission to execute requested action.]]></value>
 		<value xml:lang="jp"><![CDATA[現在の操作を実行する権限がありません。]]></value>
 		<value xml:lang="zh-CN"><![CDATA[没有权限执行 action命令]]></value>
