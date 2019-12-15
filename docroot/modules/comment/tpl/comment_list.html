@@ -36,7 +36,7 @@ xe.lang.msg_empty_search_keyword = '{$lang->msg_empty_search_keyword}';
 			<tr>
 				<th scope="col">{$lang->comment}</th>
 				<th scope="col" class="nowr">{$lang->writer}</th>
-				<th scope="col" class="nowr">{$lang->cmd_vote}(+/-)</th>
+				<th scope="col" class="nowr">강좌명</th>
 				<th scope="col" class="nowr">{$lang->date}</th>
 				<th scope="col" class="nowr">{$lang->ipaddress}</th>
 				<th scope="col" class="nowr">{$lang->status}</th>
@@ -54,7 +54,10 @@ xe.lang.msg_empty_search_keyword = '{$lang->msg_empty_search_keyword}';
 					<a href="{getUrl('','document_srl',$val->document_srl)}#comment_{$val->comment_srl}" target="_blank"><!--@if(strlen($comment))-->{$comment}<!--@else--><em>{$lang->no_text_comment}</em><!--@end--></a>
 				</td>
 				<td class="nowr"><a href="#popup_menu_area" class="member_{$val->member_srl}">{$val->getNickName()}</a></td>
-				<td class="nowr">{number_format($val->get('voted_count'))}/{number_format($val->get('blamed_count'))}</td>
+				<td class="nowr">
+					{@ $oDocumentModel = getModel('document'); $oDocument = $oDocumentModel->getDocument($val->document_srl); }
+					<a href="/{$val->document_srl}">{$oDocument->getTitle()}</a>
+				</td>
 				<td class="nowr">{(zdate($val->regdate,"Y-m-d\nH:i:s"))}</td>
 				<td class="nowr"><a href="{getUrl('search_target','ipaddress','search_keyword',$val->ipaddress)}">{$val->ipaddress}</a></td>
 				<td class="nowr"><!--@if($val->isSecret())-->{$secret_name_list['Y']}<!--@else-->{$secret_name_list['N']}<!--@end--></td>
