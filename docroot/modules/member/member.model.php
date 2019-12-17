@@ -134,8 +134,8 @@ class memberModel extends member
 		ModuleHandler::triggerCall('member.getMemberMenu', 'before', $null);
 
 		$oMemberController = getController('member');
-		// Display member information (Don't display to non-logged user)
-		if($logged_info->is_admin == 'Y')
+		// CORE-PATCH: 로그인했는데 관리자인 경우에만 회원정보보기 팝업 메뉴를 출력합니다.
+		if($logged_info->member_srl && $logged_info->is_admin == 'Y')
 		{
 			$url = getUrl('','mid',$mid,'act','dispMemberInfo','member_srl',$member_srl);
 			$oMemberController->addMemberPopupMenu($url,'cmd_view_member_info',$icon_path,'self');

@@ -62,8 +62,9 @@ class memberView extends member
 	{
 		$oMemberModel = getModel('member');
 		$logged_info = Context::get('logged_info');
-		// Don't display member info to non-logged user
-		if($logged_info->is_admin == 'Y') return $this->stop('msg_not_permitted');
+
+		// CORE-PATCH: 로그인하지 않은 경우 차단합니다.
+		if(!$logged_info->member_srl) return $this->stop('msg_not_permitted');
 
 		$member_srl = Context::get('member_srl');
 		if(!$member_srl && Context::get('is_logged'))
@@ -84,6 +85,8 @@ class memberView extends member
 
 		if($logged_info->is_admin != 'Y' && ($member_info->member_srl != $logged_info->member_srl))
 		{
+			// CORE-PATCH: 관리자가 아니고 자신의 정보를 조회하는 경우가 아니면 차단합니다.
+			return $this->stop('msg_not_permitted');
 			$start = strpos($member_info->email_address, '@')+1;
 			$replaceStr = str_repeat('*', (strlen($member_info->email_address) - $start));
 			$member_info->email_address = substr_replace($member_info->email_address, $replaceStr, $start);
