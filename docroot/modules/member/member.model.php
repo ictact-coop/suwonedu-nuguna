@@ -135,7 +135,7 @@ class memberModel extends member
 
 		$oMemberController = getController('member');
 		// Display member information (Don't display to non-logged user)
-		if($logged_info->member_srl)
+		if($logged_info->is_admin == 'Y')
 		{
 			$url = getUrl('','mid',$mid,'act','dispMemberInfo','member_srl',$member_srl);
 			$oMemberController->addMemberPopupMenu($url,'cmd_view_member_info',$icon_path,'self');

@@ -63,7 +63,7 @@ class memberView extends member
 		$oMemberModel = getModel('member');
 		$logged_info = Context::get('logged_info');
 		// Don't display member info to non-logged user
-		if(!$logged_info->member_srl) return $this->stop('msg_not_permitted');
+		if($logged_info->is_admin == 'Y') return $this->stop('msg_not_permitted');
 
 		$member_srl = Context::get('member_srl');
 		if(!$member_srl && Context::get('is_logged'))
