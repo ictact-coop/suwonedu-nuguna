@@ -1967,3 +1967,23 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     float: left;
     width: 50%;
 }
+
+.font_plus, .font_minus,
+.file.back_to.bubble,
+.help.bubble,
+.rd_ft_nav.clear .edit,
+.rd_ft .rd_vote,
+.rd_nav.img_tx .print_doc,
+.rd_ft .rd_ft_nav .comment {
+    display: none;
+}
+
+.rd_nav.img_tx.fr.m_btn_wrp {
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 533px) {
+    .m_no.comment {
+        display: block !important;
+    }
+}
