@@ -1986,4 +1986,8 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     .m_no.comment {
         display: block !important;
     }
+    #head_box5 .head_tip {
+        display: none;
+    }
 }
+
