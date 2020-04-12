@@ -53,8 +53,8 @@
 							<dt><h3>Guide</h3></dt>
 							<dd style="margin:0">
 								<li>상담운영시간</li>
-								<li>월~금 am 9:00 - pm 7:00</li>
-								<li>토요일 am 9:00 - pm 6:00</li>
+								<li>평 일/토요일 9:00~18:00</li>
+								<li>일요일/공휴일 휴무</li>
 							</dd>
 						</dl>
 					</div>
@@ -92,10 +92,24 @@
 							<dt><h3>Direction</h3></dt>
 							<dd style="margin: 0; padding: 0;">
 								<li>경기도 수원시 팔달구 월드컵로381번길 2 수원시평생학습관</li>
-								<li><a href="http://naver.me/FtXriXv7" target="_blank">네이버지도로 보기(새창)</a></li>
+								<li><a href="http://naver.me/FtXriXv7" target="_blank" style="color:orange !important">네이버지도로 보기(새창)</a></li>
 								<li>&nbsp;</li>
-								<li><a href="{getUrl('mid','copyright_protection')}">저작권보호정책</a></li>
-								<li><a href="{getUrl('mid','without_notice')}">이메일무단수집거부</a></li>
+								<li style="font-size: 10px;">
+									<div class="half">
+										<a href="{getUrl('mid','copyright_protection')}">저작권보호정책</a>
+									</div>
+									<div class="half">
+										<a href="{getUrl('mid','terms_of_use')}">이용약관</a>
+									</div>
+								</li>
+								<li style="font-size: 10px;">
+									<div class="half">
+										<a href="{getUrl('mid','without_notice')}">이메일무단수집거부</a>
+									</div>
+									<div class="half">
+										<a href="{getUrl('mid','privacy_policy')}">개인정보취급방침</a>
+									</div>
+								</li>
 							</dd>
 						</dl>
 					</div>
@@ -121,7 +135,7 @@
 									<!--@foreach($FAMILY->list as $key => $val)-->
 									<!--@if($val['link'])-->
 									<li >
-										<a href="{$val['href']}" <!--@if($val['open_window']=='Y')--> onclick="window.open(this.href);return false;"<!--@end-->>
+										<a target="_blank" href="{$val['href']}" <!--@if($val['open_window']=='Y')--> onclick="window.open(this.href);return false;"<!--@end-->>
 											{$val['text']}
 										</a>
 									</li>
