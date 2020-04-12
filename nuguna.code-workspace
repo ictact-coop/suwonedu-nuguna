@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "docroot/layouts/portalon",
+			"name": "theme-portalon"
+		},
+		{
+			"path": ".",
+			"name": "project-root"
+		}
+	],
+	"settings": {
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/bower_components": true,
+			"**/.vagrant": true,
+			"/vendor": true
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.vagrant": true,
+			"**/node_modules": true,
+			"**/bower_components": true
+		}
+	}
+}

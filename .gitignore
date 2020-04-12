@@ -31,3 +31,4 @@ Thumbs.db
 
 /vendor/
 naver*.html
+.vagrant
