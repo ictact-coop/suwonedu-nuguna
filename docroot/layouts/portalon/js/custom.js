@@ -51,5 +51,10 @@ jQuery(document).ready(function($) {
 			title		: 'Account'
 		}
 	});
+
+	if($('#fo_insert_member').length > 0 && $(window).width() < 533) {
+		$('#fo_insert_member tr:nth-child(4)').css('height', '120px');
+		$('#fo_insert_member input[name="mobile[]"]').css('width', "80px");
+	}
 });
 

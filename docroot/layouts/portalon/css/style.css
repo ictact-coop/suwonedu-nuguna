@@ -1989,5 +1989,31 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     #head_box5 .head_tip {
         display: none;
     }
+    .xm .form input[type=text], .xm .form input[type=password] {
+        width: 160px;
+    }
+    #border {
+        padding: 1rem;
+    }
+    #fo_insert_member th,
+    #fo_insert_member td {
+        display: inline-block;
+    }
+    #fo_insert_member tr {
+        display: inline-block;
+        width: 100%;
+        margin: .5rem 0;
+    }
+    #find_account_question {
+        display: block;
+        width: 100% !important;
+    }
+    #find_account_answer {
+        display: block;
+        margin: 1rem 0;
+    }
+    #user_name, #nick_name, #profile_image {
+        width: 100%;
+    }
 }
 
