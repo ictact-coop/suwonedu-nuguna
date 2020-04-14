@@ -2063,11 +2063,14 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
         width: 300px;
     }
 
-    .xc #fo_message_list table {
+    .xc #fo_message_list table,
+    .x #documentListTable {
         width: 95%;
     }
     .xc #fo_message_list .table th,
-    .xc #fo_message_list .table td {
+    .x #documentListTable th,
+    .xc #fo_message_list .table td,
+    .x #documentListTable td {
         display: block;
     }
     

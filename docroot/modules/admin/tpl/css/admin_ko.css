@@ -2,4 +2,23 @@
 body>.x,.x table,.x input,.x textarea,.x select,.x button{font-family:나눔고딕,NanumGothic,돋움,Dotum,Arial,Helvetica,sans-serif}
 @media all and (max-width:980px){
 body>.x,.x table,.x input,.x textarea,.x select,.x button{font-family:sans-serif}
+    #documentListTable {
+        width: 95%;
+    }
+    #documentListTable th,
+    #documentListTable td {
+        display: block;
+    }
+    .x .x_pagination {
+        margin: 0 !important;
+    }
+    .x .x_pull-left,
+    .x .x_pull-right {
+        margin-top: 10px;
+    }
+    .x .x_pull-left {
+        float: none;
+    }
 }
+
+
