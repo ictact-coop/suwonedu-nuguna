@@ -2017,3 +2017,6 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     }
 }
 
+.table-responsive {
+    overflow-x: auto;
+}

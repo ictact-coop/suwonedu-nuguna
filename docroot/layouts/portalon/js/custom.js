@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+
 	$('nav#menu3').mmenu({
 	slidingSubmenus: false
 	}, {
@@ -23,14 +24,10 @@ jQuery(document).ready(function($) {
 			title		: 'Account'
 		}
 	});
-});
 
-
-jQuery(document).ready(function($) {
 	$('nav#menu').mmenu({
-	slidingSubmenus: false
-	}, {
-
+			slidingSubmenus: false
+		}, {
 	});
 
 //	The menu on the right
@@ -56,5 +53,11 @@ jQuery(document).ready(function($) {
 		$('#fo_insert_member tr:nth-child(4)').css('height', '120px');
 		$('#fo_insert_member input[name="mobile[]"]').css('width', "80px");
 	}
+
+	var body_tables = $('.xe_content[class^=document] table:not([class])');
+	if(body_tables.length > 0) {
+		body_tables.css('width', 'auto').addClass('table-responsive');
+	}
+
 });
 
