@@ -2062,16 +2062,17 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     .teacher-intro {
         width: 300px;
     }
-
-    .xc #fo_message_list table,
-    .x #documentListTable {
-        width: 95%;
+    .xc .table.even {
+        overflow-x: auto;
     }
-    .xc #fo_message_list .table th,
-    .x #documentListTable th,
-    .xc #fo_message_list .table td,
-    .x #documentListTable td {
-        display: block;
+    .xc #fo_message_list table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+    .xc #fo_message_list .table th.title,
+    .xc #fo_message_list .table td.title {
+        width: 120px;
     }
     
 }
