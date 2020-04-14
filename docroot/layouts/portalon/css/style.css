@@ -2062,6 +2062,14 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     .teacher-intro {
         width: 300px;
     }
+
+    .xc #fo_message_list table {
+        width: 95%;
+    }
+    .xc #fo_message_list .table th,
+    .xc #fo_message_list .table td {
+        display: block;
+    }
     
 }
 
