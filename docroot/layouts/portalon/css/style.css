@@ -1973,7 +1973,6 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
 .help.bubble,
 .rd_ft_nav.clear .edit,
 .rd_ft .rd_vote,
-.rd_nav.img_tx .print_doc,
 .rd_ft .rd_ft_nav .comment {
     display: none;
 }
@@ -1986,7 +1985,8 @@ input[type="submit"]:focus {color: #fff; background-color: #ff9900; cursor:point
     .m_no.comment {
         display: block !important;
     }
-    #head_box5 .head_tip .cart-inner i.fa-list-ul {
+    #head_box5 .head_tip .cart-inner i.fa-list-ul,
+    .rd_nav.img_tx .print_doc {
         display: none;
     }
     .xm .form input[type=text], .xm .form input[type=password] {
