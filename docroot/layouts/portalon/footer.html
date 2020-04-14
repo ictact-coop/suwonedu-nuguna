@@ -125,11 +125,11 @@
 				<div>
 					<div class="xecenter" style="border-right:none;">
 						<!--@if(sizeof($FAMILY->list)>0)-->
-						<div id="family" style="">
+						<div id="family">
 							<h3 onclick="slideFamilySite()">
 								<span>Family Site</span>
 							</h3>
-							<div id="fam" style="height: auto">
+							<div id="fam" style="height: auto; overflow-x: hidden;">
 								<ul>
 									{@$idx = 0}
 									<!--@foreach($FAMILY->list as $key => $val)-->
