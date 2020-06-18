@@ -3,7 +3,7 @@ $mid = $_GET['mid'];
 $logged_info = Context::get('logged_info');
 if(!empty($logged_info)) {
 	// 동의하지 않은 경우 재동의 화면에 고정
-	if(empty($logged_info->agree201912yn)) {
+	if(empty($logged_info->agree202005yn)) {
 		if($mid != 'reconfirm_privacy_terms') {
 			echo '<script>location.href="/reconfirm_privacy_terms"</script>';
 		}

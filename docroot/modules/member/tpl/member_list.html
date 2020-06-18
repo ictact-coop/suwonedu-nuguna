@@ -48,7 +48,9 @@
 				</td>
 				{@$member_extra_info = unserialize($member_info['extra_vars'])}
 				<td class="nowr">
-					{@ echo substr($member_extra_info->agree201912yntime, 0 ,10)}
+					{@ echo substr($member_extra_info->agree202005yntime, 0 ,10)}<br>
+					{@ echo substr($member_extra_info->agree201912yntime, 0 ,10)}<br>
+					{@ echo substr($member_extra_info->agree20181YNTime, 0 ,10)}
 				</td>
 				{@ $member_info['group_list'] = implode(', ', $member_info['group_list'])}
 				<td class="nowr" loop="$usedIdentifiers=>$name,$title">{$member_info[$name]}</td>

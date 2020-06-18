@@ -12,7 +12,7 @@ if(!empty($logged_info)) {
   $extra_vars = unserialize($result->extra_vars);
 
   // 동의한 경우
-  if(!empty($extra_vars->agree201912yn)) {
+  if(!empty($extra_vars->agree202005yn)) {
   	echo '<script>location.href="/"</script>';
     // 성별/생년월일/주소 없는 경우 개인정보 추가 화면으로
     if(empty($logged_info->gender) || empty($logged_info->birthday) || empty($logged_info->address)) {
@@ -26,13 +26,17 @@ if(!empty($logged_info)) {
   } else {
     // 재동의 처리
     if(!empty($_POST['checkPrivateAgreement']) && $_POST['checkPrivateAgreement'] == 'Y') {
-      $extra_vars->agree201912yn = 'Y';
+      $extra_vars->agree202005yn = 'Y';
       date_default_timezone_set('Asia/Seoul');
-      $extra_vars->agree201912yntime = date('YmdHis');
+      $extra_vars->agree202005yntime = date('YmdHis');
       $serials = serialize($extra_vars);
       $query = $oDB->_query("update xe_member set extra_vars = '" . $serials . "' where member_srl = " . $logged_info->member_srl);
       $oDB->_fetch($query);
-      echo '<script>alert("재동의하셨습니다!");location.href="/index.php?act=dispMemberModifyInfo&type=add_additional_info"</script>';
+      if(!empty($logged_info->gender) && !empty($logged_info->birthday) && !empty($logged_info->address)) {
+        echo '<script>alert("재동의하셨습니다!");location.href="/";</script>';
+      } else {
+        echo '<script>alert("재동의하셨습니다!");location.href="/index.php?act=dispMemberModifyInfo&type=add_additional_info"</script>';
+      }
     }
   }
 }
@@ -42,17 +46,17 @@ if(!empty($logged_info)) {
 
     <div class="header" style="text-align: center;">
       <h1>누구나학교 홈페이지</h1>
-      <h2>2019 개정 개인정보 처리방침 재동의 요청</h2>
+      <h2>2020 개정 개인정보 처리방침 재동의 요청</h2>
       <p>안정적인 관리를 위해, 개인정보 제공에 대한 재동의를 실시하오니 적극적인 협조 부탁드립니다.</p>
-      <p>※요청기간 : 2019.12.1 이후 첫 로그인시 ~ 2024.12.30 종료예정</p>
-      <p>※ 2019년 12월 1일 이전 가입하신 회원은 개정 개인정보 처리방침에 동의하지 않으시면 웹사이트를 사용할 수 없습니다. 계속 이 화면만 보게 됩니다.</p>
+      <p>※요청기간 : 2020.05.11 이후 첫 로그인시 ~ 2025.12.30 종료예정</p>
+      <p>※ 2020년 5월 11일 이전 가입하신 회원은 개정 개인정보 처리방침에 동의하지 않으시면 웹사이트를 사용할 수 없습니다. 계속 이 화면만 보게 됩니다.</p>
     </div>
 
   	<form action="" method="post">
   		<fieldset>
   		  <h4 class="joinTitle">개인정보 취급 방침</h4>
   			<div class="joinAgreement">
-  <?php include 'privacy-policy-201912.html' ?>
+  <?php include 'privacy-policy-202005.html' ?>
         </div>
   			<p class="checkAgreement"><input name="checkPrivateAgreement" type="checkbox" value="Y" id="checkPrivateAgreement" class="inputCheck"><label for="checkPrivateAgreement">개인 정보 수집 및 이용에 동의합니다.</label></p>
   			<div class="joinButtonArea">
